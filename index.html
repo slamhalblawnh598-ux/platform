@@ -2,737 +2,567 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>منصة إدارة المهام والمحتوى</title>
-<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&family=Cairo:wght@700;900&display=swap" rel="stylesheet">
-<script src="https://cdn.tailwindcss.com"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>منصة الاختبارات التفاعلية الموحدة</title>
 <style>
-* { font-family: 'Tajawal', sans-serif; margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-
-body { 
-    background: url('https://i.ibb.co/pBPnrpkZ/cover.jpg') no-repeat center center fixed; 
-    background-size: cover; 
-    min-height: 100vh; 
-    padding: 15px; 
-    overflow-x: hidden; 
-    position: relative;
+:root {
+  --bg: #faf7f2; --card: #fff; --tx: #2a1a1a; --ac: #9b1c0e; --ac2: #7d1013;
+  --gold: #e8a317; --ok: #1f8a4c; --bad: #c0392b; --bd: #d9cfc4;
+  --okb: #e3f5ea; --badb: #fbe5e2;
 }
-
-body::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(255, 255, 255, 0.5);
-    z-index: -1;
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #1b1514; --card: #271e1c; --tx: #f3e9e4; --ac: #e0624f; --ac2: #ff7b6b;
+    --gold: #d4940f; --ok: #4fd08a; --bad: #ff7b6b; --bd: #4a3b37;
+    --okb: #173324; --badb: #3d1e1a;
+  }
 }
-
-.container { max-width: 900px; margin: 0 auto; position: relative; z-index: 1; }
-.news-ticker { background: linear-gradient(90deg, #d32f2f, #b71c1c); color: white; padding: 12px 0; border-radius: 12px; margin-bottom: 20px; box-shadow: 0 5px 15px rgba(211, 47, 47, 0.4); overflow: hidden; }
-.ticker-wrapper { display: flex; align-items: center; }
-.ticker-label { background: #ff6b6b; padding: 6px 15px; margin-right: 15px; border-radius: 6px; white-space: nowrap; font-weight: bold; font-size: 14px; }
-.ticker-content { display: inline-block; white-space: nowrap; animation: scroll-right 15s linear infinite; padding-left: 20px; }
-@keyframes scroll-right { 0% { transform: translateX(-100%); } 100% { transform: translateX(100%); } }
-
-.header { 
-    background: rgba(255, 255, 255, 0.85); 
-    backdrop-filter: blur(10px);
-    padding: 30px 20px; 
-    border-radius: 20px; 
-    text-align: center; 
-    margin-bottom: 25px; 
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2); 
+:root[data-theme="dark"] {
+  --bg: #1b1514; --card: #271e1c; --tx: #f3e9e4; --ac: #e0624f; --ac2: #ff7b6b;
+  --gold: #d4940f; --ok: #4fd08a; --bad: #ff7b6b; --bd: #4a3b37;
+  --okb: #173324; --badb: #3d1e1a;
 }
+* { box-sizing: border-box; }
+html { scroll-padding-top: env(safe-area-inset-top, 0px); }
+body { margin: 0; background: var(--bg); color: var(--tx); font-family: "Tajawal", "Segoe UI", Tahoma, "Noto Naskh Arabic", Arial, sans-serif; line-height: 1.7; }
+.w { max-width: 720px; margin: 0 auto; padding: 16px; }
 
-.logo-container { 
-    width: 140px; 
-    height: 140px; 
-    margin: 0 auto 20px; 
-    border-radius: 50%; 
-    overflow: hidden; 
-    border: 5px solid #ffffff; 
-    box-shadow: 0 8px 25px rgba(0,0,0,0.3); 
-}
-.logo-container img { width: 100%; height: 100%; object-fit: cover; }
+/* القائمة الرئيسية */
+.menu-header { text-align: center; margin-bottom: 24px; }
+.menu-header h1 { font-size: 24px; margin-bottom: 8px; color: var(--ac); }
+.menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
+.menu-card { background: var(--card); border: 1px solid var(--bd); border-radius: 14px; padding: 20px; cursor: pointer; transition: all 0.2s ease; }
+.menu-card:hover { transform: translateY(-4px); border-color: var(--ac); box-shadow: 0 8px 24px rgba(0,0,0,0.08); }
+.menu-card h2 { font-size: 18px; margin: 0 0 8px; color: var(--ac); }
+.menu-card p { margin: 0; color: var(--tx); opacity: 0.85; font-size: 15px; }
+.menu-card .start-btn { margin-top: 16px; font-size: 14px; color: var(--ac); font-weight: 700; display: flex; align-items: center; gap: 6px; }
 
-.header h1 { color: #667eea; font-size: 26px; margin-bottom: 8px; font-weight: bold; }
-.header p { color: #444; font-size: 16px; font-weight: 500; }
-.social-links { display: flex; justify-content: center; gap: 15px; margin-top: 15px; padding-top: 15px; border-top: 2px solid rgba(0,0,0,0.1); }
-.social-links > span { width: 100%; color: #555; margin-bottom: 10px; font-weight: bold; }
-.social-icon { display: flex; align-items: center; justify-content: center; width: 48px; height: 48px; border-radius: 50%; text-decoration: none; }
-.social-icon svg { width: 24px; height: 24px; fill: white; }
-.social-icon.whatsapp { background: linear-gradient(135deg, #25D366, #128C7E); }
-.social-icon.tiktok { background: linear-gradient(135deg, #000, #25F4EE 50%, #FE2C55); }
-.social-icon.instagram { background: linear-gradient(45deg, #f09433, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888); }
+/* واجهة الاختبار */
+.top-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; font-weight: 700; color: var(--ac); font-size: 15px; }
+.progress-bar { height: 8px; background: var(--bd); border-radius: 6px; overflow: hidden; margin-bottom: 16px; }
+.progress-bar i { display: block; height: 100%; background: var(--ac); transition: width 0.3s; }
+.card { background: var(--card); border: 1px solid var(--bd); border-radius: 16px; padding: 18px; box-shadow: 0 3px 12px rgba(0,0,0,0.04); }
+.q-text { font-size: 1.15rem; font-weight: 700; color: var(--ac); margin: 0 0 12px; line-height: 1.6; }
+.q-text .v, .q-text .cap { display: block; color: var(--tx); font-weight: 600; margin-top: 6px; font-size: 1rem; }
+.fig { text-align: center; margin: 12px 0; overflow-x: auto; }
+.fig svg { max-width: 100%; height: auto; max-height: 300px; }
+.fig text { fill: currentColor; font-family: inherit; }
+.fig .r, .fig .f { fill: var(--ac); }
+.fig line, .fig path, .fig rect, .fig polygon, .fig circle, .fig polyline { stroke: currentColor; fill: none; stroke-width: 1.6; }
+.fig .dot { fill: currentColor; }
+.fig .b { font-weight: 700; font-size: 15px; }
 
-.main-menu { display: flex; flex-direction: column; gap: 15px; max-width: 500px; margin: 0 auto; }
-@media (min-width: 600px) { .main-menu { flex-direction: row; max-width: 700px; } }
-.menu-btn { padding: 25px 20px; border: none; border-radius: 18px; font-size: 18px; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; box-shadow: 0 8px 20px rgba(0,0,0,0.25); color: white; width: 100%; }
-.menu-btn:active { transform: scale(0.97); }
-.menu-btn.content-btn { background: linear-gradient(135deg, #667eea, #764ba2); }
-.menu-btn.exam-btn { background: linear-gradient(135deg, #ff9966, #ff5e62); }
+/* الخيارات */
+.opts { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 16px; }
+@media (max-width: 520px) { .opts { grid-template-columns: 1fr; } }
+.opt { font: inherit; text-align: start; display: flex; align-items: center; gap: 10px; padding: 12px; border: 2px solid var(--bd); background: var(--card); color: var(--tx); border-radius: 12px; cursor: pointer; font-size: 1.05rem; transition: all 0.2s; }
+.opt:hover:not(:disabled) { border-color: var(--ac); background: rgba(155, 28, 14, 0.03); }
+.opt-letter { flex: none; width: 32px; height: 32px; border-radius: 50%; background: var(--ac); color: #fff; display: grid; place-items: center; font-weight: 700; font-size: 0.95rem; }
+.opt.ok { border-color: var(--ok); background: var(--okb); }
+.opt.ok .opt-letter { background: var(--ok); }
+.opt.bad { border-color: var(--bad); background: var(--badb); }
+.opt.bad .opt-letter { background: var(--bad); }
+.opt:disabled { cursor: default; opacity: 0.9; }
 
-.glass { background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(10px); border-radius: 20px; padding: 25px; }
-.btn-primary { background: linear-gradient(135deg, #667eea, #764ba2); color: white; padding: 16px; border: none; border-radius: 12px; font-size: 17px; font-weight: bold; cursor: pointer; width: 100%; margin-top: 15px; }
-.btn-primary:active { transform: scale(0.98); }
-.btn-secondary { background: #f0f0f0; color: #333; padding: 14px; border: none; border-radius: 10px; cursor: pointer; width: 100%; margin-top: 10px; font-weight: bold; }
-.btn-whatsapp { background: linear-gradient(135deg, #25D366, #128C7E); color: white; padding: 16px; border: none; border-radius: 12px; font-size: 17px; font-weight: bold; cursor: pointer; width: 100%; display: flex; align-items: center; justify-content: center; gap: 10px; }
+/* الحل والتنقل */
+.explanation { margin-top: 14px; padding: 12px 14px; border-radius: 12px; background: rgba(232, 163, 23, 0.1); border: 1px dashed var(--gold); display: none; font-size: 0.95rem; line-height: 1.6; }
+.explanation.show { display: block; }
+.nav-buttons { display: flex; justify-content: space-between; margin-top: 20px; gap: 10px; }
+.btn { font: inherit; border: 0; border-radius: 12px; padding: 12px 24px; background: var(--ac); color: #fff; cursor: pointer; font-weight: 700; font-size: 1rem; transition: opacity 0.2s; }
+.btn:hover { opacity: 0.9; }
+.btn.secondary { background: var(--bd); color: var(--tx); }
+.btn:disabled { opacity: 0.4; cursor: not-allowed; }
 
-.warning-box { background: #fff3cd; border-right: 5px solid #ff9966; padding: 18px; border-radius: 12px; margin: 20px 0; text-align: right; }
-.encouragement-box { background: #e3f2fd; border-right: 5px solid #2196f3; padding: 18px; border-radius: 12px; margin: 20px 0; text-align: right; }
-input[type="text"] { width: 100%; padding: 16px; border: 2px solid #e0e0e0; border-radius: 12px; font-size: 18px; text-align: center; margin-bottom: 15px; outline: none; }
-input[type="text"]:focus { border-color: #667eea; }
+/* تنسيقات رياضية خاصة */
+.frac { display: inline-flex; flex-direction: column; align-items: center; line-height: 1.15; vertical-align: middle; margin: 0 4px; }
+.frac span:first-child { border-bottom: 2px solid currentColor; padding: 0 6px; }
+.fr { display: inline-flex; flex-direction: column; align-items: center; vertical-align: middle; margin: 0 4px; line-height: 1.3; }
+.fr i { font-style: normal; border-bottom: 1.5px solid currentColor; padding: 0 4px; }
+.fr b { font-weight: normal; }
+.m { direction: ltr; display: inline-block; unicode-bidi: isolate; }
+.rt { white-space: nowrap; }
+.rt s { text-decoration: none; border-top: 1.5px solid currentColor; padding: 0 2px; }
 
-#examWelcomeScreen { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(102, 126, 234, 0.9); backdrop-filter: blur(5px); z-index: 999; overflow-y: auto; padding: 15px; }
-.welcome-content { max-width: 600px; margin: 40px auto; background: rgba(255, 255, 255, 0.98); border-radius: 25px; padding: 40px 25px; box-shadow: 0 20px 60px rgba(0,0,0,0.3); text-align: center; animation: welcomeSlideIn 0.8s ease-out; }
-@keyframes welcomeSlideIn { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-.welcome-icon { font-size: 70px; margin-bottom: 15px; animation: bounceIcon 2s ease-in-out infinite; }
-@keyframes bounceIcon { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
-.welcome-title { font-family: 'Cairo', sans-serif; font-weight: 900; font-size: 28px; background: linear-gradient(135deg, #667eea, #764ba2, #f093fb); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 20px; line-height: 1.4; }
-@media (min-width: 600px) { .welcome-title { font-size: 36px; } }
-.welcome-subtitle { font-family: 'Cairo', sans-serif; font-weight: 700; font-size: 18px; color: #4a5568; margin-bottom: 30px; line-height: 1.6; }
-@media (min-width: 600px) { .welcome-subtitle { font-size: 22px; } }
-.highlight-word { display: inline-block; background: linear-gradient(135deg, #ff6b6b, #feca57); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 900; }
-.launch-btn { background: linear-gradient(135deg, #ff6b6b, #feca57); color: white; padding: 18px 40px; border: none; border-radius: 50px; font-size: 20px; font-weight: 900; font-family: 'Cairo', sans-serif; cursor: pointer; box-shadow: 0 10px 30px rgba(255, 107, 107, 0.4); display: inline-flex; align-items: center; gap: 10px; width: 100%; justify-content: center; }
-@media (min-width: 600px) { .launch-btn { width: auto; } }
-.launch-btn:active { transform: scale(0.95); }
-
-.categories-screen { display: none; min-height: 70vh; align-items: center; justify-content: center; }
-.categories-screen.active { display: flex !important; }
-.category-btn { padding: 40px 30px; border-radius: 24px; box-shadow: 0 15px 35px rgba(0,0,0,0.2); transition: all 0.4s; display: flex; flex-direction: column; align-items: center; gap: 15px; border: none; cursor: pointer; color: white; font-weight: bold; width: 100%; }
-.category-btn:hover { transform: translateY(-10px) scale(1.05); }
-.category-btn:active { transform: translateY(-5px) scale(1.02); }
-.category-btn .icon { font-size: 80px; }
-.category-btn .title { font-size: 28px; font-weight: 900; }
-.category-btn .subtitle { font-size: 14px; opacity: 0.9; }
-.verbal-btn { background: linear-gradient(135deg, #667eea, #764ba2); }
-.quantitative-btn { background: linear-gradient(135deg, #f093fb, #f5576c); }
-
-.exams-list-screen { display: none; }
-.exams-list-screen.active { display: block !important; }
-.hidden { display: none !important; }
-.teacher-link { text-align: center; margin-top: 25px; }
-.teacher-link a { color: #333; text-decoration: none; font-weight: bold; font-size: 16px; background: rgba(255,255,255,0.6); padding: 8px 16px; border-radius: 20px; }
-.footer-decoration { text-align: center; margin-top: 30px; color: #333; opacity: 0.8; font-size: 14px; font-weight: bold; }
-
-.student-page, .teacher-page, #loginSection, #examWelcomeScreen, #examLoginScreen, #examCategoriesScreen, #verbalChoiceScreen, #verbalExamsList, #frequentVerbalExamsList, #quantitativeExamsList { display: none; }
-
-.exam-card {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    padding: 25px;
-    border-radius: 20px;
-    cursor: pointer;
-    transition: all 0.3s;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
-    margin-bottom: 15px;
-}
-.exam-card:hover { transform: translateY(-5px); box-shadow: 0 15px 35px rgba(102, 126, 234, 0.6); }
-.exam-card:active { transform: translateY(-2px); }
-.exam-card .exam-info { text-align: right; flex: 1; }
-.exam-card .exam-name { font-size: 20px; font-weight: 900; margin-bottom: 5px; }
-.exam-card .exam-desc { font-size: 14px; opacity: 0.9; }
-.exam-card .exam-icon { font-size: 40px; margin-right: 15px; }
-
-.content-link {
-    display: block;
-    padding: 16px;
-    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
-    border-right: 4px solid #3b82f6;
-    border-radius: 12px;
-    margin-bottom: 12px;
-    color: #1e40af;
-    font-weight: bold;
-    text-decoration: none;
-    transition: all 0.3s;
-}
-.content-link:hover {
-    transform: translateX(-5px);
-    box-shadow: 0 5px 15px rgba(59, 130, 246, 0.3);
-    background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);
-}
-.performance-link {
-    display: block;
-    padding: 20px;
-    background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
-    border-right: 4px solid #10b981;
-    border-radius: 12px;
-    color: #065f46;
-    font-weight: bold;
-    text-decoration: none;
-    text-align: center;
-    transition: all 0.3s;
-}
-.performance-link:hover {
-    transform: scale(1.02);
-    box-shadow: 0 5px 15px rgba(16, 185, 129, 0.3);
-}
-.empty-message {
-    text-align: center;
-    padding: 30px;
-    color: #6b7280;
-    font-size: 16px;
-    font-weight: bold;
-}
+/* شاشة النتائج */
+.res-box { text-align: center; padding: 20px 0; display: none; }
+.score-big { font-size: 3rem; font-weight: 800; color: var(--ac); margin-bottom: 8px; }
+.res-msg { font-size: 1.1rem; margin-bottom: 20px; opacity: 0.9; }
+.review-list { display: grid; gap: 8px; margin: 20px 0; text-align: right; }
+.review-item { padding: 10px 14px; border-radius: 10px; background: rgba(0,0,0,0.03); display: flex; justify-content: space-between; align-items: center; font-size: 0.95rem; }
+.review-item.ok { background: var(--okb); border: 1px solid var(--ok); }
+.review-item.bad { background: var(--badb); border: 1px solid var(--bad); }
+.hide { display: none !important; }
 </style>
 </head>
 <body>
 
-<div class="container">
-    <div class="news-ticker">
-        <div class="ticker-wrapper">
-            <span class="ticker-label">🔴 تحديث</span>
-            <div class="ticker-content">تم إدراج اختبارات الأقسام في القدرات والتحصيلي &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; تم إسناد المهام والواجبات لكل طالب في صفحته الشخصية</div>
-        </div>
+<!-- القائمة الرئيسية -->
+<div id="main-menu" class="w">
+  <div class="menu-header">
+    <h1>منصة الاختبارات التفاعلية الموحدة</h1>
+    <p style="opacity:0.7">اختر الاختبار الذي ترغب في بدءه</p>
+  </div>
+  <div id="menu-cards" class="menu-grid"></div>
+</div>
+
+<!-- حاوية الاختبار -->
+<div id="quiz-container" class="w hide">
+  <h2 id="quiz-title" style="color:var(--ac); margin:0 0 16px; font-size:1.3rem;"></h2>
+  <div class="top-bar">
+    <span id="counter"></span>
+    <span id="live-score"></span>
+  </div>
+  <div class="progress-bar"><i id="prog"></i></div>
+  
+  <div class="card" id="q-card"></div>
+  
+  <div class="nav-buttons">
+    <button class="btn secondary" id="btn-prev" onclick="navigate(-1)">السابق</button>
+    <button class="btn" id="btn-next" onclick="navigate(1)">التالي</button>
+  </div>
+</div>
+
+<!-- شاشة النتائج -->
+<div id="result-container" class="w hide">
+  <div class="card res-box" id="res-box">
+    <div class="score-big" id="final-score"></div>
+    <div class="res-msg" id="final-msg"></div>
+    <div class="review-list" id="review-list"></div>
+    <div class="nav-buttons" style="justify-content:center">
+      <button class="btn" onclick="restartQuiz()">إعادة الاختبار</button>
+      <button class="btn secondary" onclick="showMenu()">القائمة الرئيسية</button>
     </div>
-
-    <div id="mainPage">
-        <div class="header">
-            <div class="logo-container">
-                <img src="https://i.postimg.cc/SNBB4hpp/swrty.jpg" alt="أ. سلامه البلاونه">
-            </div>
-            <h1>منصة إدارة المهام والمحتوى</h1>
-            <p>إدارة وتشغيل أ. سلامه البلاونه</p>
-            <div class="social-links">
-                <span>📱 تواصل معنا</span>
-                <a href="https://wa.me/966556620887" target="_blank" class="social-icon whatsapp"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg></a>
-                <a href="https://vm.tiktok.com/ZS9UKRoCtL76f-FsP8w/" target="_blank" class="social-icon tiktok"><svg viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg></a>
-                <a href="https://www.instagram.com/teach_rafha?psln=d2JzMHlwaHl1b3R1" target="_blank" class="social-icon instagram"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
-            </div>
-        </div>
-
-        <div id="mainMenu" class="main-menu">
-            <button onclick="showLogin()" class="menu-btn content-btn">📚 المحتويات ومصادر التعلم</button>
-            <button onclick="showExamWelcome()" class="menu-btn exam-btn">📝 اختبارات الأقسام</button>
-        </div>
-
-        <div id="loginSection" class="glass max-w-md mx-auto mt-6">
-            <h2 class="text-2xl font-bold text-center text-gray-800 mb-6">تسجيل الدخول للمحتوى</h2>
-            <input type="text" id="loginCode" placeholder="أدخل الرمز السري للطالب">
-            <button onclick="login()" class="btn-primary">دخول</button>
-            <button onclick="showMainMenu()" class="btn-secondary">رجوع للقائمة الرئيسية</button>
-            <p id="errorMsg" class="text-red-500 text-center mt-4 text-sm hidden font-bold">❌ الرمز غير صحيح</p>
-        </div>
-
-        <div id="examWelcomeScreen">
-            <div class="welcome-content">
-                <div class="welcome-icon">🎯</div>
-                <h2 class="welcome-title">
-                    مو حفظ وبس...<br>
-                    <span class="highlight-word">أتقن</span> الاختبارات بالتحليل والفهم
-                </h2>
-                <p class="welcome-subtitle">
-                    ونتحدّاك ما تنافس على الـ <span class="highlight-word">100%</span><br>
-                    وعلى قد التحدي خلك 💪
-                </p>
-                <button onclick="showExamLogin()" class="launch-btn">
-                    <span>🚀</span>
-                    <span>انطلق الآن هنا</span>
-                    <span>→</span>
-                </button>
-                <div class="mt-6">
-                    <button onclick="showMainMenu()" class="btn-secondary" style="background: transparent; border: 2px solid #cbd5e0; color: #4a5568;">
-                        ← رجوع للقائمة الرئيسية
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <div id="examLoginScreen" class="glass max-w-md mx-auto mt-6 text-center">
-            <div class="text-6xl mb-4">🔒</div>
-            <h2 class="text-2xl font-black text-gray-800 mb-2">اختبار محمي</h2>
-            <p class="text-gray-500 text-sm mb-6">هذا القسم محمي بكود خاص. اضغط على أيقونة واتساب لطلب كود الدخول من المعلم</p>
-            
-            <button onclick="requestExamCode()" class="btn-whatsapp mb-6">
-                📱 اطلب كود الدخول عبر واتساب
-            </button>
-            
-            <div class="warning-box">
-                <strong class="text-lg" style="color: #9c4221;">⚠️ تنبيه مهم:</strong>
-                <p class="text-gray-700 mt-2">الكود يتغير يومياً تلقائياً<br>لا تغادر صفحة الاختبار<br>في حال الخروج ستحتاج كوداً جديداً</p>
-            </div>
-            
-            <div class="encouragement-box">
-                <p class="text-gray-700">💪 الاختبارات ستساعدك على تقييم مستواك ومعرفة نقاط قوتك</p>
-            </div>
-            
-            <input id="examCodeInput" type="text" maxlength="10" placeholder="أدخل كود اليوم هنا">
-            <button onclick="enterExamCode()" class="btn-primary">دخول الاختبار</button>
-            <button onclick="showMainMenu()" class="btn-secondary">رجوع للقائمة الرئيسية</button>
-            <p id="examCodeError" class="text-red-500 text-center mt-4 text-sm hidden font-bold"></p>
-        </div>
-
-        <div id="examCategoriesScreen" class="categories-screen glass max-w-3xl mx-auto mt-6">
-            <div class="text-center mb-10">
-                <div class="text-6xl mb-4">🎓</div>
-                <h2 class="text-3xl font-black text-gray-800 mb-3">اختر قسم الاختبار</h2>
-                <p class="text-gray-600 text-lg">اختر القسم الذي ترغب في بدء الاختبار فيه</p>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-2xl mx-auto">
-                <button onclick="showVerbalExams()" class="category-btn verbal-btn">
-                    <span class="icon">📖</span>
-                    <span class="title">القسم اللفظي</span>
-                    <span class="subtitle">اضغط لبدء الاختبارات</span>
-                </button>
-                
-                <button onclick="showQuantitativeExams()" class="category-btn quantitative-btn">
-                    <span class="icon">🔢</span>
-                    <span class="title">القسم الكمي</span>
-                    <span class="subtitle">اضغط لبدء الاختبارات</span>
-                </button>
-            </div>
-            
-            <div class="mt-10">
-                <button onclick="showMainMenu()" class="btn-secondary max-w-xs mx-auto">رجوع للقائمة الرئيسية</button>
-            </div>
-        </div>
-
-        <!-- ✅ شاشة اختيار نوع الاختبار اللفظي (جديدة) -->
-        <div id="verbalChoiceScreen" class="exams-list-screen glass max-w-2xl mx-auto mt-6 text-center">
-            <div class="flex justify-between items-center mb-6 border-b pb-4">
-                <h2 class="text-2xl font-black text-gray-800 flex items-center gap-2">
-                    <span>📖</span> القسم اللفظي
-                </h2>
-                <button onclick="backToCategories()" class="bg-gray-200 text-gray-800 px-4 py-2 rounded-lg font-bold hover:bg-gray-300 transition">رجوع</button>
-            </div>
-            
-            <p class="text-gray-600 text-lg mb-8">اختر نوع الاختبارات التي ترغب في التدرب عليها</p>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <button onclick="showStandardVerbalExams()" class="category-btn verbal-btn" style="padding: 30px 20px;">
-                    <span class="icon text-5xl">📚</span>
-                    <span class="title text-xl">اختبارات الأقسام</span>
-                    <span class="subtitle">النماذج الأساسية والمتنوعة</span>
-                </button>
-                
-                <button onclick="showFrequentVerbalExams()" class="category-btn" style="background: linear-gradient(135deg, #f5576c, #ff9966); padding: 30px 20px;">
-                    <span class="icon text-5xl">🔥</span>
-                    <span class="title text-xl">الأكثر تكرار</span>
-                    <span class="subtitle">النماذج الأكثر ظهوراً في الاختبارات</span>
-                </button>
-            </div>
-        </div>
-
-        <!-- ✅ قائمة اختبارات الأقسام اللفظية (الحالية) -->
-        <div id="verbalExamsList" class="exams-list-screen glass max-w-2xl mx-auto mt-6">
-            <div class="flex justify-between items-center mb-6 border-b pb-4">
-                <h2 class="text-2xl font-black text-gray-800 flex items-center gap-2">
-                    <span>📚</span> اختبارات الأقسام اللفظية
-                </h2>
-                <button onclick="backToVerbalChoice()" class="bg-gray-200 text-gray-800 px-4 py-2 rounded-lg font-bold hover:bg-gray-300 transition">رجوع</button>
-            </div>
-            <div id="verbalLinksContainer"></div>
-        </div>
-
-        <!-- ✅ قائمة اختبارات الأكثر تكرار (جديدة) -->
-        <div id="frequentVerbalExamsList" class="exams-list-screen glass max-w-2xl mx-auto mt-6">
-            <div class="flex justify-between items-center mb-6 border-b pb-4">
-                <h2 class="text-2xl font-black text-gray-800 flex items-center gap-2">
-                    <span>🔥</span> اختبارات الأكثر تكرار
-                </h2>
-                <button onclick="backToVerbalChoice()" class="bg-gray-200 text-gray-800 px-4 py-2 rounded-lg font-bold hover:bg-gray-300 transition">رجوع</button>
-            </div>
-            <div id="frequentLinksContainer"></div>
-        </div>
-
-        <!-- ✅ قسم اختبارات القسم الكمي -->
-        <div id="quantitativeExamsList" class="exams-list-screen glass max-w-2xl mx-auto mt-6">
-            <div class="flex justify-between items-center mb-6 border-b pb-4">
-                <h2 class="text-2xl font-black text-gray-800 flex items-center gap-2">
-                    <span>🔢</span> اختبارات القسم الكمي
-                </h2>
-                <button onclick="backToCategories()" class="bg-gray-200 text-gray-800 px-4 py-2 rounded-lg font-bold hover:bg-gray-300 transition">رجوع</button>
-            </div>
-            <div id="quantitativeLinksContainer"></div>
-        </div>
-
-        <div class="teacher-link">
-            <a href="#" onclick="showTeacherLogin()">🛠️ الدعم الفني</a>
-        </div>
-        <div class="footer-decoration">© 2026 منصة إدارة المهام والمحتوى - جميع الحقوق محفوظة</div>
-    </div>
-
-    <!-- ✅ صفحة الطالب -->
-    <div id="studentPage" class="student-page">
-        <div class="glass p-6 rounded-2xl mb-6 flex justify-between items-center">
-            <h2 id="welcomeText" class="text-2xl font-bold text-blue-600">مرحباً!</h2>
-            <button onclick="logout()" class="bg-gray-200 text-gray-800 px-4 py-2 rounded-lg">خروج</button>
-        </div>
-        <div class="grid gap-6">
-            <div class="glass p-6 rounded-2xl">
-                <h3 class="text-xl font-bold text-gray-800 mb-4 border-b pb-2">📚 المحتوى الأسبوعي</h3>
-                <div id="contentList"></div>
-            </div>
-            <div class="glass p-6 rounded-2xl">
-                <h3 class="text-xl font-bold text-gray-800 mb-4 border-b pb-2">📊 تحليل الأداء</h3>
-                <div id="performanceList"></div>
-            </div>
-        </div>
-    </div>
-
-    <div id="teacherPage" class="teacher-page">
-        <div class="glass p-8 rounded-2xl">
-            <div class="flex justify-between items-center mb-6">
-                <h2 class="text-2xl font-bold text-gray-800">🛠️ لوحة الدعم الفني</h2>
-                <button onclick="logout()" class="bg-gray-200 text-gray-800 px-4 py-2 rounded-lg">خروج</button>
-            </div>
-            
-            <div class="bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-xl p-6 mb-6 text-center">
-                <h3 class="text-lg font-bold mb-3">🔑 كود دخول الاختبار اليوم</h3>
-                <button onclick="generateNewCode()" class="bg-white text-blue-600 font-bold py-3 px-8 rounded-lg hover:bg-gray-100 transition">عرض كود اليوم</button>
-                <div id="generatedCode" class="mt-4 text-4xl font-black tracking-widest hidden text-yellow-300"></div>
-                <button id="copyCodeBtn" onclick="copyCode()" class="hidden mt-3 bg-green-500 text-white py-2 px-6 rounded-lg hover:bg-green-600">📋 نسخ الكود</button>
-                <button id="sendCodeBtn" onclick="sendCodeToStudent()" class="hidden mt-3 bg-green-600 text-white py-2 px-6 rounded-lg hover:bg-green-700">📱 إرسال عبر واتساب</button>
-            </div>
-
-            <div class="bg-yellow-50 border-2 border-yellow-300 rounded-xl p-4 mb-6">
-                <p class="text-sm text-gray-700"><strong>💡 كيف يعمل هذا الكود؟</strong></p>
-                <p class="text-sm text-gray-700 mt-2">يعتمد الكود على تاريخ اليوم + رمز سري. هذا يضمن أن جهازك وجهاز الطالب سيحسبان <strong>نفس الكود بالضبط</strong> دون الحاجة لقاعدة بيانات.</p>
-            </div>
-            
-            <div class="bg-gray-50 p-4 rounded-xl mb-6">
-                <h3 class="font-bold text-gray-700 mb-3">👥 قائمة الطلاب والأكواد</h3>
-                <div id="studentsList"></div>
-            </div>
-        </div>
-    </div>
+  </div>
 </div>
 
 <script>
 // ==========================================
-// 📚 بيانات الطلاب
+// أدوات مساعدة موحدة (Global Helpers)
 // ==========================================
-const studentsData = {
-    "321": { name: "عبدالعزيز", content: [{ title: "المحتوى الأسبوعي", url: "https://drive.google.com/file/d/1b0JhsRNrlKVCsXCVjEIaS-gJYr2ng_Sp/view?usp=sharing" }], performance: "https://drive.google.com/file/d/1O0LSu-o5F_U5b7iBtVi-Dy1CqvWF7oCC/view?usp=sharing" },
-    "456": { name: "لجين", content: [{ title: "المحتوى الأسبوعي", url: "https://drive.google.com/file/d/1C_S_30oPqINQRiYWPM3Pj1Ht63ubpuhs/view?usp=sharing" }], performance: "https://drive.google.com/file/d/1FtbbQTExtbMoraWdUE941MOfHQu_rbNR/view?usp=sharing" },
-    "878": { name: "حمدان", content: [{ title: "المحتوى الأسبوعي", url: "https://drive.google.com/file/d/1ydWce7aeo9hpyKbaLN-qr0xaT4uKaWXy/view?usp=sharing" }], performance: "https://drive.google.com/file/d/1MXm5RFFQHniychg7XsbAtOdL6kNX3j1c/view?usp=sharing" },
-    "234": { name: "يوسف", content: [{ title: "المحتوى الأسبوعي", url: "https://drive.google.com/file/d/13PukjMmUiIWs77S9Ix_HYudtHYiVYsox/view?usp=sharing" }], performance: null },
-    "654": { name: "تركي زيد", content: [{ title: "المحتوى الأسبوعي", url: "https://drive.google.com/file/d/1GYpw3d3A14cIW2FjymYMnkJelgWLMHpC/view?usp=sharing" }], performance: "https://drive.google.com/file/d/1XlJSnIWhc5d73-QWm7tkMNOS-XFiYEiL/view?usp=sharing" },
-    "332": { name: "فراس فهد جنى", content: [{ title: "المحتوى الأسبوعي", url: "https://drive.google.com/file/d/1DlcpTHX0sKCOPXoQE7WbRS6ReuSl-BKX/view?usp=sharing" }, { title: "درس جنى (1)", url: "https://drive.google.com/file/d/1EXtm3fwv2II8G_1hfMBEOCk6fOUWgw5i/view?usp=sharing" }, { title: "درس جنى (2)", url: "https://drive.google.com/file/d/1vvAm2gFqIi6OTbY-eCUpQsc9pDwci2O_/view?usp=sharing" }, { title: "درس جنى (3)", url: "https://drive.google.com/file/d/1AbpHmi2T1TFnPzgAGAeuGiuwRcmWXwFR/view?usp=sharing" }], performance: "https://drive.google.com/file/d/1RI6eFOBJkm7BeZ5BYpOncPO4-8Kp5heI/view?usp=sharing" },
-    "771": { name: "شاهر الشريم", content: [{ title: "الدرس الأول", url: "https://drive.google.com/file/d/1EXtm3fwv2II8G_1hfMBEOCk6fOUWgw5i/view?usp=sharing" }, { title: "الدرس الثاني", url: "https://drive.google.com/file/d/155ohL3vDSoXh7vtRk_Id8ujGFJRUBLFe/view?usp=sharing" }, { title: "الدرس الثالث", url: "https://drive.google.com/file/d/1vvAm2gFqIi6OTbY-eCUpQsc9pDwci2O_/view?usp=sharing" }], performance: null },
-    "101": { name: "عمر", content: [{ title: "الدرس الأول", url: "https://drive.google.com/file/d/1Hpfo8FVT8Dt2tzTSsnVJA2hVel3240d5/view?usp=sharing" }, { title: "الدرس الثاني", url: "https://drive.google.com/file/d/1O4TNoK-ynKLZowbOlUN2hg7JkQiBlo1W/view?usp=sharing" }, { title: "الدرس الثالث", url: "https://drive.google.com/file/d/1DVdIb1IwVYThWUBVPtPWgRbYUPq5sKub/view?usp=sharing" }], performance: "https://drive.google.com/file/d/1zqYVaU_esRPSlmydKFBOzOkA6mJxvIp6/view?usp=sharing" },
-    "756": { name: "فيصل", content: [{ title: "الدرس الأول", url: "https://drive.google.com/file/d/1EXtm3fwv2II8G_1hfMBEOCk6fOUWgw5i/view?usp=sharing" }, { title: "الدرس الثاني", url: "https://drive.google.com/file/d/155ohL3vDSoXh7vtRk_Id8ujGFJRUBLFe/view?usp=sharing" }, { title: "الدرس الثالث", url: "https://drive.google.com/file/d/1AbpHmi2T1TFnPzgAGAeuGiuwRcmWXwFR/view?usp=sharing" }, { title: "الدرس الرابع", url: "https://drive.google.com/file/d/1vvAm2gFqIi6OTbY-eCUpQsc9pDwci2O_/view?usp=sharing" }], performance: "https://drive.google.com/file/d/1jywBnWNHO8w8yMfFQD9g-cFqpgAYG1ue/view?usp=sharing" }
+const OPT_LETTERS = ['أ', 'ب', 'ج', 'د'];
+const AR_DIGITS = '٠١٢٣٤٥٦٧٨٩';
+
+function arabize(root) {
+  const w = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+  let n;
+  while (n = w.nextNode()) {
+    n.nodeValue = n.nodeValue.replace(/(\d)\.(\d)/g, '$1٫$2').replace(/\d/g, d => AR_DIGITS[d]);
+  }
+}
+
+// ==========================================
+// قاعدة بيانات الاختبارات (معزولة لتجنب التعارض)
+// ==========================================
+const QUIZZES = {
+  // ---------------------------------------------------------
+  // 1. الاختبار الكمي (Quantitative)
+  // ---------------------------------------------------------
+  quant: (function() {
+    const sv = (vb, x) => `<svg class="g" viewBox="${vb}" xmlns="http://www.w3.org/2000/svg">${x}</svg>`;
+    const ch = (g, col, max, tk, showv, leg) => {
+      const x0 = 45, x1 = 430, y0 = 15, y1 = 195, n = g.length, gw = (x1 - x0) / n, k = g[0].v.length, bw = gw * .7 / k;
+      let s = '';
+      tk.forEach(t => { const y = y1 - t / max * (y1 - y0); s += `<line x1="${x0}" x2="${x1}" y1="${y}" y2="${y}" opacity=".3" /><text x="${x0 - 5}" y="${y + 4}" text-anchor="end" font-size="11">${t}</text>`; });
+      g.forEach((d, i) => { d.v.forEach((v, j) => { const h = v / max * (y1 - y0), x = x0 + i * gw + gw * .15 + j * bw; s += `<rect x="${x}" y="${y1 - h}" width="${bw}" height="${h}" style="fill:${col[j]};stroke:none" />` + (showv ? `<text x="${x + bw / 2}" y="${y1 - h - 4}" text-anchor="middle" font-size="11">${v}</text>` : ''); }); s += `<text x="${x0 + i * gw + gw / 2}" y="${y1 + 16}" text-anchor="middle" font-size="12">${d.l}</text>`; });
+      s += `<line x1="${x0}" x2="${x0}" y1="${y0}" y2="${y1}" /><line x1="${x0}" x2="${x1}" y1="${y1}" y2="${y1}" />`;
+      return sv('0 0 440 220', s) + (leg ? '<div class="leg">' + leg.map(a => `<span><b style="background:${a[0]}"></b>${a[1]}</span>`).join('') + '</div>' : '');
+    };
+    const ln = () => {
+      const xs = i => 60 + i * 58, ys = v => 195 - v * 180, v = [.4, .6, .5, .6, .7, .6, .9]; let s = '';
+      for (let i = 0; i <= 10; i++) { s += `<line x1="45" x2="420" y1="${ys(i / 10)}" y2="${ys(i / 10)}" opacity=".35" /><text x="40" y="${ys(i / 10) + 4}" text-anchor="end" font-size="10">${i / 10}</text>`; }
+      v.forEach((_, i) => { s += `<line x1="${xs(i)}" x2="${xs(i)}" y1="15" y2="195" opacity=".35" /><text x="${xs(i)}" y="212" text-anchor="middle" font-size="11">${1428 + i}</text>`; });
+      s += `<polyline points="${v.map((a, i) => xs(i) + ',' + ys(a)).join(' ')}" style="stroke-width:2.5" />`;
+      return sv('0 0 440 225', s) + '<div class="leg">الميزانية بملايين الريالات (المحور الرأسي) – السنوات (المحور الأفقي)</div>';
+    };
+    const pie = (sl) => {
+      let a = 0, s = ''; const P = t => [150 + 110 * Math.sin(t * Math.PI / 180), 130 - 110 * Math.cos(t * Math.PI / 180)];
+      sl.forEach(d => { const a2 = a + d.p * 3.6, [x1, y1] = P(a), [x2, y2] = P(a2), m = (a + a2) / 2 * Math.PI / 180, r = d.r || 75, tx = 150 + r * Math.sin(m), ty = 130 - r * Math.cos(m);
+        s += `<path d="M150 130L${x1} ${y1}A110 110 0 ${a2 - a > 180 ? 1 : 0} 1 ${x2} ${y2}Z" />`;
+        if (d.t) s += `<text x="${tx}" y="${ty - 2}" text-anchor="middle" font-size="${d.fs || 11}" style="fill:var(--ac);font-weight:700">${d.t}</text>` + (d.c ? `<text x="${tx}" y="${ty + 11}" text-anchor="middle" font-size="${d.fs || 11}" style="fill:var(--ac)">${d.c}</text>` : ''); a = a2; });
+      return sv('30 10 240 240', s);
+    };
+    const rt = n => `<span class="rt">√<s>${n}</s></span>`;
+    const R = '#a01808';
+
+    const rawQ = [
+      {q:'مساحة المربع (أ) = (5) سم<sup>2</sup><br>مساحة المربع (ب) = (4) سم<sup>2</sup><br>أوجد مساحة المربع ( ج )',o:['1','2','3','4'],a:0, f:sv('0 -30 280 280','<polygon points="80,120 200,120 200,240 80,240"/><polygon points="80,120 123.2,62.4 65.6,19.2 22.4,76.8"/><polygon points="123.2,62.4 200,120 257.6,43.2 180.8,-14.4"/><polyline points="80,120 123.2,62.4 200,120"/><text class="b" x="136" y="185">أ</text><text class="b" x="45" y="55">ج</text><text class="b" x="198" y="48">ب</text>')},
+      {q:'ما نسبة زيادة ميزانية المعهد من عام 1428 إلى عام 1429 ؟',o:['75%','50%','33%','20%'],a:1,f:ln()},
+      {q:'أي المدن في زيادة مطردة دائماً ؟',o:['مكة','المدينة','الشرقية','عسير'],a:2, f:ch([{l:1434,v:[17,14,25,18]},{l:1433,v:[15,13,23,15]},{l:1432,v:[14,14,21,11]},{l:1431,v:[13,16,16,13]},{l:1430,v:[12,15,17,12]}],['#111','#aaa',R,'#c9962a'],30,[0,5,10,15,20,25,30],0,[['#111','الشرقية'],['#aaa','عسير'],[R,'المدينة'],['#c9962a','مكة']])},
+      {q:'الشكل التالي: دائرة مركزها م ، احسب مساحة الدائرة',o:['8ط','12ط','16ط','20ط'],a:2, f:sv('0 0 300 200','<circle cx="150" cy="100" r="80"/><line x1="150" y1="20" x2="150" y2="180"/><polyline points="150,20 80.7,140 150,180"/><circle class="dot" cx="150" cy="100" r="4"/><text x="158" y="98">م</text><text x="132" y="48" font-size="11">30°</text><text x="85" y="172">4 سم</text>')},
+      {q:'في الشكل التالي: قارن بين<br>القيمة الأولى: 100<br>القيمة الثانية: س',o:['القيمة الأولى أكبر','القيمة الثانية أكبر','القيمتان متساويتان','المعطيات غير كافية'],a:3, f:sv('0 0 300 190','<polyline points="60,150 110,20 240,150 60,150"/><polyline points="60,150 190,20 240,150"/><text x="8" y="95">1 سم</text><text x="78" y="128" font-size="11">25°</text><text x="143" y="85" font-size="11">س°</text><polyline points="140,165 140,170 195,170 195,160" /><text x="150" y="186">2 سم</text>')},
+      {q:'ما عدد الطلاب الذين لا يتجاوز طولهم 120سم',o:['10','15','20','25'],a:3,f:ch([{l:90,v:[10]},{l:120,v:[15]},{l:150,v:[5]}],[R],16,[4,8,12,16],1,[['transparent','المحور الأفقي: الطول (بالسم) – المحور الرأسي: عدد الطلاب']])},
+      {q:'ما مدى أطوال الطلاب؟',o:['10','30','50','60'],a:3,f:ch([{l:90,v:[10]},{l:120,v:[15]},{l:150,v:[5]}],[R],16,[4,8,12,16],1,[['transparent','المحور الأفقي: الطول (بالسم) – المحور الرأسي: عدد الطلاب']])},
+      {q:'إذا كان عرض المستطيل = <span class="fr"><i>1</i><i>4</i></span> طوله ،<br>أوجد عرض المستطيل',o:['8','4','2','1'],a:3, f:sv('0 0 360 140','<rect x="10" y="25" width="340" height="85"/><line x1="10" y1="110" x2="350" y2="25"/><g transform="rotate(-14 180 70)"><text x="165" y="86" font-size="14">√17</text><line x1="179" x2="203" y1="72" y2="72"/></g>')},
+      {q:'أوجد مساحة المربع',o:['16','32','48','64'],a:3, f:sv('0 0 220 220','<rect x="10" y="10" width="200" height="200"/><circle cx="110" cy="110" r="100"/><circle class="dot" cx="110" cy="110" r="5"/><line x1="110" y1="110" x2="110" y2="210" style="stroke-width:5"/><text x="60" y="170">4 سم</text>')},
+      {q:'أوجد نسبة الزيادة بين عامي 1433 إلى عام 1430؟',o:['20%','25%','10%','15%'],a:0,f:ch([{l:1433,v:[150]},{l:1432,v:[140]},{l:1431,v:[110]},{l:1430,v:[125]}],[R],160,[0,20,40,60,80,100,120,140,160],1)},
+      {q:'أوجد قيمة س',o:['40','50','60','70'],a:3, f:sv('0 0 360 330','<line x1="95" y1="70" x2="305" y2="245"/><line x1="165" y1="30" x2="95" y2="315"/><line x1="50" y1="265" x2="310" y2="180"/><line x1="189" y1="142" x2="201" y2="156"/><line x1="120" y1="172" x2="136" y2="178"/><text x="75" y="75" font-size="12">40°</text><text x="262" y="205" font-size="12">س°</text>')},
+      {q:'إذا كان الشكل المربع أوجد : أ ب + ج د',o:['15','16','19','20'],a:2, f:sv('0 0 420 320','<rect x="95" y="115" width="163" height="165"/><line x1="95" y1="115" x2="370" y2="280"/><line x1="258" y1="280" x2="370" y2="280"/><text x="165" y="105">12</text><text x="68" y="200">12</text><text x="150" y="302">12</text><text x="268" y="165">9</text><text x="268" y="252">3</text><text x="228" y="208" class="b">ب</text><text x="308" y="238">5</text><text class="b" x="380" y="298">ج</text><text class="b" x="250" y="302">د</text><text class="b" x="78" y="112">أ</text>')},
+      {q:'الشكل التالي مستطيل أوجد نسبة مساحة المظلل إلى الشكل',o:['2:1','3:1','4:1','8:1'],a:2, f:sv('0 0 480 170','<rect x="30" y="20" width="420" height="130"/><polygon class="f" points="30,85 240,85 135,150"/><polygon class="f" points="240,85 345,20 450,85"/><line x1="22" y1="52" x2="38" y2="52"/><line x1="442" y1="52" x2="458" y2="52"/><line x1="22" y1="118" x2="38" y2="118"/><line x1="442" y1="118" x2="458" y2="118"/>')},
+      {q:'ما المادة التي تفوق فيها البنون عن البنات؟',o:['لغة إنجليزية','إدارة أعمال','رياضيات','تاريخ'],a:1, f:ch([{l:'لغة إنجليزية',v:[10,15]},{l:'رياضيات',v:[15,15]},{l:'إدارة أعمال',v:[25,17]},{l:'تاريخ',v:[17,20]}],['#f39c12',R],30,[0,5,10,15,20,25,30],0,[['#f39c12','بنين'],[R,'بنات']])},
+      {q:'أوجد طول قطر النصف دائرة؟',o:['14','15','20','22'],a:0, f:sv('0 0 450 285','<polygon points="60,253 385,253 177,97"/><path class="f" d="M125 253A113.75 113.75 0 0 1 352.5 253Z"/><circle class="dot" cx="238.75" cy="253" r="3"/><polygon class="f" points="177,97 168.6,108.2 179.8,116.6 188.2,105.4"/><text x="100" y="170">12</text><text x="300" y="165">16</text><text x="85" y="274">4</text><text x="365" y="274">2</text><text class="b" x="385" y="245">أ</text><text class="b" x="35" y="248">ج</text><text class="b" x="170" y="86">ب</text>')},
+      {q:'أوجد قياس زاوية أ ج م :',o:['30','60','90','120'],a:0, f:sv('0 0 300 260','<circle cx="150" cy="130" r="110"/><polygon points="150,20 54.7,185 245.3,185"/><polyline points="54.7,185 150,130 245.3,185"/><line x1="150" y1="130" x2="150" y2="185"/><polygon points="150,185 162,185 162,173 150,173"/><circle class="dot" cx="150" cy="130" r="3"/><text class="b" x="158" y="16">م</text><text class="b" x="132" y="124">أ</text><text class="b" x="252" y="192">ج</text><text x="128" y="156" font-size="11">60</text><text x="80" y="252" font-size="11">الرسم ليس على القياس</text>')},
+      {q:'أوجد نسبة المحاصيل الأخرى',o:['51%','50%','49%','40%'],a:2, f:pie([{p:49,t:'محاصيل أخرى',fs:12,r:55},{p:6,t:'قمح',c:'6%',fs:8,r:88},{p:9,t:'ذرة',c:'9%',fs:9,r:80},{p:12,t:'شعير',c:'12%',fs:9,r:78},{p:11,t:'أرز',c:'11%',fs:9,r:78},{p:8,t:'قطن',c:'8%',fs:9,r:80},{p:5,t:'خضروات',c:'5%',fs:7,r:90}])},
+      {q:'كم تمثل نسبة الأسماك والخضار والفواكه إلى المجموع ؟',o:['خمس','ربع','نصف','سدس'],a:2, f:pie([{p:10,t:'أسماك',c:'10%',r:80},{p:25},{p:25},{p:22,t:'خضار',c:'22%',r:75},{p:18,t:'فواكه',c:'18%',r:78}].map((d,i)=>d))},
+      {q:'الرسم التالي يمثل مبيعات شركات في عام 2019 كم عدد الشركات التي باعت أقل من 3000 طن من الأسمنت؟',o:['1','2','3','4'],a:1, f:ch([{l:1,v:[2000]},{l:2,v:[5000]},{l:3,v:[3000]},{l:4,v:[1600]}],[R],9000,[3000,6000,9000],0,[['transparent','المحور الأفقي: الشركات – المحور الرأسي: الكمية (طن)']])},
+      {q:'في الشكل التالي : احسب مساحة الدائرة ؟',o:['ط','2ط','3ط','4ط'],a:0, f:sv('0 0 300 290','<polygon points="105,140 235,140 235,50"/><rect x="105" y="140" width="130" height="130"/><circle cx="170" cy="205" r="65"/><polygon class="f" points="235,140 222,140 222,127 235,127"/><text x="120" y="85">4 سم</text><text x="200" y="75" font-size="11">30°</text>')}
+    ];
+
+    return {
+      title: 'اختبار تفاعلي – الأسئلة الكمية',
+      desc: 'اختبار من 20 سؤالًا (نسب، هندسة، رسوم بيانية). اختر الإجابة وسيظهر الحل مباشرة.',
+      questions: rawQ.map(q => ({ text: q.q, options: q.o, answer: q.a, figure: q.f || '', explanation: 'الإجابة الصحيحة موضحة في التحديد أعلاه.' }))
+    };
+  })(),
+
+  // ---------------------------------------------------------
+  // 2. اختبار الرياضيات (Mathematics)
+  // ---------------------------------------------------------
+  math: (function() {
+    const fr = (a,b) => `<span class="frac"><span>${a}</span><span>${b}</span></span>`;
+    const sup = (b,e) => `${b}<sup>${e}</sup>`;
+    const CMP = ['القيمة الأولى أكبر','القيمة الثانية أكبر','القيمتان متساويتان','المعطيات غير كافية'];
+    const pie = (cx,cy,R,sl,fs=12) => {
+      const tot=sl.reduce((a,s)=>a+s.v,0);let a0=-Math.PI/2,out='';
+      sl.forEach(s=>{
+        const a1=a0+2*Math.PI*s.v/tot;
+        const x0=cx+R*Math.cos(a0),y0=cy+R*Math.sin(a0),x1=cx+R*Math.cos(a1),y1=cy+R*Math.sin(a1);
+        out+=`<path d="M${cx},${cy} L${x0},${y0} A${R},${R} 0 ${(a1-a0)>Math.PI?1:0} 1 ${x1},${y1} Z" fill="${s.c||'#fff'}" stroke="#333" stroke-width="1.5"/>`;
+        const am=(a0+a1)/2,r=R*(s.r||.62),lx=cx+r*Math.cos(am),ly=cy+r*Math.sin(am);
+        out+=`<text x="${lx}" y="${ly}" text-anchor="middle" font-size="${s.fs||fs}">${s.n?`<tspan x="${lx}">${s.n}</tspan>`:''}${s.t?`<tspan x="${lx}" dy="1.25em">${s.t}</tspan>`:''}</text>`;
+        a0=a1;});
+      return out;
+    };
+    const bars = (o) => {
+      const W=o.w||440,H=o.h||250,ml=o.axis===false?12:38,mr=12,mt=o.legend?30:14,mb=40;
+      const pw=W-ml-mr,ph=H-mt-mb;let s=`<svg viewBox="0 0 ${W} ${H}" class="fig">`;
+      for(let v=0;v<=o.max;v+=o.step){
+        const y=mt+ph-ph*v/o.max;
+        s+=`<line x1="${ml}" x2="${W-mr}" y1="${y}" y2="${y}" stroke="#888" stroke-width=".7"/>`;
+        if(o.axis!==false)s+=`<text x="${ml-5}" y="${y+4}" text-anchor="end" font-size="10">${v}</text>`;
+      }
+      const n=o.labels.length,gw=pw/n,k=o.series.length,bw=gw*.72/k;
+      o.labels.forEach((l,i)=>{
+        const gx=ml+i*gw+gw*.14;
+        o.series.forEach((se,j)=>{
+          const v=se.v[i],bh=ph*v/o.max,x=gx+j*bw,y=mt+ph-bh;
+          s+=`<rect x="${x}" y="${y}" width="${bw}" height="${bh}" fill="${se.c}" stroke="#5a0b0d" stroke-width=".6"/>`;
+          if(se.show==='all'||(se.show&&se.show.includes(i)))s+=`<text x="${x+bw/2}" y="${y-3}" text-anchor="middle" font-size="10" font-weight="700">${v}</text>`;
+        });
+        s+=`<text x="${ml+i*gw+gw/2}" y="${H-mb+15}" text-anchor="middle" font-size="${o.lfs||11}">${l}</text>`;
+      });
+      s+=`<line x1="${ml}" x2="${ml}" y1="${mt}" y2="${mt+ph}" stroke="#222" stroke-width="1.5"/><line x1="${ml}" x2="${W-mr}" y1="${mt+ph}" y2="${mt+ph}" stroke="#222" stroke-width="1.5"/>`;
+      if(o.legend)o.series.forEach((se,j)=>{const x=W-mr-70*(j+1);s+=`<rect x="${x}" y="6" width="12" height="12" fill="${se.c}"/><text x="${x-3}" y="16" text-anchor="end" font-size="11">${se.n}</text>`;});
+      return s+'</svg>';
+    };
+    const box = (x,y,w,h,d) => {const dx=d*.6,dy=d*.6;return `<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="#fff" stroke="#222" stroke-width="1.6"/><polygon points="${x},${y} ${x+dx},${y-dy} ${x+w+dx},${y-dy} ${x+w},${y}" fill="#f3f3f3" stroke="#222" stroke-width="1.6"/><polygon points="${x+w},${y} ${x+w+dx},${y-dy} ${x+w+dx},${y+h-dy} ${x+w},${y+h}" fill="#e3e3e3" stroke="#222" stroke-width="1.6"/>`};
+    const ra = (x,y,s=8) => `<path d="M${x},${y-s} L${x+s},${y-s} L${x+s},${y}" fill="none" stroke="#222"/>`;
+    const RED = '#a4161a';
+
+    const rawQ = [
+      {q:'يوضح الرسم البياني التالي توزيع عدد من الكرات حسب لونها، ما نسبة الكرات الزرقاء إلى الكل؟', f:()=>`<svg viewBox="0 0 300 220" class="fig">${pie(150,110,98,[{v:10,n:'الحمراء',t:'10',c:'#fde2e2'},{v:3,n:'الخضراء 3',c:'#dff3e0',r:.82,fs:9},{v:7,n:'الصفراء',t:'7',c:'#fff3c4',r:.74,fs:10},{v:10,n:'البيضاء',t:'10'},{v:20,n:'الزرقاء',t:'20',c:'#dbe8fb'}])}</svg>`, o:[fr(1,5),fr(2,5),fr(3,5),fr(4,5)],a:1,ex:'المجموع = 10+20+3+7+10 = 50، والزرقاء 20 ← 20/50 = 2/5'},
+      {q:'الشكل التالي مستطيل، ما نسبة مساحة الجزء المظلل إلى الشكل؟', f:()=>`<svg viewBox="0 0 260 170" class="fig"><rect x="20" y="20" width="200" height="120" fill="none" stroke="#222" stroke-width="2"/><polygon points="170,80 220,80 220,140" class="r"/><line x1="120" y1="20" x2="220" y2="140" stroke="#222" stroke-width="2"/><line x1="170" y1="80" x2="220" y2="80" stroke="#222" stroke-width="1.5"/><path d="M68,14v12M72,14v12M168,14v12M172,14v12" stroke="#222" stroke-width="1.5"/><circle cx="170" cy="80" r="4" fill="#fff" stroke="#222"/><circle cx="220" cy="80" r="4" fill="#fff" stroke="#222"/></svg>`, o:[fr(1,4),fr(1,6),fr(1,8),fr(1,16)],a:3,ex:'قاعدة المثلث المظلل = ¼ العرض، وارتفاعه = ½ الطول ← المساحة = ½ × ¼ × ½ = 1/16'},
+      {q:'في الشكل التالي: أوجد قيمة ص', f:()=>`<svg viewBox="0 0 230 175" class="fig"><g stroke="#222" stroke-width="1.8" fill="none"><line x1="60" y1="150" x2="60" y2="15"/><line x1="60" y1="150" x2="190" y2="150"/><line x1="60" y1="75" x2="190" y2="150"/><line x1="60" y1="75" x2="34" y2="60" stroke-dasharray="3 3"/><line x1="60" y1="15" x2="34" y2="60"/><path d="M60,140h10v10"/><polyline points="40.9,64 44.9,57.1 38,53.1"/></g><text x="44" y="14" font-size="12">°ص</text><text x="58" y="66" font-size="10" text-anchor="end">°2س</text><text x="160" y="144" font-size="12">°س</text></svg>`, o:['10','20','30','60'],a:2,ex:'الزاوية 2س = 90 − س (متقابلتان بالرأس) ← س = 30°، ثم ص = 90 − 2س = 30'},
+      {q:'قارن بين:', v:`القيمة الأولى: ${sup(6,8)} &nbsp;&nbsp;&nbsp; القيمة الثانية: ${sup(8,6)}`, o:CMP, a:0, ex:'6<sup>8</sup> = 1,679,616 بينما 8<sup>6</sup> = 262,144 ← الأولى أكبر'},
+      {q:'في الشكل الأعلى أوجد قيمة س؟', f:()=>`<svg viewBox="0 0 340 190" class="fig"><g stroke="#222" stroke-width="1.8" fill="none"><line x1="20" y1="160" x2="300" y2="60"/><line x1="20" y1="160" x2="300" y2="160"/><line x1="300" y1="60" x2="300" y2="160"/><line x1="113" y1="127" x2="113" y2="160"/><line x1="253" y1="77" x2="253" y2="160" stroke-dasharray="4 3"/><path d="M105,160v-8h8M245,160v-8h8M292,160v-8h8" stroke-width="1.2"/></g><g fill="#c0392b" font-size="12"><text x="50" y="136">4 سم</text><text x="160" y="104">6 سم</text><text x="262" y="60">2 سم</text><text x="312" y="112">9 سم</text></g><text x="122" y="150" font-size="13" fill="#c0392b">س</text></svg>`, o:['6','5','4','3'],a:3,ex:'المثلثان متشابهان: س/4 = 9/(4+6+2) = 9/12 ← س = 3'},
+      {q:'الشكل التالي، مستطيلات متطابقة، إذا كان محيط المستطيل الكبير = 34، أوجد مساحته', f:()=>`<svg viewBox="0 0 240 180" class="fig"><g stroke="#222" stroke-width="2" fill="none"><rect x="20" y="20" width="200" height="140"/><path d="M60,20v100M100,20v100M140,20v100M180,20v100M20,120h200M120,120v40"/></g></svg>`, o:['49','60','70','80'],a:2,ex:'عرض المستطيل الصغير 2 وطوله 5 (لأن 5×عرض = 2×طول ومحيط الكبير 34) ← أبعاد الكبير 10 × 7 ← المساحة 70'},
+      {q:'في الشكل التالي المطلوب هو المقارنة بين:', f:()=>`<svg viewBox="0 0 200 160" class="fig"><g stroke="#222" stroke-width="2"><line x1="40" y1="20" x2="160" y2="140"/><line x1="160" y1="20" x2="40" y2="140"/></g><text x="100" y="52" text-anchor="middle" font-size="12">(3س)°</text><text x="100" y="128" text-anchor="middle" font-size="12">30°</text></svg>`, v:'القيمة الأولى: 7س - 3 &nbsp;&nbsp; القيمة الثانية: 5س + 17', o:CMP, a:2, ex:'الزاويتان المتقابلتان بالرأس: 3س = 30 ← س = 10، فتكون 7س−3 = 67 و 5س+17 = 67 ← متساويتان'},
+      {q:'السؤال الآتي يتعلق بالشكل البياني التالي: كم عدد الطلاب الحاصلين على جيد فأقل؟', f:()=>bars({labels:['ممتاز','جيد جدا','جيد','مقبول','راسب'],series:[{c:RED,v:[10,8,14,12,6]}],max:16,step:2,lfs:10}), o:['14','21','26','32'],a:3,ex:'جيد + مقبول + راسب = 14 + 12 + 6 = 32'},
+      {q:'في الشكل التالي، متوسط عدد السيارات المباعة في المعرض خلال أسبوع يساوي:', cap:'الشكل البياني يمثل: مبيعات السيارات في أحد المعارض خلال أسبوع', f:()=>bars({labels:['السبت','الأحد','الإثنين','الثلاثاء','الأربعاء','الخميس','الجمعة'],series:[{c:RED,v:[25,40,55,70,65,50,80]}],max:90,step:10,lfs:9}), o:['45','55','65','75'],a:1,ex:'(25+40+55+70+65+50+80) ÷ 7 = 385 ÷ 7 = 55'},
+      {q:'أوجد محيط الشكل:', f:()=>`<svg viewBox="0 0 250 170" class="fig"><polygon points="20,74 110,74 110,20 218,20 218,146 20,146" fill="none" stroke="#222" stroke-width="2"/><g fill="#c0392b" font-size="14"><text x="62" y="66">5</text><text x="160" y="13">6</text><text x="228" y="88">7</text></g></svg>`, o:['18','20','30','36'],a:3,ex:'المحيط = 2 × (طول + عرض الشكل المحيط) = 2 × (5+6 + 7) = 36'},
+      {q:'إذا كانت مساحة متوازي الأضلاع = 72 سم²، أوجد مساحة المستطيل', f:()=>`<svg viewBox="-20 0 270 170" class="fig"><polygon points="20,140 128,140 200,44 92,44" fill="none" stroke="#222" stroke-width="2"/><rect x="92" y="44" width="36" height="96" fill="#c5160e" stroke="#222" stroke-width="1.5"/><line x1="92" y1="30" x2="200" y2="30" stroke="#222" marker-start="url(#a)"/><path d="M92,30l6,-3v6zM200,30l-6,-3v6z" fill="#222"/><text x="146" y="24" text-anchor="middle" font-size="12" fill="#c0392b">9 سم</text><text x="48" y="86" text-anchor="end" font-size="12" fill="#c0392b">10 سم</text></svg>`, o:['48','36','24','12'],a:2,ex:'الارتفاع = 72 ÷ 9 = 8، الإزاحة = √(10²−8²) = 6 ← عرض المستطيل = 9 − 6 = 3 ← المساحة = 3 × 8 = 24'},
+      {q:'عدد طلاب الكلية = 180 طالب، ما عدد طلاب قطاع التقنية؟', f:()=>`<svg viewBox="0 0 300 230" class="fig">${pie(150,115,105,[{v:40,n:'التقنية',c:'#fff',r:.78,fs:11},{v:60,n:'الصحة',t:'60°',c:'#fde9d4'},{v:68,n:'علم نفس',t:'68°',c:'#e6f0fb'},{v:52,n:'خدمات',t:'52°',c:'#e8f6e8'},{v:70,n:'احتياط',t:'70°',c:'#fff3c4'},{v:70,n:'كتب',t:'70°',c:'#f5e1f3'}],11)}</svg>`, o:['20','25','30','35'],a:0,ex:'زاوية التقنية = 360 − (60+68+52+70+70) = 40° ← 40/360 × 180 = 20'},
+      {q:'أوجد كمية المؤونة التي بلا تلف؟', f:()=>`<table class="t" style="border-collapse:collapse;margin:10px auto;font-size:1rem"><tr><th style="border:1.5px solid #666;padding:6px 14px;background:#fbefc9;color:var(--ac)">الصنف</th><th style="border:1.5px solid #666;padding:6px 14px;background:#fbefc9;color:var(--ac)">الكمية الكلية</th><th style="border:1.5px solid #666;padding:6px 14px;background:#fbefc9;color:var(--ac)">تلف جزئي</th><th style="border:1.5px solid #666;padding:6px 14px;background:#fbefc9;color:var(--ac)">تلف كلي</th></tr><tr><td style="border:1.5px solid #666;padding:6px 14px;text-align:center">المؤونة</td><td style="border:1.5px solid #666;padding:6px 14px;text-align:center">340</td><td style="border:1.5px solid #666;padding:6px 14px;text-align:center">108</td><td style="border:1.5px solid #666;padding:6px 14px;text-align:center">100</td></tr></table>`, o:['98','100','132','140'],a:2,ex:'340 − 100 − 108 = 132'},
+      {q:'كم مثلثًا يمكننا أن نضع في المستطيل؟', f:()=>`<svg viewBox="0 0 400 175" class="fig"><rect x="30" y="20" width="180" height="120" fill="none" stroke="#222" stroke-width="2"/><polygon points="290,140 290,80 380,140" fill="none" stroke="#222" stroke-width="2"/><path d="M290,132h8v8" fill="none" stroke="#222"/><g fill="#c0392b" font-size="14"><text x="120" y="160">6</text><text x="14" y="85">4</text><text x="275" y="115">2</text><text x="335" y="158">3</text></g></svg>`, o:['4','8','6','10'],a:1,ex:'مساحة المستطيل = 6×4 = 24، مساحة المثلث = ½×2×3 = 3 ← 24 ÷ 3 = 8'},
+      {q:'الشكل المجاور: دائرتان متحدتا المركز، ما الفرق بين محيطي الدائرتين؟', f:()=>`<svg viewBox="0 0 230 200" class="fig"><g fill="none" stroke="#222" stroke-width="1.8"><circle cx="100" cy="100" r="44"/><circle cx="100" cy="100" r="72"/><line x1="144" y1="100" x2="172" y2="100"/></g><circle cx="100" cy="100" r="4"/><text x="158" y="92" text-anchor="middle" font-size="11">4سم</text></svg>`, o:['2ط','4ط','6ط','8ط'],a:3,ex:'الفرق بين نصفي القطرين = 4 ← الفرق بين المحيطين = 2ط × 4 = 8ط'},
+      {q:'ما نسبة عدد القوارب التي أبحرت أقل من 200 دقيقة؟', f:()=>bars({labels:['1-99','100-199','200-299','300-399','400-499','500-599'].map(x=>`<span class="m">${x}</span>`),series:[{c:RED,v:[11,3,0,2,3,1]}],max:12,step:2,lfs:9}), o:['50%','60%','70%','80%'].map(x=>`<span class="m">${x}</span>`),a:2,ex:'أقل من 200 دقيقة: 11 + 3 = 14 قاربًا من أصل 20 ← 70%'},
+      {q:'ما عدد القوارب التي أبحرت 400 دقيقة على الأقل؟', f:()=>bars({labels:['1-99','100-199','200-299','300-399','400-499','500-599'].map(x=>`<span class="m">${x}</span>`),series:[{c:RED,v:[2,3,1,4,5,2]}],max:7,step:1,lfs:9}), o:['5','7','9','15'],a:1,ex:'400-499 و 500-599: 5 + 2 = 7'},
+      {q:'إذا كانت تكلفة طلاء المتر المربع = 10 ريال، كم تكلفة طلاء الباب؟', f:()=>`<svg viewBox="0 0 200 180" class="fig"><rect x="50" y="15" width="60" height="88" fill="none" stroke="#222" stroke-width="2"/><g fill="#c0392b" font-size="12"><text x="118" y="62">2,2م</text><text x="64" y="122">1,5م</text></g></svg>`, o:['11','32','33','44'],a:2,ex:'المساحة = 2,2 × 1,5 = 3,3 م² ← التكلفة = 3,3 × 10 = 33 ريال'},
+      {q:'△أهـج متطابق الضلعين، مساحة △أبج = 24 سم²، ب منتصف هـد، أوجد مساحة الجزء المظلل', f:()=>`<svg viewBox="0 0 230 170" class="fig"><polygon points="110,15 20,135 110,75 200,135" fill="#a4161a"/><polygon points="110,15 20,135 200,135" fill="none" stroke="#222" stroke-width="1.8"/><line x1="110" y1="15" x2="110" y2="135" stroke="#222" stroke-width="1.5"/><path d="M110,127h8v8" fill="none" stroke="#fff"/><g font-size="13"><text x="104" y="11">هـ</text><text x="6" y="148">ج</text><text x="206" y="148">أ</text><text x="104" y="152">د</text><text x="118" y="82" fill="#fff">ب</text></g></svg>`, o:['24','36','48','72'],a:0,ex:'ب منتصف هـد فمساحة △أبج نصف مساحة △أهـج ← المساحة الكلية = 48، والمظلل = 48 − 24 = 24'},
+      {q:'أوجد عدد صادرات الإمارات لعام 2018', f:()=>bars({labels:['قطر','الجزائر','الإمارات','السعودية'],series:[{n:'2018',c:RED,v:[75,80,115,160],show:[2]},{n:'2019',c:'#f4a742',v:[105,60,130,200]}],max:240,step:40,axis:false,legend:true}), o:['112','113','114','115'],a:3,ex:'القيمة المكتوبة على عمود الإمارات لعام 2018 هي 115'},
+      {q:'ما الدولة التي بها أعلى قروض استهلاكية؟', f:()=>`<table class="t" style="border-collapse:collapse;margin:10px auto;font-size:1rem"><tr><th style="border:1.5px solid #666;padding:6px 14px;background:#fbefc9;color:var(--ac)">الدولة</th><th style="border:1.5px solid #666;padding:6px 14px;background:#fbefc9;color:var(--ac)">القروض الاستهلاكية</th><th style="border:1.5px solid #666;padding:6px 14px;background:#fbefc9;color:var(--ac)">القروض العقارية</th></tr><tr><td style="border:1.5px solid #666;padding:6px 14px;text-align:center">السعودية</td><td style="border:1.5px solid #666;padding:6px 14px;text-align:center">276</td><td style="border:1.5px solid #666;padding:6px 14px;text-align:center">86</td></tr><tr><td style="border:1.5px solid #666;padding:6px 14px;text-align:center">الإمارات</td><td style="border:1.5px solid #666;padding:6px 14px;text-align:center">250</td><td style="border:1.5px solid #666;padding:6px 14px;text-align:center">185</td></tr><tr><td style="border:1.5px solid #666;padding:6px 14px;text-align:center">قطر</td><td style="border:1.5px solid #666;padding:6px 14px;text-align:center">272</td><td style="border:1.5px solid #666;padding:6px 14px;text-align:center">256</td></tr><tr><td style="border:1.5px solid #666;padding:6px 14px;text-align:center">البحرين</td><td style="border:1.5px solid #666;padding:6px 14px;text-align:center">242</td><td style="border:1.5px solid #666;padding:6px 14px;text-align:center">175</td></tr></table>`, o:['السعودية','قطر','الإمارات','البحرين'],a:0,ex:'أعلى قيمة في عمود القروض الاستهلاكية هي 276 للسعودية'},
+      {q:'مكعب طول حرفه 2س، كم تكون مساحة أوجهه؟', o:[sup('8س',2),sup('16س',2),sup('24س',2),sup('48س',2)],a:2,ex:'للمكعب 6 أوجه: 6 × (2س)² = 6 × 4س² = 24س²'},
+      {q:'أوجد مساحة المربع', f:()=>`<svg viewBox="0 0 200 180" class="fig"><rect x="30" y="15" width="140" height="140" fill="none" stroke="#222" stroke-width="2"/><circle cx="100" cy="85" r="70" fill="none" stroke="#222" stroke-width="1.8"/><circle cx="100" cy="85" r="3"/><line x1="100" y1="85" x2="100" y2="155" stroke="#222"/><text x="106" y="125" font-size="12" fill="#c0392b">4سم</text></svg>`, o:['16','32','48','64'],a:3,ex:'نصف قطر الدائرة 4 ← ضلع المربع = 8 ← المساحة = 8×8 = 64'},
+      {q:'في الشكل التالي: م مركز دائرة، قارن بين:', f:()=>`<svg viewBox="0 0 170 130" class="fig"><circle cx="85" cy="65" r="48" fill="#fff" stroke="#222" stroke-width="1.8"/><path d="M85,65 L85,17 A48,48 0 0 0 37,65 Z" class="r" stroke="#222" stroke-width="1.5"/><line x1="85" y1="65" x2="133" y2="65" stroke="#222"/><path d="M85,57h-8v8" fill="none" stroke="#222"/><text x="92" y="82" font-size="11">م</text><text x="108" y="82" font-size="11" fill="#c0392b">2سم</text></svg>`, v:'القيمة الأولى: ط &nbsp;&nbsp; القيمة الثانية: مساحة المظلل', o:CMP, a:2, ex:'المظلل ربع دائرة نصف قطرها 2: ¼ × ط × 2² = ط ← القيمتان متساويتان'},
+      {q:'إذا كان 8 ≤ جيد < 11، كم عدد الطلاب الحاصلين على جيد؟', f:()=>{const v=[1,4,2,3,4,5,2,3,2,1,2,3],X=i=>55+(i)*(340/11),Y=n=>200-n*30;let s=`<svg viewBox="0 0 420 250" class="fig">`;for(let n=0;n<=6;n++)s+=`<line x1="45" x2="410" y1="${Y(n)}" y2="${Y(n)}" stroke="#222" stroke-width="${n%2?1:1.6}"/><text x="38" y="${Y(n)+4}" text-anchor="end" font-size="11" fill="#c0392b">${n}</text>`;s+=`<polyline fill="none" stroke="#222" stroke-width="1.8" points="${v.map((n,i)=>X(i)+','+Y(n)).join(' ')}"/>`;v.forEach((n,i)=>{s+=`<circle cx="${X(i)}" cy="${Y(n)}" r="3.5" fill="#222"/><text x="${X(i)}" y="218" text-anchor="middle" font-size="10" fill="#c0392b">${i+1}</text>`});return s+`<text x="225" y="242" text-anchor="middle" font-size="12" fill="#c0392b">الدرجة</text><text x="12" y="105" font-size="12" fill="#c0392b" transform="rotate(-90 12 105)">عدد الطلاب</text></svg>`;}, o:['2','3','6','8'],a:2,ex:'الدرجات 8 و 9 و 10 ← 3 + 2 + 1 = 6'},
+      {q:'قارن بين:', f:()=>`<svg viewBox="0 0 330 190" class="fig">${box(40,70,40,80,60)}${box(210,80,40,40,40)}<g fill="#c0392b" font-size="12"><text x="32" y="115" text-anchor="end">4 سم</text><text x="40" y="168">2 سم</text><text x="100" y="140">3 سم</text><text x="218" y="138">2 سم</text></g></svg>`, v:'القيمة الأولى: حجم المكعب<br>القيمة الثانية: ثلث حجم متوازي المستطيلات', o:CMP, a:2, ex:'حجم المكعب = 2×2×2 = 8، وثلث حجم المتوازي = (2×3×4) ÷ 3 = 8 ← متساويتان'},
+      {q:'في الشكل التالي، أوجد قيمة ب ج', f:()=>`<svg viewBox="0 0 260 190" class="fig"><g stroke="#222" stroke-width="1.8" fill="none"><polygon points="38,154 150,70 220,163"/><line x1="150" y1="70" x2="220" y2="70"/><line x1="220" y1="70" x2="220" y2="163"/><polyline points="143.6,74.8 148.4,81.2 154.8,76.4"/></g><rect x="210" y="70" width="10" height="10"/><g font-size="13"><text x="64" y="150" fill="#c0392b">°30</text><text x="20" y="168">ج</text><text x="226" y="175">ب</text><text x="180" y="62" fill="#c0392b">3</text><text x="228" y="120" fill="#c0392b">4</text></g></svg>`, o:['11','5','10','15'],a:2,ex:'من المثلث (3-4-5) الضلع أب = 5، وهو المقابل للزاوية 30° ← الوتر ب ج = 2 × 5 = 10'},
+      {q:'احسب عدد غير السعوديين؟', f:()=>{let b=bars({labels:['','',''],series:[{n:'السعوديين',c:RED,v:[100,125,100]},{n:'غير السعوديين',c:'#c8962e',v:[75,50,25],show:'all'}],max:150,step:50,legend:true}); return b.replace(/<text x="(\d+(\.\d+)?)" y="(\d+)" text-anchor="end" font-size="11">غير/,'<text x="$1" y="$3" text-anchor="end" font-size="11">غير');}, o:['75','100','125','150'],a:3,ex:'غير السعوديين: 75 + 50 + 25 = 150'},
+      {q:'ما نسبة الأسلحة غير التالفة؟', f:()=>`<table class="t" style="border-collapse:collapse;margin:10px auto;font-size:1rem"><tr><td style="border:1.5px solid #666;padding:6px 14px">العدد الكلي للأسلحة</td><td style="border:1.5px solid #666;padding:6px 14px">120 رشاش</td></tr><tr><td style="border:1.5px solid #666;padding:6px 14px">الأسلحة التالفة جزئياً</td><td style="border:1.5px solid #666;padding:6px 14px">35 رشاش</td></tr><tr><td style="border:1.5px solid #666;padding:6px 14px">الأسلحة التالفة كلياً</td><td style="border:1.5px solid #666;padding:6px 14px">45 رشاش</td></tr></table>`, o:['30%','33%','40%','67%'].map(x=>`<span class="m">${x}</span>`),a:1,ex:'غير التالفة = 120 − 35 − 45 = 40 ← 40/120 ≈ 33%'},
+      {q:'إذا كانت مساحة الدائرة = 9ط، أوجد مساحة المستطيل', f:()=>`<svg viewBox="0 0 230 100" class="fig"><rect x="20" y="20" width="180" height="60" fill="none" stroke="#222" stroke-width="2"/><g fill="none" stroke="#222" stroke-width="1.8"><circle cx="50" cy="50" r="30"/><circle cx="110" cy="50" r="30"/><circle cx="170" cy="50" r="30"/></g></svg>`, o:['36','72','108','120'],a:2,ex:'ط·نق² = 9ط ← نق = 3 ← قطر = 6 ← المستطيل 18 × 6 = 108'},
+      {q:'وضعت أوراق بجانب بعضها فكونت مستطيلًا أبعاده 300، 100 سم، فإذا كان بعدا الورقة 20، 30 سم فكم عدد الأوراق؟', o:['50','75','100','150'],a:0,ex:'(300 × 100) ÷ (20 × 30) = 30000 ÷ 600 = 50'},
+      {q:'أوجد نسبة الزيادة بين عامي 1430 و 1433؟', f:()=>bars({labels:['1433','1432','1431','1430'],series:[{c:RED,v:[150,140,110,125],show:'all'}],max:160,step:20,w:400}), o:['20%','25%','10%','15%'].map(x=>`<span class="m">${x}</span>`),a:0,ex:'الزيادة = (150 − 125) ÷ 125 = 20%'},
+      {q:'ما الدولة التي لها أكبر نسبة زيادة في عدد المصانع؟', f:()=>bars({labels:['البحرين','قطر','السعودية','الإمارات'],series:[{n:'1990',c:'#7a1b12',v:[80,40,350,96],show:[2,3]},{n:'2001',c:'#d23b2a',v:[100,60,542,228],show:[2,3]}],max:600,step:100,legend:true}), o:['البحرين','قطر','السعودية','الأمارات'],a:3,ex:'الإمارات: (228−96) ÷ 96 ≈ 137% وهي أكبر من السعودية ≈ 55%'},
+      {q:'الشكل التالي يوضح نسب الطلاب الحاصلين على امتياز في المواد، إذا كان عدد الطلاب 500 طالب، ما أقل مادة حصل الطلاب على امتياز فيها؟', f:()=>`<svg viewBox="0 0 300 230" class="fig">${pie(150,115,105,[{v:15,n:'علوم',t:'15%',c:'#e6f0fb'},{v:15,n:'انجليزي',t:'15%',c:'#fff3c4'},{v:14,n:'حاسب آلي',t:'14%',c:'#e8f6e8'},{v:56,n:'رياضيات',t:'56%',c:'#fde9d4'}],12)}</svg>`, o:['حاسب آلي','رياضيات','علوم','انجليزي'],a:0,ex:'أصغر نسبة هي 14% للحاسب الآلي'},
+      {q:'الشكل التالي يبين كمية استهلاك المحاصيل، ما أكثر محصول من حيث الاستهلاك؟', f:()=>`<svg viewBox="0 0 300 230" class="fig">${pie(150,115,105,[{v:20,n:'ذرة',t:'20%',c:'#fff3c4'},{v:40,n:'زيتون',t:'40%',c:'#e8f6e8'},{v:30,n:'قمح',t:'30%',c:'#fde9d4'},{v:10,n:'شعير',t:'10%',c:'#e6f0fb'}],12)}</svg>`, o:['قمح','ذرة','شعير','زيتون'],a:3,ex:'أكبر نسبة هي 40% للزيتون'},
+      {q:'من الشكل المجاور ما نسبة مساحة الدائرة الصغرى إلى مساحة الدائرة الكبرى؟', f:()=>`<svg viewBox="0 0 260 180" class="fig"><g fill="none" stroke="#222" stroke-width="1.8"><circle cx="150" cy="90" r="72"/><circle cx="114" cy="90" r="36"/><line x1="114" y1="90" x2="222" y2="90"/></g><circle cx="114" cy="90" r="4"/><circle cx="150" cy="90" r="4"/><text x="132" y="82" text-anchor="middle" font-size="12">3</text><text x="186" y="82" text-anchor="middle" font-size="12">6</text></svg>`, o:['6 : 4','1 : 4','8 : 3','3 : 2'].map(x=>`<span class="m">${x}</span>`),a:1,ex:'مساحة الصغرى : مساحة الكبرى = ط×3² : ط×6² = 9 : 36 = 1 : 4'}
+    ];
+
+    return {
+      title: 'اختبار الرياضيات التفاعلي',
+      desc: 'اختبار شامل من 36 سؤالًا (هندسة، جبر، إحصاء، ومقارنات).',
+      questions: rawQ.map(q => ({
+        text: q.q + (q.v ? `<br><span class="v">${q.v}</span>` : '') + (q.cap ? `<br><span class="cap">${q.cap}</span>` : ''),
+        options: q.o,
+        answer: q.a,
+        figure: typeof q.f === 'function' ? q.f() : (q.f || ''),
+        explanation: q.ex || ''
+      }))
+    };
+  })(),
+
+  // ---------------------------------------------------------
+  // 3. الاختبار العام / التفاعلي الإضافي (General)
+  // ---------------------------------------------------------
+  general: (function() {
+    const F = (n,d) => `<span class="fr"><i>${n}</i><b>${d}</b></span>`;
+    const P = (b,e) => `${b}<sup>${e}</sup>`;
+    const M = s => `<span class="m">${s}</span>`;
+    const C = ['#e74c3c','#f39c12','#3498db','#27ae60','#9b59b6','#16a085'];
+    
+    const bar = (v,l,o={}) => {
+      const max=o.max||Math.max(...v),W=330,H=180,Lm=o.step?34:10,B=30,T=20,n=v.length,bw=(W-Lm-8)/n;
+      let s=`<svg viewBox="0 0 ${W} ${H}">`;
+      if(o.step)for(let y=0;y<=max;y+=o.step){const Y=H-B-(H-B-T)*y/max;s+=`<line x1="${Lm}" x2="${W-6}" y1="${Y}" y2="${Y}" stroke="#bbb" stroke-width=".5"/><text x="${Lm-4}" y="${Y+3}" font-size="9" text-anchor="end">${y}</text>`}
+      v.forEach((x,i)=>{const h=(H-B-T)*x/max,X=Lm+i*bw+bw*.15;s+=`<rect x="${X}" y="${H-B-h}" width="${bw*.7}" height="${h}" fill="${(o.cs||[])[i]||o.c||'#e8884a'}"/><text x="${X+bw*.35}" y="${H-B+12}" font-size="9" text-anchor="middle">${l[i]}</text>`;if(o.show)s+=`<text x="${X+bw*.35}" y="${H-B-h-3}" font-size="9" text-anchor="middle">${x}</text>`});
+      return s+'</svg>';
+    };
+    const pie = (sl) => {
+      let a=-Math.PI/2,s='<svg viewBox="0 0 160 160" width="150">';
+      sl.forEach(([n,p,c])=>{const b=a+p/100*2*Math.PI;s+=`<path d="M80 80L${80+70*Math.cos(a)} ${80+70*Math.sin(a)}A70 70 0 ${p>50?1:0} 1 ${80+70*Math.cos(b)} ${80+70*Math.sin(b)}Z" fill="${c}" stroke="#fff"/>`;a=b});
+      return `<div class="row" style="display:flex;gap:12px;justify-content:center;align-items:center;flex-wrap:wrap">${s}</svg><div class="lg" style="font-size:13px;text-align:right">${sl.map(([n,p,c,t])=>`<div style="margin-bottom:4px"><i style="display:inline-block;width:11px;height:11px;margin-left:5px;border-radius:2px;background:${c}"></i>${n}: ${t||p+'%'}</div>`).join('')}</div></div>`;
+    };
+
+    const rawQ = [
+      {t:'أوجد ناتج: '+M(F(1,P(3,5))+' + '+F(1,P(3,5))+' + '+F(1,P(3,5))),o:[M(F(1,P(3,5))),M(F(1,P(3,4))),M(F(1,P(3,6))),M(F(1,P(3,9)))],a:1,e:'3 × 1/3⁵ = 3/3⁵ = 1/3⁴'},
+      {t:'خزان مملوء إلى '+F(1,3)+' ، وإذا أضفنا 10 لتر أصبح مملوءًا إلى النصف، كم سعة الخزان؟',o:['30','45','50','60'],a:3,e:'½ − ⅓ = ⅙ من السعة = 10 لتر ← السعة = 60 لتر'},
+      {t:'ما متوسط الربع الثاني؟',fig:()=>{const v=[30,25,38,40,28,37,45,38,42,30,22,40],X=i=>40+i*24,Y=y=>150-y*2.6;let s='<svg viewBox="0 0 340 190"><g stroke="#bbb" stroke-width=".5">';for(let y=0;y<=50;y+=5)s+=`<line x1="35" x2="335" y1="${Y(y)}" y2="${Y(y)}"/><text x="30" y="${Y(y)+3}" font-size="8" text-anchor="end" stroke="none">${y}</text>`;s+='</g>';[3,6,9].forEach(i=>s+=`<line x1="${X(i)-12}" x2="${X(i)-12}" y1="15" y2="150" stroke="currentColor"/>`);s+=`<polyline fill="none" stroke="#e74c3c" stroke-width="1.5" points="${v.map((y,i)=>X(i)+','+Y(y)).join(' ')}"/>`;['الأول','الثاني','الثالث','الرابع'].forEach((q,i)=>s+=`<text x="${X(i*3+1)}" y="168" font-size="10" text-anchor="middle">الربع ${q}</text>`);return s+'</svg>'},o:['25','30','35','37'],a:3,e:'متوسط قيم أشهر الربع الثاني (حسب مفتاح الإجابة) = 37'},
+      {t:'ما عدد المقلعين عن التدخين في شهر شوال؟',fig:()=>'<table class="t" style="border-collapse:collapse;font-size:13px;margin:auto"><tr><th style="border:1px solid var(--bd);padding:3px 8px">الشهر</th><th style="border:1px solid var(--bd);padding:3px 8px">الجلسات</th><th style="border:1px solid var(--bd);padding:3px 8px">المسجلين الجدد</th><th style="border:1px solid var(--bd);padding:3px 8px">المقلعين</th><th style="border:1px solid var(--bd);padding:3px 8px">نسبة المقلعين</th></tr><tr><td style="border:1px solid var(--bd);padding:3px 8px">جمادى الآخر</td><td style="border:1px solid var(--bd);padding:3px 8px">185</td><td style="border:1px solid var(--bd);padding:3px 8px">190</td><td style="border:1px solid var(--bd);padding:3px 8px">160</td><td style="border:1px solid var(--bd);padding:3px 8px">69%</td></tr><tr><td style="border:1px solid var(--bd);padding:3px 8px">شوال</td><td style="border:1px solid var(--bd);padding:3px 8px">100</td><td style="border:1px solid var(--bd);padding:3px 8px">90</td><td style="border:1px solid var(--bd);padding:3px 8px">س</td><td style="border:1px solid var(--bd);padding:3px 8px">69%</td></tr></table>',o:['202','303','404','505'],a:2,e:'الجواب حسب مفتاح الإجابة: 404 (راجع الجدول الكامل).'},
+      {t:'في الشكل التالي دائرة مركزها أ، والمثلث أ ب ج متطابق الأضلاع طول ضلعه 6 سم، النقطتان م، ن تنصفان ضلعي المثلث. طول القوس م ن بالسنتمتر يساوي:',fig:()=>'<svg viewBox="0 0 200 140"><circle cx="100" cy="20" r="50" fill="none" stroke="currentColor"/><polygon points="100,20 50,107 150,107" fill="none" stroke="currentColor"/><text x="97" y="12" font-size="11">أ</text><text x="36" y="118" font-size="11">ج</text><text x="152" y="118" font-size="11">ب</text><text x="128" y="62" font-size="11">م</text><text x="64" y="62" font-size="11">ن</text></svg>',o:['ط','3ط','6ط','9ط'],a:0,e:'نق = 3، الزاوية 60° ← طول القوس = 60/360 × 2ط × 3 = ط'},
+      {t:'كم يبلغ متوسط الأرباح في السنوات الثلاث الأولى بملايين الريالات؟',fig:()=>{const v=[2.6,1.5,-1.7,1.8,-.6,-1.2],l=['1428','1429','1430','1431','1432','1433'];let s='<svg viewBox="0 0 330 190"><line x1="30" x2="325" y1="85" y2="85" stroke="currentColor"/>';v.forEach((x,i)=>{const X=45+i*47,h=Math.abs(x)*26;s+=`<rect x="${X}" y="${x>0?85-h:85}" width="32" height="${h}" fill="#8b2e2e"/><text x="${X+16}" y="${x>0?85-h-3:85+h+11}" font-size="10" text-anchor="middle">${x}</text><text x="${X+16}" y="185" font-size="10" text-anchor="middle">${l[i]}</text>`});return s+'</svg>'},o:['−2.4','−0.8','0.8','2.4'],a:2,e:'(2.6 + 1.5 + (−1.7)) ÷ 3 = 2.4 ÷ 3 = 0.8'},
+      {t:'الرسم التالي يمثل أعداد التصويت في انتخابات مجلس النواب، ما متوسط عدد المصوتين في عسير لأقرب ألف؟',fig:()=>bar([345225,374532,350610],['الفئة الأولى','الفئة الثانية','الفئة الثالثة'],{max:400000,show:1,cs:['#4a7bd0','#ff8c3a','#aaa398']}),o:['300000','350000','360000','370000'],a:2,e:'(345225 + 374532 + 350610) ÷ 3 ≈ 356789 ← الأقرب 360000'},
+      {t:'إذا كان المثلثان متشابهان، فما قيمة س؟',fig:()=>'<svg viewBox="0 0 200 120"><polygon points="20,15 20,105 100,60" fill="none" stroke="#c0392b"/><polygon points="100,60 180,15 180,105" fill="none" stroke="#c0392b"/><g font-size="11" fill="#c0392b"><text x="2" y="62">2س−3</text><text x="183" y="62">س+1</text><text x="130" y="28">8</text><text x="45" y="94">12</text></g></svg>',o:['9','8','7','6'],a:0,e:'(2س−3)/(س+1) = 12/8 ← 16س − 24 = 12س + 12 ← س = 9'},
+      {t:'في الشكل التالي، مربع اقتطع أحد أركانه، كم مترًا مربعًا مساحة الجزء المتبقي؟',fig:()=>'<svg viewBox="0 0 220 190"><polygon points="30,15 110,15 190,75 190,175 30,175" fill="#111"/><text x="65" y="9" font-size="11">4</text><text x="10" y="100" font-size="11">8</text><text x="195" y="130" font-size="11">5</text></svg>',o:['50','56','58','60'],a:2,e:'المربع 8×8 = 64، والمثلث المقتطع ساقاه 4 و 3 ← مساحته 6 ← 64 − 6 = 58'},
+      {t:'ما متوسط الإيرادات للأعوام الأربعة بملايين الريالات؟',fig:()=>bar([8,12,10,16],['2009','2010','2011','2012'],{max:16,step:2,c:'#d62d20'}),o:['46','40','12.5','11.5'],a:3,e:'(8 + 12 + 10 + 16) ÷ 4 = 46 ÷ 4 = 11.5'},
+      {t:'أوجد عدد السيارات التي تقطع 25 كم أو أكثر بالجالون الواحد.',fig:()=>bar([20,40,60,40,20,30],['16−18','19−21','22−24','25−27','28−30','31−33'],{max:60,step:10,c:'#777'}),o:['60','70','80','90'],a:3,e:'40 + 20 + 30 = 90 سيارة'},
+      {t:'أوجد قيمة س:',fig:()=>'<svg viewBox="0 0 200 120"><polygon points="30,20 130,20 80,100" fill="none" stroke="currentColor"/><line x1="0" y1="20" x2="30" y2="20" stroke="currentColor"/><g font-size="12"><text x="8" y="14" fill="#c0392b">س</text><text x="105" y="36" fill="#c0392b">65</text><text x="68" y="82" fill="#c0392b">45</text></g></svg>',o:['100','110','120','150'],a:1,e:'الزاوية الخارجية = مجموع الزاويتين الداخليتين البعيدتين = 65 + 45 = 110'},
+      {t:'ما قياس زاوية ( ب أ س )؟',fig:()=>'<svg viewBox="0 0 200 170"><polygon points="20,90 120,90 70,3" fill="none" stroke="currentColor"/><line x1="155" y1="30" x2="40" y2="165" stroke="currentColor" opacity="0" /><line x1="155" y1="29" x2="35" y2="152" stroke="currentColor"/><line x1="120" y1="90" x2="85" y2="151" stroke="currentColor" opacity="0"/><g font-size="12"><text x="6" y="96">ب</text><text x="124" y="86">أ</text><text x="22" y="160">س</text></g></svg>',o:['30','45','60','90'],a:2,e:'المثلث متطابق الأضلاع (زواياه 60°) والمستقيم يوازي أحد أضلاعه ← الزاوية = 60°'},
+      {t:'ما أقل محصول؟',fig:()=>pie([['قمح',20,C[0]],['برتقال',30,C[1]],['فراولة',20,C[2]],['عنب',10,C[3]],['مانجو',20,C[4]]]),o:['قمح','مانجو','عنب','فراولة'],a:2,e:'العنب 10% وهي أقل نسبة'},
+      {t:'إذا أرادت الشركة زيادة الموظفين السعوديين إلى 50% عن طريق استبدال بعض موظفي الشركة من الجنسيات الأخرى، فكم سعوديًّا توظف؟ (عدد الموظفين 420)',fig:()=>pie([['سعودي',33,C[0],'سعودي'],['مصري',29,C[1],'مصري 120'],['سوداني',12,C[2],'سوداني'],['هندي',14,C[3],'هندي'],['أردني',12,C[4],'أردني']]),o:['70','75','80','85'],a:0,e:'المطلوب 50% × 420 = 210 سعودي، والفرق عن العدد الحالي (حسب الرسم) = 70'},
+      {t:'قارن بين: القيمة الأولى: س ، القيمة الثانية: ص',fig:()=>'<svg viewBox="0 0 220 130"><line x1="10" y1="35" x2="210" y2="35" stroke="currentColor"/><line x1="10" y1="95" x2="210" y2="95" stroke="currentColor"/><line x1="95" y1="5" x2="125" y2="125" stroke="currentColor"/><text x="110" y="30" font-size="11" fill="#c0392b">3 س</text><text x="108" y="90" font-size="11" fill="#c0392b">6 ص</text></svg>',o:['القيمة الأولى أكبر','القيمة الثانية أكبر','القيمتان متساويتان','المعطيات غير كافية'],a:3,e:'المعطيات غير كافية للمقارنة (حسب مفتاح الإجابة)'},
+      {t:'إذا كان ب ج = 5 سم، أ ج = 4 سم، أوجد طول د هـ.',fig:()=>'<svg viewBox="0 0 200 130"><polygon points="20,110 170,110 138,48" fill="none" stroke="currentColor"/><line x1="79" y1="79" x2="95" y2="110" stroke="currentColor"/><g font-size="12" fill="#c0392b"><text x="4" y="118">ج</text><text x="173" y="118">ب</text><text x="136" y="42">أ</text><text x="68" y="76">د</text><text x="92" y="124">هـ</text></g></svg>',o:['1.5','2','2.5','3'],a:0,e:'أ ب = 3 (فيثاغورس) ، د منتصف أ ج و د هـ ∥ أ ب ← د هـ = ½ × 3 = 1.5'},
+      {t:'ما عدد الساعات اللازمة ليصبح عدد السيارات يوم الاثنين يساوي عدد السيارات في يوم الخميس في 4 ساعات؟ (معدل انسياب السيارات في الساعة)',fig:()=>bar([200,450,400,350,500,300,100],['السبت','الأحد','الاثنين','الثلاثاء','الأربعاء','الخميس','الجمعة'],{max:500,show:1,c:'#fbb040'}),o:['1.5','2.5','2.7','3'],a:3,e:'الخميس: 300 × 4 = 1200 سيارة ← الاثنين: 1200 ÷ 400 = 3 ساعات'},
+      {t:'مجموع الحوادث في عام 1430هـ بلغت 18000، أوجد الحوادث بسبب السرعة؟',fig:()=>pie([['السرعة',35,C[0],'126°'],['استخدام الجوال',12.5,C[1],'45°'],['قطع الإشارة',8.33,C[2],'30°'],['أخرى',44.17,C[3],'159°']]),o:['6300','6000','6500','6800'],a:0,e:'126 ÷ 360 × 18000 = 6300'},
+      {t:'ما متوسط عدد اللوحات عام 1427؟',fig:()=>bar([60,65,80,45],['محمد','أحمد','سعد','فهد'],{max:100,step:20,c:'#c0392b'}),o:['60','61','62.5','65'],a:2,e:'الرسم تقريبي — الجواب حسب مفتاح الإجابة: 62.5'},
+      {t:'أوجد عدد سكان اليمن',fig:()=>'<table class="t" style="border-collapse:collapse;font-size:13px;margin:auto"><tr><th style="border:1px solid var(--bd);padding:3px 8px">الدولة</th><th style="border:1px solid var(--bd);padding:3px 8px">المساحة</th><th style="border:1px solid var(--bd);padding:3px 8px">عدد السكان</th><th style="border:1px solid var(--bd);padding:3px 8px">الكثافة</th></tr><tr><td style="border:1px solid var(--bd);padding:3px 8px">اليمن</td><td style="border:1px solid var(--bd);padding:3px 8px">560000</td><td style="border:1px solid var(--bd);padding:3px 8px">؟</td><td style="border:1px solid var(--bd);padding:3px 8px">14</td></tr></table>',o:['7840000','784000','40000','4000'],a:0,e:'عدد السكان = المساحة × الكثافة = 560000 × 14 = 7840000'},
+      {t:'الشكل التالي يمثل مصروفات سلطان شهريًّا. إذا كان إجمالي مصروفاته 5000 ريال شهريًّا، ونسبة ما صرفه في السفر 65% مما صرف في الترفيه، أوجد المبلغ الذي صرفه في السفر.',fig:()=>pie([['فواتير',6,C[0]],['ترفيه',20,C[1],'س%'],['طعام',22,C[2]],['إيجار',10,C[3]],['ملابس',30,C[4]],['أقساط',12,C[5]]]),o:['1650','650','325','250'],a:1,e:'الترفيه = 100 − (6+22+10+30+12) = 20% = 1000 ريال ← 65% × 1000 = 650'},
+      {t:'إذا كان إجمالي مصروفاته 5000 ريال شهريًّا، ما المبلغ الذي دفعه في الطعام؟',fig:()=>pie([['فواتير',6,C[0]],['ترفيه',20,C[1],'س%'],['طعام',22,C[2]],['إيجار',10,C[3]],['ملابس',30,C[4]],['أقساط',12,C[5]]]),o:['800','900','1000','1100'],a:3,e:'22% × 5000 = 1100 ريال'}
+    ];
+
+    return {
+      title: 'اختبار تفاعلي عام',
+      desc: 'اختبار متنوع من 23 سؤالًا (إحصاء، هندسة، حساب، ومنطقيات).',
+      questions: rawQ.map(q => ({
+        text: q.t,
+        options: q.o,
+        answer: q.a,
+        figure: typeof q.fig === 'function' ? q.fig() : (q.fig || ''),
+        explanation: q.e || ''
+      }))
+    };
+  })()
 };
-const students = Object.keys(studentsData).map(code => ({ name: studentsData[code].name, code: code }));
-
-const TEACHER_WHATSAPP = "966556620887";
-const EXAM_TIMEOUT = 3 * 60 * 1000;
-
-const verbalExams = [
-    { name: "الاختبار اللفظي الأول", url: "https://test-first-oral-section.vercel.app", icon: "1️⃣" },
-    { name: "الاختبار اللفظي الثاني", url: "https://test-second-arabi.vercel.app", icon: "2️⃣" },
-    { name: "الاختبار اللفظي الثالث", url: "https://test-third-section-verbale.vercel.app", icon: "3️⃣" },
-    { name: "الاختبار اللفظي الرابع", url: "https://test-fourth-oral-section.vercel.app", icon: "4️⃣" },
-    { name: "الاختبار اللفظي الخامس", url: "https://test-5-verb-section.vercel.app", icon: "5️⃣" },
-    { name: "الاختبار اللفظي السادس", url: "https://test-sixth-oral-section.vercel.app", icon: "6️⃣" },
-    { name: "الاختبار اللفظي السابع", url: "https://test-seventh-oral-section.vercel.app", icon: "7️⃣" }
-];
-
-// ✅ إضافة اختبارات الأكثر تكرار (جديدة)
-const frequentVerbalExams = [
-    { name: "الأكثر تكرار - النموذج الأول", url: "https://lafdetekrar1.vercel.app", icon: "🔥" },
-    { name: "الأكثر تكرار - النموذج الثاني", url: "https://lafdetekrar2.vercel.app", icon: "🔥" },
-    { name: "الأكثر تكرار - النموذج الثالث", url: "https://lafdetkrar3html.vercel.app", icon: "🔥" },
-    { name: "الأكثر تكرار - النموذج الرابع", url: "https://lafdetkrar4.vercel.app", icon: "🔥" },
-    { name: "الأكثر تكرار - النموذج الخامس", url: "https://lafdetkrar4html.vercel.app", icon: "🔥" },
-    { name: "الأكثر تكرار - النموذج السادس", url: "https://lafdetkrar5html.vercel.app", icon: "🔥" }
-];
-
-const quantitativeExams = [
-    { name: "الاختبار الكمي الأول", url: "https://kame5.vercel.app", icon: "1️⃣" },
-    { name: "الاختبار الكمي الثاني", url: "https://kkmme6.vercel.app", icon: "2️⃣" },
-    { name: "الاختبار الكمي الثالث", url: "https://kame3.vercel.app/", icon: "3️⃣" },
-    { name: "الاختبار الكمي الرابع", url: "https://kame44.vercel.app/", icon: "4️⃣" },
-    { name: "الاختبار الكمي الخامس", url: "https://kmme2.vercel.app/", icon: "5️⃣" }
-];
-
-let examSessionStart = null;
-let lastActivityTime = null;
-let examTimeoutInterval = null;
 
 // ==========================================
-// 🔑 نظام كود الدخول الذكي
+// محرك الاختبار الموحد (Unified Engine)
 // ==========================================
-function getTodayExamCode() {
-    const today = new Date();
-    const day = String(today.getDate()).padStart(2, '0');
-    const month = String(today.getMonth() + 1).padStart(2, '0');
-    const secret = "SA";
-    return day + month + secret;
+let currentQuiz = null;
+let qIndex = 0;
+let score = 0;
+let answers = [];
+let shuffledOrder = [];
+
+function initMenu() {
+  const menu = document.getElementById('menu-cards');
+  menu.innerHTML = Object.keys(QUIZZES).map(key => {
+    const qz = QUIZZES[key];
+    return `
+      <div class="menu-card" onclick="startQuiz('${key}')">
+        <h2>${qz.title}</h2>
+        <p>${qz.desc}</p>
+        <div class="start-btn">ابدأ الاختبار ←</div>
+      </div>
+    `;
+  }).join('');
 }
 
-function generateNewCode() {
-    const code = getTodayExamCode();
-    const codeDisplay = document.getElementById('generatedCode');
-    codeDisplay.textContent = code;
-    codeDisplay.classList.remove('hidden');
-    document.getElementById('copyCodeBtn').classList.remove('hidden');
-    document.getElementById('sendCodeBtn').classList.remove('hidden');
+function showMenu() {
+  document.getElementById('main-menu').classList.remove('hide');
+  document.getElementById('quiz-container').classList.add('hide');
+  document.getElementById('result-container').classList.add('hide');
 }
 
-function copyCode() {
-    const code = getTodayExamCode();
-    navigator.clipboard.writeText(code).then(() => {
-        alert('✅ تم نسخ الكود: ' + code);
+function startQuiz(quizKey) {
+  currentQuiz = QUIZZES[quizKey];
+  qIndex = 0;
+  score = 0;
+  shuffledOrder = [...Array(currentQuiz.questions.length).keys()];
+  
+  // خلط الأسئلة اختياري (يمكن تفعيله بإزالة التعليق عن السطر التالي)
+  // shuffledOrder.sort(() => Math.random() - 0.5);
+  
+  answers = new Array(currentQuiz.questions.length).fill(null);
+  
+  document.getElementById('main-menu').classList.add('hide');
+  document.getElementById('result-container').classList.add('hide');
+  document.getElementById('quiz-container').classList.remove('hide');
+  document.getElementById('quiz-title').textContent = currentQuiz.title;
+  
+  renderQuestion();
+}
+
+function renderQuestion() {
+  const q = currentQuiz.questions[qIndex];
+  const realIndex = shuffledOrder[qIndex];
+  
+  document.getElementById('counter').textContent = `السؤال ${qIndex + 1} من ${currentQuiz.questions.length}`;
+  document.getElementById('prog').style.width = ((qIndex / currentQuiz.questions.length) * 100) + '%';
+  
+  const answeredCount = answers.filter(a => a !== null).length;
+  const correctCount = answers.filter((a, i) => a === currentQuiz.questions[shuffledOrder[i]].answer).length;
+  document.getElementById('live-score').textContent = `الصحيحة: ${correctCount} / ${answeredCount}`;
+  
+  const card = document.getElementById('q-card');
+  card.innerHTML = `
+    <div class="q-text">${q.text}</div>
+    ${q.figure ? `<div class="fig">${q.figure}</div>` : ''}
+    <div class="opts" id="opts-container">
+      ${q.options.map((opt, i) => `
+        <button class="opt" data-i="${i}" ${answers[qIndex] !== null ? 'disabled' : ''}>
+          <span class="opt-letter">${OPT_LETTERS[i]}</span>
+          <span>${opt}</span>
+        </button>
+      `).join('')}
+    </div>
+    <div class="explanation ${answers[qIndex] !== null ? 'show' : ''}" id="ex-box">
+      <b>الحل:</b> ${q.explanation}
+    </div>
+  `;
+  
+  // تطبيق تحويل الأرقام للعربية
+  arabize(card);
+  
+  // إذا كان السؤال مجاباً مسبقاً، قم بتمييز الإجابات
+  if (answers[qIndex] !== null) {
+    markAnswer(qIndex);
+  } else {
+    // إضافة مستمعي الأحداث للأزرار
+    document.querySelectorAll('.opt').forEach(btn => {
+      btn.onclick = () => pickOption(parseInt(btn.dataset.i));
     });
+  }
+  
+  // تحديث أزرار التنقل
+  document.getElementById('btn-prev').disabled = (qIndex === 0);
+  document.getElementById('btn-next').textContent = (qIndex === currentQuiz.questions.length - 1) ? 'إنهاء وعرض النتيجة' : 'التالي';
 }
 
-function sendCodeToStudent() {
-    const code = getTodayExamCode();
-    const msg = `كود دخول الاختبار الخاص بك اليوم هو: ${code}\n\n⚠️ ملاحظة: هذا الكود يتغير يومياً تلقائياً.`;
-    window.open(`https://wa.me/${TEACHER_WHATSAPP}?text=${encodeURIComponent(msg)}`, '_blank');
+function pickOption(selectedIndex) {
+  if (answers[qIndex] !== null) return; // منع الإجابة المتعددة
+  
+  const realIndex = shuffledOrder[qIndex];
+  const q = currentQuiz.questions[realIndex];
+  
+  answers[qIndex] = selectedIndex;
+  if (selectedIndex === q.answer) {
+    score++;
+  }
+  
+  markAnswer(qIndex);
+  
+  // تحديث النتيجة المباشرة
+  const answeredCount = answers.filter(a => a !== null).length;
+  const correctCount = answers.filter((a, i) => a === currentQuiz.questions[shuffledOrder[i]].answer).length;
+  document.getElementById('live-score').textContent = `الصحيحة: ${correctCount} / ${answeredCount}`;
+  arabize(document.getElementById('live-score'));
 }
 
-function enterExamCode() {
-    const input = document.getElementById('examCodeInput').value.trim().toUpperCase();
-    const errorDiv = document.getElementById('examCodeError');
-    
-    if (!input) { 
-        errorDiv.textContent = '❌ يرجى إدخال الكود'; 
-        errorDiv.classList.remove('hidden'); 
-        return; 
+function markAnswer(qIdx) {
+  const realIndex = shuffledOrder[qIdx];
+  const q = currentQuiz.questions[realIndex];
+  const selected = answers[qIdx];
+  
+  const buttons = document.querySelectorAll('.opt');
+  buttons.forEach(btn => {
+    const i = parseInt(btn.dataset.i);
+    btn.disabled = true;
+    if (i === q.answer) {
+      btn.classList.add('ok');
+    } else if (i === selected && i !== q.answer) {
+      btn.classList.add('bad');
     }
+  });
+  
+  document.getElementById('ex-box').classList.add('show');
+}
+
+function navigate(direction) {
+  if (direction === 1 && qIndex === currentQuiz.questions.length - 1) {
+    showResults();
+    return;
+  }
+  
+  qIndex += direction;
+  if (qIndex < 0) qIndex = 0;
+  if (qIndex >= currentQuiz.questions.length) qIndex = currentQuiz.questions.length - 1;
+  
+  renderQuestion();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function showResults() {
+  document.getElementById('quiz-container').classList.add('hide');
+  document.getElementById('result-container').classList.remove('hide');
+  
+  const total = currentQuiz.questions.length;
+  const percentage = Math.round((score / total) * 100);
+  
+  document.getElementById('final-score').textContent = `${score} / ${total}`;
+  
+  let msg = '';
+  if (percentage >= 90) msg = 'ممتاز! أداء رائع 🌟';
+  else if (percentage >= 70) msg = 'جيد جدًا، استمر في التقدم!';
+  else if (percentage >= 50) msg = 'جيد، راجع الأخطاء وحاول مجددًا.';
+  else msg = 'تحتاج إلى مزيد من المراجعة، لا تستسلم 💪';
+  
+  document.getElementById('final-msg').textContent = `${percentage}% - ${msg}`;
+  
+  // قائمة المراجعة
+  const reviewList = document.getElementById('review-list');
+  reviewList.innerHTML = currentQuiz.questions.map((q, i) => {
+    const userAns = answers[i];
+    const isCorrect = userAns === q.answer;
+    const statusClass = isCorrect ? 'ok' : 'bad';
+    const statusText = userAns === null ? 'بدون إجابة' : (isCorrect ? '✓ صحيحة' : `✗ خاطئة (الصحيح: ${OPT_LETTERS[q.answer]})`);
     
-    const correctCode = getTodayExamCode();
-    
-    if (input !== correctCode) { 
-        errorDiv.textContent = '❌ الكود غير صحيح، يرجى التحقق والمحاولة مرة أخرى.'; 
-        errorDiv.classList.remove('hidden'); 
-        return; 
-    }
-    
-    errorDiv.classList.add('hidden');
-    startExam();
+    return `
+      <div class="review-item ${statusClass}">
+        <span>سؤال ${i + 1}</span>
+        <span>${statusText}</span>
+      </div>
+    `;
+  }).join('');
+  
+  arabize(document.getElementById('result-container'));
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-// ==========================================
-// 🎮 وظائف المنصة الأساسية
-// ==========================================
-function showMainMenu() {
-    document.getElementById('mainMenu').style.display = 'flex';
-    document.getElementById('loginSection').style.display = 'none';
-    document.getElementById('examWelcomeScreen').style.display = 'none';
-    document.getElementById('examLoginScreen').style.display = 'none';
-    document.getElementById('examCategoriesScreen').classList.remove('active');
-    document.getElementById('verbalChoiceScreen').classList.remove('active'); // ✅ إخفاء شاشة الاختيار
-    document.getElementById('verbalExamsList').classList.remove('active');
-    document.getElementById('frequentVerbalExamsList').classList.remove('active'); // ✅ إخفاء قائمة الأكثر تكرار
-    document.getElementById('quantitativeExamsList').classList.remove('active');
-    document.getElementById('errorMsg').classList.add('hidden');
-    document.getElementById('examCodeError').classList.add('hidden');
-    document.getElementById('loginCode').value = '';
-    document.getElementById('examCodeInput').value = '';
+function restartQuiz() {
+  // إعادة تشغيل نفس الاختبار
+  startQuiz(Object.keys(QUIZZES).find(key => QUIZZES[key] === currentQuiz));
 }
 
-function showLogin() {
-    document.getElementById('mainMenu').style.display = 'none';
-    document.getElementById('loginSection').style.display = 'block';
-}
-
-function showExamWelcome() {
-    document.getElementById('mainMenu').style.display = 'none';
-    document.getElementById('examWelcomeScreen').style.display = 'block';
-}
-
-function showExamLogin() {
-    document.getElementById('examWelcomeScreen').style.display = 'none';
-    document.getElementById('examLoginScreen').style.display = 'block';
-}
-
-function requestExamCode() {
-    const msg = "مرحباً أ. سلامة، أود الحصول على كود الدخول لاختبارات الأقسام. اسمي: ___________";
-    window.open(`https://wa.me/${TEACHER_WHATSAPP}?text=${encodeURIComponent(msg)}`, '_blank');
-}
-
-function startExam() {
-    document.getElementById('examLoginScreen').style.display = 'none';
-    document.getElementById('examCategoriesScreen').classList.add('active');
-    examSessionStart = Date.now();
-    lastActivityTime = Date.now();
-    startActivityMonitor();
-}
-
-// ✅ تعديل: عند الضغط على القسم اللفظي، تظهر شاشة الاختيار أولاً
-function showVerbalExams() {
-    document.getElementById('examCategoriesScreen').classList.remove('active');
-    document.getElementById('verbalChoiceScreen').classList.add('active');
-}
-
-// ✅ دالة جديدة: عرض اختبارات الأقسام العادية
-function showStandardVerbalExams() {
-    document.getElementById('verbalChoiceScreen').classList.remove('active');
-    document.getElementById('verbalExamsList').classList.add('active');
-    renderVerbalLinks();
-}
-
-// ✅ دالة جديدة: عرض اختبارات الأكثر تكرار
-function showFrequentVerbalExams() {
-    document.getElementById('verbalChoiceScreen').classList.remove('active');
-    document.getElementById('frequentVerbalExamsList').classList.add('active');
-    renderFrequentVerbalLinks();
-}
-
-function renderVerbalLinks() {
-    const container = document.getElementById('verbalLinksContainer');
-    container.innerHTML = verbalExams.map((exam) => `
-        <div class="exam-card" onclick="openExamInNewWindow('${exam.name}', '${exam.url}')">
-            <div class="exam-info">
-                <div class="exam-name">${exam.icon} ${exam.name}</div>
-                <div class="exam-desc">اضغط لبدء الاختبار في شاشة كاملة</div>
-            </div>
-            <div class="exam-icon">🚀</div>
-        </div>
-    `).join('');
-}
-
-// ✅ دالة جديدة: عرض روابط الأكثر تكرار
-function renderFrequentVerbalLinks() {
-    const container = document.getElementById('frequentLinksContainer');
-    container.innerHTML = frequentVerbalExams.map((exam) => `
-        <div class="exam-card" onclick="openExamInNewWindow('${exam.name}', '${exam.url}')" style="background: linear-gradient(135deg, #f5576c 0%, #ff9966 100%); box-shadow: 0 10px 25px rgba(245, 87, 108, 0.4);">
-            <div class="exam-info">
-                <div class="exam-name">${exam.icon} ${exam.name}</div>
-                <div class="exam-desc">اضغط لبدء الاختبار في شاشة كاملة</div>
-            </div>
-            <div class="exam-icon">🚀</div>
-        </div>
-    `).join('');
-}
-
-function showQuantitativeExams() {
-    document.getElementById('examCategoriesScreen').classList.remove('active');
-    document.getElementById('quantitativeExamsList').classList.add('active');
-    renderQuantitativeLinks();
-}
-
-function renderQuantitativeLinks() {
-    const container = document.getElementById('quantitativeLinksContainer');
-    container.innerHTML = quantitativeExams.map((exam) => `
-        <div class="exam-card" onclick="openExamInNewWindow('${exam.name}', '${exam.url}')" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); box-shadow: 0 10px 25px rgba(240, 147, 251, 0.4);">
-            <div class="exam-info">
-                <div class="exam-name">${exam.icon} ${exam.name}</div>
-                <div class="exam-desc">اضغط لبدء الاختبار في شاشة كاملة</div>
-            </div>
-            <div class="exam-icon">🚀</div>
-        </div>
-    `).join('');
-}
-
-function openExamInNewWindow(title, url) {
-    if (lastActivityTime) lastActivityTime = Date.now();
-    const newWindow = window.open(url, '_blank', 'noopener,noreferrer');
-    if (!newWindow) {
-        alert('⚠️ يرجى السماح بفتح النوافذ المنبثقة (Pop-ups) في متصفحك');
-    }
-}
-
-// ✅ دالة جديدة: الرجوع من القوائم إلى شاشة اختيار القسم اللفظي
-function backToVerbalChoice() {
-    document.getElementById('verbalExamsList').classList.remove('active');
-    document.getElementById('frequentVerbalExamsList').classList.remove('active');
-    document.getElementById('verbalChoiceScreen').classList.add('active');
-}
-
-function backToCategories() {
-    document.getElementById('verbalExamsList').classList.remove('active');
-    document.getElementById('frequentVerbalExamsList').classList.remove('active');
-    document.getElementById('verbalChoiceScreen').classList.remove('active');
-    document.getElementById('quantitativeExamsList').classList.remove('active');
-    document.getElementById('examCategoriesScreen').classList.add('active');
-}
-
-function startActivityMonitor() {
-    document.addEventListener('mousemove', updateActivity);
-    document.addEventListener('keypress', updateActivity);
-    document.addEventListener('click', updateActivity);
-    examTimeoutInterval = setInterval(checkExamTimeout, 5000);
-}
-
-function updateActivity() { lastActivityTime = Date.now(); }
-
-function checkExamTimeout() {
-    if (!lastActivityTime) return;
-    if (Date.now() - lastActivityTime >= EXAM_TIMEOUT) {
-        alert('⏰ انتهى وقت الجلسة بسبب عدم النشاط. يرجى طلب كود جديد.');
-        endExam();
-    }
-}
-
-function endExam() {
-    examSessionStart = null;
-    lastActivityTime = null;
-    if (examTimeoutInterval) clearInterval(examTimeoutInterval);
-    showMainMenu();
-}
-
-function showTeacherLogin() {
-    const password = prompt('أدخل كلمة مرور الدعم الفني:');
-    if (password === 'teacher123') {
-        document.getElementById('mainPage').style.display = 'none';
-        document.getElementById('teacherPage').style.display = 'block';
-        loadTeacherData();
-    } else if (password !== null) { alert('كلمة المرور غير صحيحة'); }
-}
-
-function login() {
-    const code = document.getElementById('loginCode').value.trim();
-    const errorMsg = document.getElementById('errorMsg');
-    const student = students.find(s => s.code === code);
-    if (!student) { errorMsg.textContent = '❌ الرمز غير صحيح'; errorMsg.classList.remove('hidden'); return; }
-    localStorage.setItem('currentStudent', JSON.stringify(student));
-    showStudentPage();
-}
-
-function showStudentPage() {
-    document.getElementById('mainPage').style.display = 'none';
-    document.getElementById('studentPage').style.display = 'block';
-    const student = JSON.parse(localStorage.getItem('currentStudent'));
-    document.getElementById('welcomeText').textContent = `مرحباً ${student.name} 👋`;
-    loadStudentData(student);
-}
-
-function loadStudentData(student) {
-    const data = studentsData[student.code];
-    const contentList = document.getElementById('contentList');
-    let contentHtml = '';
-    data.content.forEach(item => {
-        contentHtml += `<a href="${item.url}" target="_blank" class="content-link">📖 ${item.title}</a>`;
-    });
-    contentList.innerHTML = contentHtml || '<div class="empty-message">لا يوجد محتوى حالياً</div>';
-    
-    const perfList = document.getElementById('performanceList');
-    if (data.performance) {
-        perfList.innerHTML = `<a href="${data.performance}" target="_blank" class="performance-link">📈 عرض نموذج تحليل الأداء</a>`;
-    } else {
-        perfList.innerHTML = '<div class="empty-message">غير متاح حالياً</div>';
-    }
-}
-
-function loadTeacherData() {
-    const studentsList = document.getElementById('studentsList');
-    let html = '';
-    students.forEach(s => { html += `<div class="bg-white p-3 rounded-lg mb-2 flex justify-between items-center shadow-sm"><span><strong>${s.name}</strong></span><span class="bg-yellow-200 px-3 py-1 rounded font-mono font-bold">${s.code}</span></div>`; });
-    studentsList.innerHTML = html;
-}
-
-function logout() {
-    localStorage.removeItem('currentStudent');
-    document.getElementById('mainPage').style.display = 'block';
-    document.getElementById('studentPage').style.display = 'none';
-    document.getElementById('teacherPage').style.display = 'none';
-    showMainMenu();
-}
-
-window.onload = function() {
-    const saved = localStorage.getItem('currentStudent');
-    if (saved) showStudentPage();
-};
+// تهيئة التطبيق عند التحميل
+initMenu();
 </script>
 </body>
 </html>
