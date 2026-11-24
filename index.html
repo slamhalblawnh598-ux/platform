@@ -8,7 +8,6 @@
 <script src="https://cdn.tailwindcss.com"></script>
 <style>
 * { font-family: 'Tajawal', sans-serif; margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-
 body { 
     background: url('https://i.ibb.co/pBPnrpkZ/cover.jpg') no-repeat center center fixed; 
     background-size: cover; 
@@ -17,46 +16,23 @@ body {
     overflow-x: hidden; 
     position: relative;
 }
-
 body::before {
     content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(255, 255, 255, 0.5);
-    z-index: -1;
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(255, 255, 255, 0.5); z-index: -1;
 }
-
 .container { max-width: 900px; margin: 0 auto; position: relative; z-index: 1; }
 .news-ticker { background: linear-gradient(90deg, #d32f2f, #b71c1c); color: white; padding: 12px 0; border-radius: 12px; margin-bottom: 20px; box-shadow: 0 5px 15px rgba(211, 47, 47, 0.4); overflow: hidden; }
 .ticker-wrapper { display: flex; align-items: center; }
 .ticker-label { background: #ff6b6b; padding: 6px 15px; margin-right: 15px; border-radius: 6px; white-space: nowrap; font-weight: bold; font-size: 14px; }
 .ticker-content { display: inline-block; white-space: nowrap; animation: scroll-right 15s linear infinite; padding-left: 20px; }
 @keyframes scroll-right { 0% { transform: translateX(-100%); } 100% { transform: translateX(100%); } }
-
 .header { 
-    background: rgba(255, 255, 255, 0.85); 
-    backdrop-filter: blur(10px);
-    padding: 30px 20px; 
-    border-radius: 20px; 
-    text-align: center; 
-    margin-bottom: 25px; 
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2); 
+    background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(10px);
+    padding: 30px 20px; border-radius: 20px; text-align: center; margin-bottom: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); 
 }
-
-.logo-container { 
-    width: 140px; 
-    height: 140px; 
-    margin: 0 auto 20px; 
-    border-radius: 50%; 
-    overflow: hidden; 
-    border: 5px solid #ffffff; 
-    box-shadow: 0 8px 25px rgba(0,0,0,0.3); 
-}
+.logo-container { width: 140px; height: 140px; margin: 0 auto 20px; border-radius: 50%; overflow: hidden; border: 5px solid #ffffff; box-shadow: 0 8px 25px rgba(0,0,0,0.3); }
 .logo-container img { width: 100%; height: 100%; object-fit: cover; }
-
 .header h1 { color: #667eea; font-size: 26px; margin-bottom: 8px; font-weight: bold; }
 .header p { color: #444; font-size: 16px; font-weight: 500; }
 .social-links { display: flex; justify-content: center; gap: 15px; margin-top: 15px; padding-top: 15px; border-top: 2px solid rgba(0,0,0,0.1); }
@@ -66,25 +42,21 @@ body::before {
 .social-icon.whatsapp { background: linear-gradient(135deg, #25D366, #128C7E); }
 .social-icon.tiktok { background: linear-gradient(135deg, #000, #25F4EE 50%, #FE2C55); }
 .social-icon.instagram { background: linear-gradient(45deg, #f09433, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888); }
-
 .main-menu { display: flex; flex-direction: column; gap: 15px; max-width: 500px; margin: 0 auto; }
 @media (min-width: 600px) { .main-menu { flex-direction: row; max-width: 700px; } }
 .menu-btn { padding: 25px 20px; border: none; border-radius: 18px; font-size: 18px; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; box-shadow: 0 8px 20px rgba(0,0,0,0.25); color: white; width: 100%; }
 .menu-btn:active { transform: scale(0.97); }
 .menu-btn.content-btn { background: linear-gradient(135deg, #667eea, #764ba2); }
 .menu-btn.exam-btn { background: linear-gradient(135deg, #ff9966, #ff5e62); }
-
 .glass { background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(10px); border-radius: 20px; padding: 25px; }
 .btn-primary { background: linear-gradient(135deg, #667eea, #764ba2); color: white; padding: 16px; border: none; border-radius: 12px; font-size: 17px; font-weight: bold; cursor: pointer; width: 100%; margin-top: 15px; }
 .btn-primary:active { transform: scale(0.98); }
 .btn-secondary { background: #f0f0f0; color: #333; padding: 14px; border: none; border-radius: 10px; cursor: pointer; width: 100%; margin-top: 10px; font-weight: bold; }
 .btn-whatsapp { background: linear-gradient(135deg, #25D366, #128C7E); color: white; padding: 16px; border: none; border-radius: 12px; font-size: 17px; font-weight: bold; cursor: pointer; width: 100%; display: flex; align-items: center; justify-content: center; gap: 10px; }
-
 .warning-box { background: #fff3cd; border-right: 5px solid #ff9966; padding: 18px; border-radius: 12px; margin: 20px 0; text-align: right; }
 .encouragement-box { background: #e3f2fd; border-right: 5px solid #2196f3; padding: 18px; border-radius: 12px; margin: 20px 0; text-align: right; }
 input[type="text"] { width: 100%; padding: 16px; border: 2px solid #e0e0e0; border-radius: 12px; font-size: 18px; text-align: center; margin-bottom: 15px; outline: none; }
 input[type="text"]:focus { border-color: #667eea; }
-
 #examWelcomeScreen { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(102, 126, 234, 0.9); backdrop-filter: blur(5px); z-index: 999; overflow-y: auto; padding: 15px; }
 .welcome-content { max-width: 600px; margin: 40px auto; background: rgba(255, 255, 255, 0.98); border-radius: 25px; padding: 40px 25px; box-shadow: 0 20px 60px rgba(0,0,0,0.3); text-align: center; animation: welcomeSlideIn 0.8s ease-out; }
 @keyframes welcomeSlideIn { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
@@ -98,7 +70,6 @@ input[type="text"]:focus { border-color: #667eea; }
 .launch-btn { background: linear-gradient(135deg, #ff6b6b, #feca57); color: white; padding: 18px 40px; border: none; border-radius: 50px; font-size: 20px; font-weight: 900; font-family: 'Cairo', sans-serif; cursor: pointer; box-shadow: 0 10px 30px rgba(255, 107, 107, 0.4); display: inline-flex; align-items: center; gap: 10px; width: 100%; justify-content: center; }
 @media (min-width: 600px) { .launch-btn { width: auto; } }
 .launch-btn:active { transform: scale(0.95); }
-
 .categories-screen { display: none; min-height: 70vh; align-items: center; justify-content: center; }
 .categories-screen.active { display: flex !important; }
 .category-btn { padding: 40px 30px; border-radius: 24px; box-shadow: 0 15px 35px rgba(0,0,0,0.2); transition: all 0.4s; display: flex; flex-direction: column; align-items: center; gap: 15px; border: none; cursor: pointer; color: white; font-weight: bold; width: 100%; }
@@ -109,76 +80,125 @@ input[type="text"]:focus { border-color: #667eea; }
 .category-btn .subtitle { font-size: 14px; opacity: 0.9; }
 .verbal-btn { background: linear-gradient(135deg, #667eea, #764ba2); }
 .quantitative-btn { background: linear-gradient(135deg, #f093fb, #f5576c); }
-
 .exams-list-screen { display: none; }
 .exams-list-screen.active { display: block !important; }
 .hidden { display: none !important; }
 .teacher-link { text-align: center; margin-top: 25px; }
 .teacher-link a { color: #333; text-decoration: none; font-weight: bold; font-size: 16px; background: rgba(255,255,255,0.6); padding: 8px 16px; border-radius: 20px; }
 .footer-decoration { text-align: center; margin-top: 30px; color: #333; opacity: 0.8; font-size: 14px; font-weight: bold; }
-
 .student-page, .teacher-page, #loginSection, #examWelcomeScreen, #examLoginScreen, #examCategoriesScreen, #verbalChoiceScreen, #verbalExamsList, #frequentVerbalExamsList, #quantitativeChoiceScreen, #quantitativeExamsList { display: none; }
-
-.exam-card {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    padding: 25px;
-    border-radius: 20px;
-    cursor: pointer;
-    transition: all 0.3s;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
-    margin-bottom: 15px;
-}
+.exam-card { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 25px; border-radius: 20px; cursor: pointer; transition: all 0.3s; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4); margin-bottom: 15px; }
 .exam-card:hover { transform: translateY(-5px); box-shadow: 0 15px 35px rgba(102, 126, 234, 0.6); }
 .exam-card:active { transform: translateY(-2px); }
 .exam-card .exam-info { text-align: right; flex: 1; }
 .exam-card .exam-name { font-size: 20px; font-weight: 900; margin-bottom: 5px; }
 .exam-card .exam-desc { font-size: 14px; opacity: 0.9; }
 .exam-card .exam-icon { font-size: 40px; margin-right: 15px; }
+.content-link { display: block; padding: 16px; background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); border-right: 4px solid #3b82f6; border-radius: 12px; margin-bottom: 12px; color: #1e40af; font-weight: bold; text-decoration: none; transition: all 0.3s; }
+.content-link:hover { transform: translateX(-5px); box-shadow: 0 5px 15px rgba(59, 130, 246, 0.3); background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%); }
+.performance-link { display: block; padding: 20px; background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-right: 4px solid #10b981; border-radius: 12px; color: #065f46; font-weight: bold; text-decoration: none; text-align: center; transition: all 0.3s; }
+.performance-link:hover { transform: scale(1.02); box-shadow: 0 5px 15px rgba(16, 185, 129, 0.3); }
+.empty-message { text-align: center; padding: 30px; color: #6b7280; font-size: 16px; font-weight: bold; }
 
-.content-link {
-    display: block;
-    padding: 16px;
-    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
-    border-right: 4px solid #3b82f6;
-    border-radius: 12px;
-    margin-bottom: 12px;
-    color: #1e40af;
-    font-weight: bold;
-    text-decoration: none;
-    transition: all 0.3s;
+#newStudentWelcomeScreen, #newStudentContentScreen, #newStudentExamScreen { display: none !important; }
+#newStudentWelcomeScreen.active-screen, #newStudentContentScreen.active-screen { 
+    display: block !important; position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 9998; 
+    overflow-y: auto; padding: 20px; background: rgba(102, 126, 234, 0.95); backdrop-filter: blur(5px); 
 }
-.content-link:hover {
-    transform: translateX(-5px);
-    box-shadow: 0 5px 15px rgba(59, 130, 246, 0.3);
-    background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);
+#newStudentContentScreen.active-screen { background: rgba(255, 255, 255, 0.98); }
+#newStudentExamScreen.active-screen { 
+    display: block !important; position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 9999; 
+    overflow-y: auto; background: #f3f6fb; font-family: 'Cairo', 'Tajawal', system-ui, sans-serif; 
+    color: #0f172a; line-height: 1.7; padding-bottom: 4rem; 
 }
-.performance-link {
-    display: block;
-    padding: 20px;
-    background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
-    border-right: 4px solid #10b981;
-    border-radius: 12px;
-    color: #065f46;
-    font-weight: bold;
-    text-decoration: none;
-    text-align: center;
-    transition: all 0.3s;
-}
-.performance-link:hover {
-    transform: scale(1.02);
-    box-shadow: 0 5px 15px rgba(16, 185, 129, 0.3);
-}
-.empty-message {
-    text-align: center;
-    padding: 30px;
-    color: #6b7280;
-    font-size: 16px;
-    font-weight: bold;
-}
+.new-student-actions { display: flex; flex-direction: column; gap: 15px; max-width: 500px; margin: 20px auto 0; }
+.new-student-btn { padding: 25px 20px; border: none; border-radius: 18px; font-size: 20px; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; box-shadow: 0 8px 20px rgba(0,0,0,0.25); color: white; width: 100%; transition: transform 0.2s; }
+.new-student-btn:hover { transform: translateY(-3px); }
+.new-student-btn.content-btn { background: linear-gradient(135deg, #667eea, #764ba2); }
+.new-student-btn.exam-btn { background: linear-gradient(135deg, #ff9966, #ff5e62); }
+
+.exam-top-header { background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%); color: #ffffff; padding: 1.25rem 1rem; box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08); position: sticky; top: 0; z-index: 100; }
+.exam-header-container { max-width: 960px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; }
+.brand-area h1 { font-size: 1.35rem; font-weight: 800; display: flex; align-items: center; gap: 0.5rem; }
+.exam-header-actions { display: flex; gap: 0.65rem; }
+.exam-btn { font-family: inherit; font-weight: 700; font-size: 0.9rem; padding: 0.6rem 1.1rem; border-radius: 8px; border: none; cursor: pointer; display: inline-flex; align-items: center; gap: 0.45rem; transition: all 0.2s; }
+.exam-btn-secondary { background: rgba(255, 255, 255, 0.12); color: #ffffff; border: 1px solid rgba(255, 255, 255, 0.22); }
+.exam-btn-secondary:hover { background: rgba(255, 255, 255, 0.2); }
+.exam-btn-primary { background: #1e40af; color: #ffffff; }
+.exam-btn-primary:hover:not(:disabled) { background: #1d4ed8; }
+.exam-btn-finish { background: linear-gradient(135deg, #1e40af 0%, #0d9488 100%); color: #ffffff; padding: 0.75rem 1.6rem; font-size: 1rem; box-shadow: 0 4px 14px rgba(30, 64, 175, 0.25); }
+.exam-btn-finish:hover { transform: translateY(-1px); }
+.exam-main-wrapper { max-width: 960px; margin: 1.5rem auto 0; padding: 0 1rem; }
+.exam-control-bar { background: #ffffff; border-radius: 16px; padding: 1rem 1.25rem; box-shadow: 0 2px 8px rgba(15, 23, 42, 0.05); border: 1px solid #e2e8f0; margin-bottom: 1.25rem; }
+.exam-control-top { display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; }
+.exam-stats-group { display: flex; align-items: center; gap: 0.75rem; }
+.exam-badge-pill { background: #eff6ff; color: #1e40af; font-weight: 700; font-size: 0.85rem; padding: 0.35rem 0.85rem; border-radius: 999px; border: 1px solid #bfdbfe; display: inline-flex; align-items: center; gap: 0.4rem; }
+.exam-progress-track { width: 100%; height: 10px; background: #e2e8f0; border-radius: 999px; overflow: hidden; margin-top: 0.9rem; }
+.exam-progress-fill { height: 100%; width: 0%; background: linear-gradient(90deg, #2563eb, #0d9488); border-radius: 999px; transition: width 0.35s ease; }
+.exam-question-nav { display: flex; flex-wrap: wrap; gap: 0.45rem; justify-content: center; margin-bottom: 1.25rem; }
+.exam-nav-dot { width: 38px; height: 38px; border-radius: 10px; border: 1px solid #e2e8f0; background: #ffffff; color: #0f172a; font-weight: 700; font-size: 0.9rem; cursor: pointer; transition: all 0.15s; display: inline-flex; align-items: center; justify-content: center; }
+.exam-nav-dot:hover { border-color: #1e40af; }
+.exam-nav-dot.current { border: 2px solid #1e40af; box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15); }
+.exam-nav-dot.answered { background: #eff6ff; color: #1e40af; border-color: #93c5fd; }
+.exam-question-card { background: #ffffff; border-radius: 16px; padding: 1.5rem; box-shadow: 0 2px 8px rgba(15, 23, 42, 0.05); border: 1px solid #e2e8f0; margin-bottom: 1.25rem; }
+.exam-q-header { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; padding-bottom: 0.85rem; margin-bottom: 1.1rem; border-bottom: 1px dashed #e2e8f0; }
+.exam-q-number-badge { display: inline-flex; align-items: center; gap: 0.5rem; font-weight: 800; font-size: 1rem; color: #1e40af; }
+.exam-q-num-circle { width: 30px; height: 30px; background: #1e40af; color: #fff; border-radius: 8px; display: inline-flex; align-items: center; justify-content: center; font-size: 0.9rem; }
+.exam-subject-tag { font-size: 0.8rem; font-weight: 700; padding: 0.25rem 0.75rem; border-radius: 999px; }
+.exam-tag-chem { background: #ecfdf5; color: #047857; border: 1px solid #a7f3d0; }
+.exam-tag-math { background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; }
+.exam-tag-phys { background: #fef3c7; color: #b45309; border: 1px solid #fde68a; }
+.exam-q-body-layout { display: flex; flex-direction: column; gap: 1.25rem; margin-bottom: 1.35rem; }
+@media (min-width: 720px) { .exam-q-body-layout.has-figure { flex-direction: row; align-items: center; justify-content: space-between; } }
+.exam-q-prompt { font-size: 1.18rem; font-weight: 700; color: #0f172a; flex: 1; }
+.exam-q-figure-box { background: #ffffff; border: 1.5px solid #e2e8f0; border-radius: 12px; padding: 1rem 1.35rem; display: flex; align-items: center; justify-content: center; min-width: 240px; direction: ltr; box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.02); }
+.exam-math-expr { font-family: 'Times New Roman', Georgia, serif; font-weight: 700; direction: ltr; unicode-bidi: isolate; display: inline-block; color: #0f172a; }
+.exam-math-expr sub { font-size: 0.74em; line-height: 0; position: relative; vertical-align: baseline; bottom: -0.25em; }
+.exam-math-expr sup { font-size: 0.74em; line-height: 0; position: relative; vertical-align: baseline; top: -0.45em; }
+.exam-math-inline-block { display: inline-flex; align-items: center; gap: 0.45rem; direction: ltr; vertical-align: middle; font-family: 'Times New Roman', Georgia, serif; font-weight: 700; font-size: 1.28rem; margin: 0.25rem 0.35rem; }
+.exam-lim-box { display: inline-flex; flex-direction: column; align-items: center; line-height: 1.05; }
+.exam-lim-word { font-size: 1.25rem; font-weight: 700; }
+.exam-lim-sub { font-size: 0.85rem; margin-top: 2px; }
+.exam-frac-box { display: inline-flex; flex-direction: column; align-items: center; vertical-align: middle; text-align: center; margin: 0 3px; }
+.exam-frac-num { border-bottom: 2px solid #0f172a; padding: 0 6px 2px; line-height: 1.2; }
+.exam-frac-den { padding: 2px 6px 0; line-height: 1.2; }
+.exam-sqrt-box { display: inline-flex; align-items: center; vertical-align: middle; }
+.exam-sqrt-sym { font-size: 1.22em; line-height: 1; margin-right: 1px; }
+.exam-sqrt-rad { border-top: 1.8px solid #0f172a; padding: 1px 3px 0; line-height: 1.05; }
+.exam-options-grid { display: grid; grid-template-columns: 1fr; gap: 0.75rem; }
+@media (min-width: 600px) { .exam-options-grid { grid-template-columns: repeat(2, 1fr); } }
+.exam-option-btn { font-family: inherit; width: 100%; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 12px; padding: 0.85rem 1rem; display: flex; align-items: center; gap: 0.85rem; cursor: pointer; text-align: right; transition: all 0.18s; position: relative; }
+.exam-option-btn:hover:not(:disabled) { background: #eff6ff; border-color: #93c5fd; transform: translateY(-1px); }
+.exam-option-btn:disabled { cursor: default; }
+.exam-opt-letter { width: 32px; height: 32px; border-radius: 50%; border: 2px solid #334155; color: #0f172a; font-family: 'Times New Roman', serif; font-weight: 800; font-size: 1rem; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; background: #ffffff; transition: all 0.18s; }
+.exam-opt-text { font-size: 1.05rem; font-weight: 700; color: #0f172a; flex: 1; }
+.exam-opt-text.ltr-opt { direction: ltr; text-align: right; font-family: 'Times New Roman', Georgia, serif; font-size: 1.15rem; }
+.exam-option-btn.selected { background: #eff6ff; border-color: #1e40af; }
+.exam-option-btn.selected .exam-opt-letter { background: #1e40af; border-color: #1e40af; color: #ffffff; }
+.exam-option-btn.correct-ans { background: #dcfce7 !important; border-color: #15803d !important; }
+.exam-option-btn.correct-ans .exam-opt-letter { background: #15803d !important; border-color: #15803d !important; color: #ffffff !important; }
+.exam-option-btn.wrong-ans { background: #fee2e2 !important; border-color: #b91c1c !important; }
+.exam-option-btn.wrong-ans .exam-opt-letter { background: #b91c1c !important; border-color: #b91c1c !important; color: #ffffff !important; }
+.exam-opt-frac { display: inline-flex; align-items: center; gap: 4px; direction: ltr; font-family: 'Times New Roman', Georgia, serif; font-weight: 700; font-size: 1.12rem; }
+.exam-opt-frac .frac-num { border-bottom-width: 1.5px; padding: 0 4px 1px; font-size: 0.95rem; }
+.exam-opt-frac .frac-den { padding: 1px 4px 0; font-size: 0.95rem; }
+.exam-note-banner { margin-top: 0.9rem; background: #fef9c3; border: 1px solid #fde047; color: #854d0e; padding: 0.65rem 0.95rem; border-radius: 8px; font-size: 0.86rem; font-weight: 600; display: flex; align-items: flex-start; gap: 0.5rem; }
+.exam-explanation-box { margin-top: 1.1rem; padding: 0.95rem 1.15rem; border-radius: 12px; background: #f0fdf4; border-right: 4px solid #15803d; color: #14532d; font-size: 0.95rem; display: none; }
+.exam-explanation-box.show { display: block; }
+.exam-explanation-box.wrong-exp { background: #fef2f2; border-right-color: #b91c1c; color: #7f1d1d; }
+.exam-explanation-title { font-weight: 800; margin-bottom: 0.25rem; display: flex; align-items: center; gap: 0.4rem; }
+.exam-footer-controls { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.75rem; margin-top: 1.25rem; }
+.exam-results-panel { background: #ffffff; border-radius: 16px; padding: 2rem 1.5rem; box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08); border: 2px solid #bfdbfe; text-align: center; margin-bottom: 1.5rem; display: none; }
+.exam-results-panel.show { display: block; }
+.exam-score-circle { width: 130px; height: 130px; border-radius: 50%; margin: 0 auto 1rem; display: flex; flex-direction: column; align-items: center; justify-content: center; background: linear-gradient(135deg, #eff6ff, #ecfdf5); border: 5px solid #1e40af; }
+.exam-score-percent { font-size: 2rem; font-weight: 800; color: #1e40af; line-height: 1.1; }
+.exam-score-fraction { font-size: 0.95rem; font-weight: 700; color: #475569; }
+.exam-results-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 0.85rem; max-width: 600px; margin: 1.25rem auto; }
+.exam-stat-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 0.75rem; }
+.exam-stat-val { font-size: 1.35rem; font-weight: 800; }
+.exam-stat-lbl { font-size: 0.82rem; color: #475569; font-weight: 600; }
+.exam-toast { position: fixed; bottom: 1.5rem; left: 50%; transform: translateX(-50%) translateY(100px); background: #0f172a; color: #ffffff; padding: 0.75rem 1.35rem; border-radius: 999px; font-weight: 700; font-size: 0.9rem; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25); z-index: 99999; opacity: 0; transition: all 0.3s; display: flex; align-items: center; gap: 0.5rem; }
+.exam-toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
 </style>
 </head>
 <body>
@@ -222,23 +242,11 @@ input[type="text"]:focus { border-color: #667eea; }
         <div id="examWelcomeScreen">
             <div class="welcome-content">
                 <div class="welcome-icon">🎯</div>
-                <h2 class="welcome-title">
-                    مو حفظ وبس...<br>
-                    <span class="highlight-word">أتقن</span> الاختبارات بالتحليل والفهم
-                </h2>
-                <p class="welcome-subtitle">
-                    ونتحدّاك ما تنافس على الـ <span class="highlight-word">100%</span><br>
-                    وعلى قد التحدي خلك 💪
-                </p>
-                <button onclick="showExamLogin()" class="launch-btn">
-                    <span>🚀</span>
-                    <span>انطلق الآن هنا</span>
-                    <span>→</span>
-                </button>
+                <h2 class="welcome-title">مو حفظ وبس...<br><span class="highlight-word">أتقن</span> الاختبارات بالتحليل والفهم</h2>
+                <p class="welcome-subtitle">ونتحدّاك ما تنافس على الـ <span class="highlight-word">100%</span><br>وعلى قد التحدي خلك 💪</p>
+                <button onclick="showExamLogin()" class="launch-btn"><span>🚀</span><span>انطلق الآن هنا</span><span>→</span></button>
                 <div class="mt-6">
-                    <button onclick="showMainMenu()" class="btn-secondary" style="background: transparent; border: 2px solid #cbd5e0; color: #4a5568;">
-                        ← رجوع للقائمة الرئيسية
-                    </button>
+                    <button onclick="showMainMenu()" class="btn-secondary" style="background: transparent; border: 2px solid #cbd5e0; color: #4a5568;">← رجوع للقائمة الرئيسية</button>
                 </div>
             </div>
         </div>
@@ -247,20 +255,12 @@ input[type="text"]:focus { border-color: #667eea; }
             <div class="text-6xl mb-4">🔒</div>
             <h2 class="text-2xl font-black text-gray-800 mb-2">اختبار محمي</h2>
             <p class="text-gray-500 text-sm mb-6">هذا القسم محمي بكود خاص. اضغط على أيقونة واتساب لطلب كود الدخول من المعلم</p>
-            
-            <button onclick="requestExamCode()" class="btn-whatsapp mb-6">
-                📱 اطلب كود الدخول عبر واتساب
-            </button>
-            
+            <button onclick="requestExamCode()" class="btn-whatsapp mb-6">📱 اطلب كود الدخول عبر واتساب</button>
             <div class="warning-box">
                 <strong class="text-lg" style="color: #9c4221;">⚠️ تنبيه مهم:</strong>
                 <p class="text-gray-700 mt-2">الكود يتغير يومياً تلقائياً<br>لا تغادر صفحة الاختبار<br>في حال الخروج ستحتاج كوداً جديداً</p>
             </div>
-            
-            <div class="encouragement-box">
-                <p class="text-gray-700">💪 الاختبارات ستساعدك على تقييم مستواك ومعرفة نقاط قوتك</p>
-            </div>
-            
+            <div class="encouragement-box"><p class="text-gray-700">💪 الاختبارات ستساعدك على تقييم مستواك ومعرفة نقاط قوتك</p></div>
             <input id="examCodeInput" type="text" maxlength="10" placeholder="أدخل كود اليوم هنا">
             <button onclick="enterExamCode()" class="btn-primary">دخول الاختبار</button>
             <button onclick="showMainMenu()" class="btn-secondary">رجوع للقائمة الرئيسية</button>
@@ -273,118 +273,159 @@ input[type="text"]:focus { border-color: #667eea; }
                 <h2 class="text-3xl font-black text-gray-800 mb-3">اختر قسم الاختبار</h2>
                 <p class="text-gray-600 text-lg">اختر القسم الذي ترغب في بدء الاختبار فيه</p>
             </div>
-            
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-2xl mx-auto">
-                <button onclick="showVerbalExams()" class="category-btn verbal-btn">
-                    <span class="icon">📖</span>
-                    <span class="title">القسم اللفظي</span>
-                    <span class="subtitle">اضغط لبدء الاختبارات</span>
-                </button>
-                
-                <button onclick="showQuantitativeExams()" class="category-btn quantitative-btn">
-                    <span class="icon">🔢</span>
-                    <span class="title">القسم الكمي</span>
-                    <span class="subtitle">اضغط لبدء الاختبارات</span>
-                </button>
+                <button onclick="showVerbalExams()" class="category-btn verbal-btn"><span class="icon">📖</span><span class="title">القسم اللفظي</span><span class="subtitle">اضغط لبدء الاختبارات</span></button>
+                <button onclick="showQuantitativeExams()" class="category-btn quantitative-btn"><span class="icon">🔢</span><span class="title">القسم الكمي</span><span class="subtitle">اضغط لبدء الاختبارات</span></button>
             </div>
-            
-            <div class="mt-10">
-                <button onclick="showMainMenu()" class="btn-secondary max-w-xs mx-auto">رجوع للقائمة الرئيسية</button>
-            </div>
+            <div class="mt-10"><button onclick="showMainMenu()" class="btn-secondary max-w-xs mx-auto">رجوع للقائمة الرئيسية</button></div>
         </div>
 
-        <!-- شاشة اختيار نوع الاختبار اللفظي -->
         <div id="verbalChoiceScreen" class="exams-list-screen glass max-w-2xl mx-auto mt-6 text-center">
             <div class="flex justify-between items-center mb-6 border-b pb-4">
-                <h2 class="text-2xl font-black text-gray-800 flex items-center gap-2">
-                    <span>📖</span> القسم اللفظي
-                </h2>
+                <h2 class="text-2xl font-black text-gray-800 flex items-center gap-2"><span>📖</span> القسم اللفظي</h2>
                 <button onclick="backToCategories()" class="bg-gray-200 text-gray-800 px-4 py-2 rounded-lg font-bold hover:bg-gray-300 transition">رجوع</button>
             </div>
-            
             <p class="text-gray-600 text-lg mb-8">اختر نوع الاختبارات التي ترغب في التدرب عليها</p>
-            
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <button onclick="showStandardVerbalExams()" class="category-btn verbal-btn" style="padding: 30px 20px;">
-                    <span class="icon text-5xl">📚</span>
-                    <span class="title text-xl">اختبارات الأقسام</span>
-                    <span class="subtitle">النماذج الأساسية والمتنوعة</span>
-                </button>
-                
-                <button onclick="showFrequentVerbalExams()" class="category-btn" style="background: linear-gradient(135deg, #f5576c, #ff9966); padding: 30px 20px;">
-                    <span class="icon text-5xl">🔥</span>
-                    <span class="title text-xl">الأكثر تكرار</span>
-                    <span class="subtitle">نماذج مختارة ومحدثة</span>
-                </button>
+                <button onclick="showStandardVerbalExams()" class="category-btn verbal-btn" style="padding: 30px 20px;"><span class="icon text-5xl">📚</span><span class="title text-xl">اختبارات الأقسام</span><span class="subtitle">النماذج الأساسية والمتنوعة</span></button>
+                <button onclick="showFrequentVerbalExams()" class="category-btn" style="background: linear-gradient(135deg, #f5576c, #ff9966); padding: 30px 20px;"><span class="icon text-5xl">🔥</span><span class="title text-xl">الأكثر تكرار</span><span class="subtitle">نماذج مختارة ومحدثة</span></button>
             </div>
         </div>
 
-        <!-- قائمة اختبارات الأقسام اللفظية -->
         <div id="verbalExamsList" class="exams-list-screen glass max-w-2xl mx-auto mt-6">
             <div class="flex justify-between items-center mb-6 border-b pb-4">
-                <h2 class="text-2xl font-black text-gray-800 flex items-center gap-2">
-                    <span>📚</span> اختبارات الأقسام اللفظية
-                </h2>
+                <h2 class="text-2xl font-black text-gray-800 flex items-center gap-2"><span>📚</span> اختبارات الأقسام اللفظية</h2>
                 <button onclick="backToVerbalChoice()" class="bg-gray-200 text-gray-800 px-4 py-2 rounded-lg font-bold hover:bg-gray-300 transition">رجوع</button>
             </div>
             <div id="verbalLinksContainer"></div>
         </div>
 
-        <!-- قائمة اختبارات الأكثر تكرار (محدثة بالروابط الجديدة) -->
         <div id="frequentVerbalExamsList" class="exams-list-screen glass max-w-2xl mx-auto mt-6">
             <div class="flex justify-between items-center mb-6 border-b pb-4">
-                <h2 class="text-2xl font-black text-gray-800 flex items-center gap-2">
-                    <span>🔥</span> اختبارات الأكثر تكرار
-                </h2>
+                <h2 class="text-2xl font-black text-gray-800 flex items-center gap-2"><span>🔥</span> اختبارات الأكثر تكرار</h2>
                 <button onclick="backToVerbalChoice()" class="bg-gray-200 text-gray-800 px-4 py-2 rounded-lg font-bold hover:bg-gray-300 transition">رجوع</button>
             </div>
             <div id="frequentLinksContainer"></div>
         </div>
 
-        <!-- ✅ شاشة اختيار نوع الاختبار الكمي (جديدة) -->
         <div id="quantitativeChoiceScreen" class="exams-list-screen glass max-w-2xl mx-auto mt-6 text-center">
             <div class="flex justify-between items-center mb-6 border-b pb-4">
-                <h2 class="text-2xl font-black text-gray-800 flex items-center gap-2">
-                    <span>🔢</span> القسم الكمي
-                </h2>
+                <h2 class="text-2xl font-black text-gray-800 flex items-center gap-2"><span>🔢</span> القسم الكمي</h2>
                 <button onclick="backToCategories()" class="bg-gray-200 text-gray-800 px-4 py-2 rounded-lg font-bold hover:bg-gray-300 transition">رجوع</button>
             </div>
-            
             <p class="text-gray-600 text-lg mb-8">اختر نوع الاختبارات الكمية التي ترغب في التدرب عليها</p>
-            
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <button onclick="showStandardQuantitativeExams()" class="category-btn quantitative-btn" style="padding: 30px 20px;">
-                    <span class="icon text-5xl">📊</span>
-                    <span class="title text-xl">اختبارات الأقسام</span>
-                    <span class="subtitle">النماذج الأساسية والمتنوعة</span>
-                </button>
-                
-                <button onclick="openGeometryExams()" class="category-btn" style="background: linear-gradient(135deg, #4facfe, #00f2fe); padding: 30px 20px;">
-                    <span class="icon text-5xl">📐</span>
-                    <span class="title text-xl">اختبارات الهندسة</span>
-                    <span class="subtitle">اختبارات متخصصة في الهندسة والقياس</span>
-                </button>
+                <button onclick="showStandardQuantitativeExams()" class="category-btn quantitative-btn" style="padding: 30px 20px;"><span class="icon text-5xl">📊</span><span class="title text-xl">اختبارات الأقسام</span><span class="subtitle">النماذج الأساسية والمتنوعة</span></button>
+                <button onclick="openGeometryExams()" class="category-btn" style="background: linear-gradient(135deg, #4facfe, #00f2fe); padding: 30px 20px;"><span class="icon text-5xl">📐</span><span class="title text-xl">اختبارات الهندسة</span><span class="subtitle">اختبارات متخصصة في الهندسة والقياس</span></button>
             </div>
         </div>
 
-        <!-- قسم اختبارات القسم الكمي -->
         <div id="quantitativeExamsList" class="exams-list-screen glass max-w-2xl mx-auto mt-6">
             <div class="flex justify-between items-center mb-6 border-b pb-4">
-                <h2 class="text-2xl font-black text-gray-800 flex items-center gap-2">
-                    <span>🔢</span> اختبارات الأقسام الكمية
-                </h2>
+                <h2 class="text-2xl font-black text-gray-800 flex items-center gap-2"><span>🔢</span> اختبارات الأقسام الكمية</h2>
                 <button onclick="backToQuantitativeChoice()" class="bg-gray-200 text-gray-800 px-4 py-2 rounded-lg font-bold hover:bg-gray-300 transition">رجوع</button>
             </div>
             <div id="quantitativeLinksContainer"></div>
         </div>
 
-        <div class="teacher-link">
-            <a href="#" onclick="showTeacherLogin()">🛠️ الدعم الفني</a>
-        </div>
+        <div class="teacher-link"><a href="#" onclick="showTeacherLogin()">🛠️ الدعم الفني</a></div>
         <div class="footer-decoration">© 2026 منصة إدارة المهام والمحتوى - جميع الحقوق محفوظة</div>
     </div>
 
-    <!-- صفحة الطالب -->
+    <div id="newStudentWelcomeScreen">
+        <div class="welcome-content">
+            <div class="welcome-icon">🎉</div>
+            <h2 class="welcome-title">أهلاً بك <span class="highlight-word">طالب جديد</span><br>في مجموعتنا</h2>
+            <p class="welcome-subtitle">نتمنى لك تجربة تعليمية ممتعة ومفيدة<br>اختر ما تريد البدء به</p>
+            <div class="new-student-actions">
+                <button onclick="showNewStudentContent()" class="new-student-btn content-btn"><span style="font-size: 28px;">📚</span><span>المحتويات</span></button>
+                <button onclick="showNewStudentExam()" class="new-student-btn exam-btn"><span style="font-size: 28px;">📝</span><span>الاختبارات</span></button>
+            </div>
+            <div class="mt-6">
+                <button onclick="logout()" class="btn-secondary" style="background: transparent; border: 2px solid #cbd5e0; color: #4a5568; padding: 14px; border-radius: 10px; cursor: pointer; width: 100%; margin-top: 10px; font-weight: bold;">← خروج</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="newStudentContentScreen">
+        <div class="container" style="max-width: 800px; margin: 0 auto;">
+            <div class="flex justify-between items-center mb-6 border-b pb-4">
+                <h2 class="text-2xl font-black text-gray-800 flex items-center gap-2"><span>📚</span> المحتويات</h2>
+                <button onclick="backToNewStudentWelcome()" class="bg-gray-200 text-gray-800 px-4 py-2 rounded-lg font-bold hover:bg-gray-300 transition">رجوع</button>
+            </div>
+            <div>
+                <a href="https://drive.google.com/file/d/1uoimqYuCFxDabVqH8WZ-DpHAkSY7AU-v/view?usp=sharing" target="_blank" class="content-link" style="font-size: 18px; padding: 20px;">🧪 تسمية المركبات العضوية</a>
+                <a href="https://drive.google.com/file/d/1-baK5hgtVBg-Nbnb83K4726jWzUlBoga/view?usp=sharing" target="_blank" class="content-link" style="font-size: 18px; padding: 20px;">➗ النهايات والاشتقاق</a>
+                <a href="https://drive.google.com/file/d/1g5TG80lgSXjSe6MtFhMqZ3Ur20wfcE-j/view?usp=sharing" target="_blank" class="content-link" style="font-size: 18px; padding: 20px;">⚡ الدوائر الكهربائية</a>
+            </div>
+            <button onclick="backToNewStudentWelcome()" class="btn-secondary" style="background: #f0f0f0; color: #333; padding: 14px; border: none; border-radius: 10px; cursor: pointer; width: 100%; margin-top: 20px; font-weight: bold;">← رجوع للصفحة الرئيسية</button>
+        </div>
+    </div>
+
+    <div id="newStudentExamScreen">
+      <header class="exam-top-header">
+        <div class="exam-header-container">
+          <div class="brand-area">
+            <h1>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+              اختبار الفترة الأولى
+            </h1>
+          </div>
+          <div class="exam-header-actions">
+            <button type="button" class="exam-btn exam-btn-secondary" onclick="resetNewStudentExam()">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+              إعادة الاختبار
+            </button>
+            <button type="button" class="exam-btn exam-btn-secondary" onclick="exitNewStudentExam()">← رجوع للمنصة</button>
+          </div>
+        </div>
+      </header>
+
+      <main class="exam-main-wrapper">
+        <section id="newStudentResultsPanel" class="exam-results-panel" aria-live="polite">
+          <div class="exam-score-circle">
+            <span id="newStudentScorePercent" class="exam-score-percent">0%</span>
+            <span id="newStudentScoreFraction" class="exam-score-fraction">0 / 16</span>
+          </div>
+          <h2 id="newStudentScoreMessage" style="font-size: 1.4rem; font-weight: 800; margin-bottom: 0.35rem;">أحسنت! تم تصحيح الاختبار</h2>
+          <p style="color: #475569; font-size: 0.95rem;">يمكنك مراجعة جميع الأسئلة أدناه مع خطوات الحل التفصيلية لكل سؤال.</p>
+          <div class="exam-results-grid">
+            <div class="exam-stat-card"><div id="newStudentStatCorrect" class="exam-stat-val" style="color: #15803d;">0</div><div class="exam-stat-lbl">إجابات صحيحة</div></div>
+            <div class="exam-stat-card"><div id="newStudentStatWrong" class="exam-stat-val" style="color: #b91c1c;">0</div><div class="exam-stat-lbl">إجابات خاطئة</div></div>
+            <div class="exam-stat-card"><div id="newStudentStatTotal" class="exam-stat-val" style="color: #1e40af;">16</div><div class="exam-stat-lbl">مجموع الأسئلة</div></div>
+          </div>
+          <div style="display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap; margin-top: 1rem;">
+            <button type="button" class="exam-btn exam-btn-primary" onclick="reviewAllNewStudentQuestions()">مراجعة جميع الأسئلة والشروحات</button>
+            <button type="button" class="exam-btn exam-btn-primary" onclick="resetNewStudentExam()">بدء محاولة جديدة</button>
+          </div>
+        </section>
+
+        <section class="exam-control-bar">
+          <div class="exam-control-top">
+            <div class="exam-stats-group">
+              <span class="exam-badge-pill"><span>التقدم:</span><span id="newStudentProgressText">0 من 16</span></span>
+            </div>
+          </div>
+          <div class="exam-progress-track"><div id="newStudentProgressFill" class="exam-progress-fill"></div></div>
+        </section>
+
+        <nav id="newStudentQuestionNav" class="exam-question-nav" aria-label="التنقل بين الأسئلة"></nav>
+        <div id="newStudentQuestionsContainer"></div>
+
+        <div class="exam-footer-controls">
+          <div style="display: flex; gap: 0.5rem;">
+            <button type="button" id="newStudentPrevBtn" class="exam-btn exam-btn-primary" onclick="navigateNewStudentQuestion(-1)">السؤال السابق</button>
+            <button type="button" id="newStudentNextBtn" class="exam-btn exam-btn-primary" onclick="navigateNewStudentQuestion(1)">السؤال التالي</button>
+          </div>
+          <button type="button" id="newStudentSubmitExamBtn" class="exam-btn exam-btn-finish" onclick="submitNewStudentExam()">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            اعتماد النتيجة وعرض التقرير
+          </button>
+        </div>
+      </main>
+      <div id="newStudentToast" class="exam-toast" role="status"></div>
+    </div>
+
     <div id="studentPage" class="student-page">
         <div class="glass p-6 rounded-2xl mb-6 flex justify-between items-center">
             <h2 id="welcomeText" class="text-2xl font-bold text-blue-600">مرحباً!</h2>
@@ -408,7 +449,6 @@ input[type="text"]:focus { border-color: #667eea; }
                 <h2 class="text-2xl font-bold text-gray-800">🛠️ لوحة الدعم الفني</h2>
                 <button onclick="logout()" class="bg-gray-200 text-gray-800 px-4 py-2 rounded-lg">خروج</button>
             </div>
-            
             <div class="bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-xl p-6 mb-6 text-center">
                 <h3 class="text-lg font-bold mb-3">🔑 كود دخول الاختبار اليوم</h3>
                 <button onclick="generateNewCode()" class="bg-white text-blue-600 font-bold py-3 px-8 rounded-lg hover:bg-gray-100 transition">عرض كود اليوم</button>
@@ -416,12 +456,10 @@ input[type="text"]:focus { border-color: #667eea; }
                 <button id="copyCodeBtn" onclick="copyCode()" class="hidden mt-3 bg-green-500 text-white py-2 px-6 rounded-lg hover:bg-green-600">📋 نسخ الكود</button>
                 <button id="sendCodeBtn" onclick="sendCodeToStudent()" class="hidden mt-3 bg-green-600 text-white py-2 px-6 rounded-lg hover:bg-green-700">📱 إرسال عبر واتساب</button>
             </div>
-
             <div class="bg-yellow-50 border-2 border-yellow-300 rounded-xl p-4 mb-6">
                 <p class="text-sm text-gray-700"><strong>💡 كيف يعمل هذا الكود؟</strong></p>
                 <p class="text-sm text-gray-700 mt-2">يعتمد الكود على خوارزمية تشفير تعتمد على تاريخ اليوم. هذا يضمن أن جهازك وجهاز الطالب سيحسبان <strong>نفس الكود العشوائي بالضبط</strong> (أحرف وأرقام) دون الحاجة لقاعدة بيانات.</p>
             </div>
-            
             <div class="bg-gray-50 p-4 rounded-xl mb-6">
                 <h3 class="font-bold text-gray-700 mb-3">👥 قائمة الطلاب والأكواد</h3>
                 <div id="studentsList"></div>
@@ -431,10 +469,8 @@ input[type="text"]:focus { border-color: #667eea; }
 </div>
 
 <script>
-// ==========================================
-// 📚 بيانات الطلاب
-// ==========================================
 const studentsData = {
+    "1316": { name: "طالب جديد", content: [], performance: null, isNewStudent: true },
     "321": { name: "عبدالعزيز", content: [{ title: "المحتوى الأسبوعي", url: "https://drive.google.com/file/d/1b0JhsRNrlKVCsXCVjEIaS-gJYr2ng_Sp/view?usp=sharing" }], performance: "https://drive.google.com/file/d/1O0LSu-o5F_U5b7iBtVi-Dy1CqvWF7oCC/view?usp=sharing" },
     "456": { name: "لجين", content: [{ title: "المحتوى الأسبوعي", url: "https://drive.google.com/file/d/1C_S_30oPqINQRiYWPM3Pj1Ht63ubpuhs/view?usp=sharing" }], performance: "https://drive.google.com/file/d/1FtbbQTExtbMoraWdUE941MOfHQu_rbNR/view?usp=sharing" },
     "878": { name: "حمدان", content: [{ title: "المحتوى الأسبوعي", url: "https://drive.google.com/file/d/1ydWce7aeo9hpyKbaLN-qr0xaT4uKaWXy/view?usp=sharing" }], performance: "https://drive.google.com/file/d/1MXm5RFFQHniychg7XsbAtOdL6kNX3j1c/view?usp=sharing" },
@@ -446,10 +482,8 @@ const studentsData = {
     "756": { name: "فيصل", content: [{ title: "الدرس الأول", url: "https://drive.google.com/file/d/1EXtm3fwv2II8G_1hfMBEOCk6fOUWgw5i/view?usp=sharing" }, { title: "الدرس الثاني", url: "https://drive.google.com/file/d/155ohL3vDSoXh7vtRk_Id8ujGFJRUBLFe/view?usp=sharing" }, { title: "الدرس الثالث", url: "https://drive.google.com/file/d/1AbpHmi2T1TFnPzgAGAeuGiuwRcmWXwFR/view?usp=sharing" }, { title: "الدرس الرابع", url: "https://drive.google.com/file/d/1vvAm2gFqIi6OTbY-eCUpQsc9pDwci2O_/view?usp=sharing" }], performance: "https://drive.google.com/file/d/1jywBnWNHO8w8yMfFQD9g-cFqpgAYG1ue/view?usp=sharing" }
 };
 const students = Object.keys(studentsData).map(code => ({ name: studentsData[code].name, code: code }));
-
 const TEACHER_WHATSAPP = "966556620887";
 const EXAM_TIMEOUT = 3 * 60 * 1000;
-
 const verbalExams = [
     { name: "الاختبار اللفظي الأول", url: "https://test-first-oral-section.vercel.app", icon: "1️⃣" },
     { name: "الاختبار اللفظي الثاني", url: "https://test-second-arabi.vercel.app", icon: "2️⃣" },
@@ -459,13 +493,10 @@ const verbalExams = [
     { name: "الاختبار اللفظي السادس", url: "https://test-sixth-oral-section.vercel.app", icon: "6️⃣" },
     { name: "الاختبار اللفظي السابع", url: "https://test-seventh-oral-section.vercel.app", icon: "7️⃣" }
 ];
-
-// ✅ تم تحديث مصفوفة الأكثر تكرار بالروابط المطلوبة فقط
 const frequentVerbalExams = [
     { name: "الاختبار الأول", url: "https://tekrar2.vercel.app", icon: "1️⃣" },
     { name: "الاختبار الثاني", url: "https://tkrat1.vercel.app", icon: "2️⃣" }
 ];
-
 const quantitativeExams = [
     { name: "الاختبار الكمي الأول", url: "https://kame5.vercel.app", icon: "1️⃣" },
     { name: "الاختبار الكمي الثاني", url: "https://kkmme6.vercel.app", icon: "2️⃣" },
@@ -473,268 +504,211 @@ const quantitativeExams = [
     { name: "الاختبار الكمي الرابع", url: "https://kame44.vercel.app/", icon: "4️⃣" },
     { name: "الاختبار الكمي الخامس", url: "https://kmme2.vercel.app/", icon: "5️⃣" }
 ];
+let examSessionStart = null, lastActivityTime = null, examTimeoutInterval = null;
 
-let examSessionStart = null;
-let lastActivityTime = null;
-let examTimeoutInterval = null;
-
-// ==========================================
-// 🔑 نظام كود الدخول الذكي (أحرف وأرقام عشوائية يومية)
-// ==========================================
-function getDailySeed() {
-    const today = new Date();
-    return today.getFullYear() + "-" + (today.getMonth()+1) + "-" + today.getDate();
-}
-
+function getDailySeed() { const today = new Date(); return today.getFullYear() + "-" + (today.getMonth()+1) + "-" + today.getDate(); }
 function getTodayExamCode() {
-    const dateStr = getDailySeed();
-    // خوارزمية تشفير بسيطة لتوليد نفس الكود لنفس التاريخ على أي جهاز
-    let hash = 0;
-    for (let i = 0; i < dateStr.length; i++) {
-        const char = dateStr.charCodeAt(i);
-        hash = ((hash << 5) - hash) + char;
-        hash = hash & hash;
-    }
-    hash = Math.abs(hash);
-    
-    // أحرف وأرقام (تم استبعاد الأحرف المتشابهة مثل I, 1, O, 0 لتجنب الخطأ)
-    const chars = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
-    let code = "";
-    let currentHash = hash;
-    for (let i = 0; i < 6; i++) {
-        currentHash = (currentHash * 1103515245 + 12345) & 0x7fffffff;
-        code += chars.charAt(currentHash % chars.length);
-    }
+    const dateStr = getDailySeed(); let hash = 0;
+    for (let i = 0; i < dateStr.length; i++) { const char = dateStr.charCodeAt(i); hash = ((hash << 5) - hash) + char; hash = hash & hash; }
+    hash = Math.abs(hash); const chars = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789"; let code = "", currentHash = hash;
+    for (let i = 0; i < 6; i++) { currentHash = (currentHash * 1103515245 + 12345) & 0x7fffffff; code += chars.charAt(currentHash % chars.length); }
     return code;
 }
-
 function generateNewCode() {
     const code = getTodayExamCode();
-    const codeDisplay = document.getElementById('generatedCode');
-    codeDisplay.textContent = code;
-    codeDisplay.classList.remove('hidden');
+    document.getElementById('generatedCode').textContent = code;
+    document.getElementById('generatedCode').classList.remove('hidden');
     document.getElementById('copyCodeBtn').classList.remove('hidden');
     document.getElementById('sendCodeBtn').classList.remove('hidden');
 }
-
-function copyCode() {
-    const code = getTodayExamCode();
-    navigator.clipboard.writeText(code).then(() => {
-        alert('✅ تم نسخ الكود: ' + code);
-    });
-}
-
+function copyCode() { navigator.clipboard.writeText(getTodayExamCode()).then(() => alert('✅ تم نسخ الكود: ' + getTodayExamCode())); }
 function sendCodeToStudent() {
-    const code = getTodayExamCode();
-    const msg = `كود دخول الاختبار الخاص بك اليوم هو: ${code}\n\n⚠️ ملاحظة: هذا الكود يتغير يومياً تلقائياً وهو مكون من أحرف وأرقام.`;
+    const msg = `كود دخول الاختبار الخاص بك اليوم هو: ${getTodayExamCode()}\n\n⚠️ ملاحظة: هذا الكود يتغير يومياً تلقائياً وهو مكون من أحرف وأرقام.`;
     window.open(`https://wa.me/${TEACHER_WHATSAPP}?text=${encodeURIComponent(msg)}`, '_blank');
 }
-
 function enterExamCode() {
     const input = document.getElementById('examCodeInput').value.trim().toUpperCase();
     const errorDiv = document.getElementById('examCodeError');
-    
-    if (!input) { 
-        errorDiv.textContent = '❌ يرجى إدخال الكود'; 
-        errorDiv.classList.remove('hidden'); 
-        return; 
-    }
-    
-    const correctCode = getTodayExamCode();
-    
-    if (input !== correctCode) { 
-        errorDiv.textContent = '❌ الكود غير صحيح، يرجى التحقق والمحاولة مرة أخرى.'; 
-        errorDiv.classList.remove('hidden'); 
-        return; 
-    }
-    
-    errorDiv.classList.add('hidden');
-    startExam();
+    if (!input) { errorDiv.textContent = '❌ يرجى إدخال الكود'; errorDiv.classList.remove('hidden'); return; }
+    if (input !== getTodayExamCode()) { errorDiv.textContent = '❌ الكود غير صحيح، يرجى التحقق والمحاولة مرة أخرى.'; errorDiv.classList.remove('hidden'); return; }
+    errorDiv.classList.add('hidden'); startExam();
 }
 
-// ==========================================
-// 🎮 وظائف المنصة الأساسية
-// ==========================================
-function showMainMenu() {
-    document.getElementById('mainMenu').style.display = 'flex';
-    document.getElementById('loginSection').style.display = 'none';
-    document.getElementById('examWelcomeScreen').style.display = 'none';
-    document.getElementById('examLoginScreen').style.display = 'none';
-    document.getElementById('examCategoriesScreen').classList.remove('active');
-    document.getElementById('verbalChoiceScreen').classList.remove('active');
-    document.getElementById('verbalExamsList').classList.remove('active');
-    document.getElementById('frequentVerbalExamsList').classList.remove('active');
-    document.getElementById('quantitativeChoiceScreen').classList.remove('active');
-    document.getElementById('quantitativeExamsList').classList.remove('active');
+// ✅ إصلاح المشكلة: إخفاء شاشات المنصة الرئيسية فقط (ليس mainPage)
+function hideMainScreens() {
+    ['loginSection', 'studentPage', 'teacherPage'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.style.display = 'none';
+    });
     document.getElementById('errorMsg').classList.add('hidden');
     document.getElementById('examCodeError').classList.add('hidden');
+}
+
+// ✅ إخفاء شاشات الاختبارات فقط (للتبديل بينها)
+function hideExamScreens() {
+    ['examWelcomeScreen', 'examLoginScreen'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.style.display = 'none';
+    });
+    ['examCategoriesScreen', 'verbalChoiceScreen', 'verbalExamsList', 'frequentVerbalExamsList', 'quantitativeChoiceScreen', 'quantitativeExamsList'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.classList.remove('active');
+    });
+}
+
+function showMainMenu() {
+    hideMainScreens();
+    hideExamScreens();
+    document.getElementById('mainPage').style.display = 'block';
+    document.getElementById('mainMenu').style.display = 'flex';
     document.getElementById('loginCode').value = '';
     document.getElementById('examCodeInput').value = '';
 }
 
-function showLogin() {
-    document.getElementById('mainMenu').style.display = 'none';
-    document.getElementById('loginSection').style.display = 'block';
+function showLogin() { 
+    hideMainScreens(); 
+    hideExamScreens();
+    document.getElementById('mainPage').style.display = 'block'; 
+    document.getElementById('loginSection').style.display = 'block'; 
 }
 
-function showExamWelcome() {
-    document.getElementById('mainMenu').style.display = 'none';
-    document.getElementById('examWelcomeScreen').style.display = 'block';
+function showExamWelcome() { 
+    hideMainScreens(); 
+    hideExamScreens();
+    document.getElementById('mainPage').style.display = 'block'; 
+    document.getElementById('examWelcomeScreen').style.display = 'block'; 
 }
 
-function showExamLogin() {
-    document.getElementById('examWelcomeScreen').style.display = 'none';
-    document.getElementById('examLoginScreen').style.display = 'block';
+function showExamLogin() { 
+    hideExamScreens();
+    document.getElementById('examLoginScreen').style.display = 'block'; 
 }
 
-function requestExamCode() {
-    const msg = "مرحباً أ. سلامة، أود الحصول على كود الدخول لاختبارات الأقسام. اسمي: ___________";
-    window.open(`https://wa.me/${TEACHER_WHATSAPP}?text=${encodeURIComponent(msg)}`, '_blank');
+function requestExamCode() { window.open(`https://wa.me/${TEACHER_WHATSAPP}?text=${encodeURIComponent("مرحباً أ. سلامة، أود الحصول على كود الدخول لاختبارات الأقسام. اسمي: ___________")}`, '_blank'); }
+
+function startExam() { 
+    hideExamScreens();
+    document.getElementById('examCategoriesScreen').classList.add('active'); 
+    examSessionStart = Date.now(); 
+    lastActivityTime = Date.now(); 
+    startActivityMonitor(); 
 }
 
-function startExam() {
-    document.getElementById('examLoginScreen').style.display = 'none';
-    document.getElementById('examCategoriesScreen').classList.add('active');
-    examSessionStart = Date.now();
-    lastActivityTime = Date.now();
-    startActivityMonitor();
+function showVerbalExams() { 
+    hideExamScreens();
+    document.getElementById('verbalChoiceScreen').classList.add('active'); 
 }
 
-// ✅ عند الضغط على القسم اللفظي، تظهر شاشة الاختيار أولاً
-function showVerbalExams() {
-    document.getElementById('examCategoriesScreen').classList.remove('active');
-    document.getElementById('verbalChoiceScreen').classList.add('active');
+function showStandardVerbalExams() { 
+    hideExamScreens();
+    document.getElementById('verbalExamsList').classList.add('active'); 
+    renderVerbalLinks(); 
 }
 
-function showStandardVerbalExams() {
-    document.getElementById('verbalChoiceScreen').classList.remove('active');
-    document.getElementById('verbalExamsList').classList.add('active');
-    renderVerbalLinks();
+function showFrequentVerbalExams() { 
+    hideExamScreens();
+    document.getElementById('frequentVerbalExamsList').classList.add('active'); 
+    renderFrequentVerbalLinks(); 
 }
 
-function showFrequentVerbalExams() {
-    document.getElementById('verbalChoiceScreen').classList.remove('active');
-    document.getElementById('frequentVerbalExamsList').classList.add('active');
-    renderFrequentVerbalLinks();
-}
-
-function renderVerbalLinks() {
-    const container = document.getElementById('verbalLinksContainer');
-    container.innerHTML = verbalExams.map((exam) => `
-        <div class="exam-card" onclick="openExamInNewWindow('${exam.name}', '${exam.url}')">
+function renderVerbalLinks() { 
+    document.getElementById('verbalLinksContainer').innerHTML = verbalExams.map(exam => 
+        `<div class="exam-card" onclick="openExamInNewWindow('${exam.name}', '${exam.url}')">
             <div class="exam-info">
                 <div class="exam-name">${exam.icon} ${exam.name}</div>
                 <div class="exam-desc">اضغط لبدء الاختبار في شاشة كاملة</div>
             </div>
             <div class="exam-icon">🚀</div>
-        </div>
-    `).join('');
+        </div>`).join(''); 
 }
 
-function renderFrequentVerbalLinks() {
-    const container = document.getElementById('frequentLinksContainer');
-    container.innerHTML = frequentVerbalExams.map((exam) => `
-        <div class="exam-card" onclick="openExamInNewWindow('${exam.name}', '${exam.url}')" style="background: linear-gradient(135deg, #f5576c 0%, #ff9966 100%); box-shadow: 0 10px 25px rgba(245, 87, 108, 0.4);">
+function renderFrequentVerbalLinks() { 
+    document.getElementById('frequentLinksContainer').innerHTML = frequentVerbalExams.map(exam => 
+        `<div class="exam-card" onclick="openExamInNewWindow('${exam.name}', '${exam.url}')" style="background: linear-gradient(135deg, #f5576c 0%, #ff9966 100%); box-shadow: 0 10px 25px rgba(245, 87, 108, 0.4);">
             <div class="exam-info">
                 <div class="exam-name">${exam.icon} ${exam.name}</div>
                 <div class="exam-desc">اضغط لبدء الاختبار في شاشة كاملة</div>
             </div>
             <div class="exam-icon">🚀</div>
-        </div>
-    `).join('');
+        </div>`).join(''); 
 }
 
-// ✅ عند الضغط على القسم الكمي، تظهر شاشة الاختيار الجديدة
-function showQuantitativeExams() {
-    document.getElementById('examCategoriesScreen').classList.remove('active');
-    document.getElementById('quantitativeChoiceScreen').classList.add('active');
+function showQuantitativeExams() { 
+    hideExamScreens();
+    document.getElementById('quantitativeChoiceScreen').classList.add('active'); 
 }
 
-function showStandardQuantitativeExams() {
-    document.getElementById('quantitativeChoiceScreen').classList.remove('active');
-    document.getElementById('quantitativeExamsList').classList.add('active');
-    renderQuantitativeLinks();
+function showStandardQuantitativeExams() { 
+    hideExamScreens();
+    document.getElementById('quantitativeExamsList').classList.add('active'); 
+    renderQuantitativeLinks(); 
 }
 
-function openGeometryExams() {
-    window.open('https://html-lime-theta-74.vercel.app', '_blank');
-}
+function openGeometryExams() { window.open('https://html-lime-theta-74.vercel.app', '_blank'); }
 
-function renderQuantitativeLinks() {
-    const container = document.getElementById('quantitativeLinksContainer');
-    container.innerHTML = quantitativeExams.map((exam) => `
-        <div class="exam-card" onclick="openExamInNewWindow('${exam.name}', '${exam.url}')" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); box-shadow: 0 10px 25px rgba(240, 147, 251, 0.4);">
+function renderQuantitativeLinks() { 
+    document.getElementById('quantitativeLinksContainer').innerHTML = quantitativeExams.map(exam => 
+        `<div class="exam-card" onclick="openExamInNewWindow('${exam.name}', '${exam.url}')" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); box-shadow: 0 10px 25px rgba(240, 147, 251, 0.4);">
             <div class="exam-info">
                 <div class="exam-name">${exam.icon} ${exam.name}</div>
                 <div class="exam-desc">اضغط لبدء الاختبار في شاشة كاملة</div>
             </div>
             <div class="exam-icon">🚀</div>
-        </div>
-    `).join('');
+        </div>`).join(''); 
 }
 
-function openExamInNewWindow(title, url) {
-    if (lastActivityTime) lastActivityTime = Date.now();
-    const newWindow = window.open(url, '_blank', 'noopener,noreferrer');
-    if (!newWindow) {
-        alert('⚠️ يرجى السماح بفتح النوافذ المنبثقة (Pop-ups) في متصفحك');
-    }
+function openExamInNewWindow(title, url) { 
+    if (lastActivityTime) lastActivityTime = Date.now(); 
+    const w = window.open(url, '_blank', 'noopener,noreferrer'); 
+    if (!w) alert('⚠️ يرجى السماح بفتح النوافذ المنبثقة (Pop-ups) في متصفحك'); 
 }
 
-function backToVerbalChoice() {
-    document.getElementById('verbalExamsList').classList.remove('active');
-    document.getElementById('frequentVerbalExamsList').classList.remove('active');
-    document.getElementById('verbalChoiceScreen').classList.add('active');
+function backToVerbalChoice() { 
+    hideExamScreens();
+    document.getElementById('verbalChoiceScreen').classList.add('active'); 
 }
 
-function backToQuantitativeChoice() {
-    document.getElementById('quantitativeExamsList').classList.remove('active');
-    document.getElementById('quantitativeChoiceScreen').classList.add('active');
+function backToQuantitativeChoice() { 
+    hideExamScreens();
+    document.getElementById('quantitativeChoiceScreen').classList.add('active'); 
 }
 
-function backToCategories() {
-    document.getElementById('verbalExamsList').classList.remove('active');
-    document.getElementById('frequentVerbalExamsList').classList.remove('active');
-    document.getElementById('verbalChoiceScreen').classList.remove('active');
-    document.getElementById('quantitativeChoiceScreen').classList.remove('active');
-    document.getElementById('quantitativeExamsList').classList.remove('active');
-    document.getElementById('examCategoriesScreen').classList.add('active');
+function backToCategories() { 
+    hideExamScreens();
+    document.getElementById('examCategoriesScreen').classList.add('active'); 
 }
 
-function startActivityMonitor() {
-    document.addEventListener('mousemove', updateActivity);
-    document.addEventListener('keypress', updateActivity);
-    document.addEventListener('click', updateActivity);
-    examTimeoutInterval = setInterval(checkExamTimeout, 5000);
+function startActivityMonitor() { 
+    document.addEventListener('mousemove', updateActivity); 
+    document.addEventListener('keypress', updateActivity); 
+    document.addEventListener('click', updateActivity); 
+    examTimeoutInterval = setInterval(checkExamTimeout, 5000); 
 }
-
 function updateActivity() { lastActivityTime = Date.now(); }
-
-function checkExamTimeout() {
-    if (!lastActivityTime) return;
-    if (Date.now() - lastActivityTime >= EXAM_TIMEOUT) {
-        alert('⏰ انتهى وقت الجلسة بسبب عدم النشاط. يرجى طلب كود جديد.');
-        endExam();
-    }
+function checkExamTimeout() { 
+    if (!lastActivityTime) return; 
+    if (Date.now() - lastActivityTime >= EXAM_TIMEOUT) { 
+        alert('⏰ انتهى وقت الجلسة بسبب عدم النشاط. يرجى طلب كود جديد.'); 
+        endExam(); 
+    } 
+}
+function endExam() { 
+    examSessionStart = null; 
+    lastActivityTime = null; 
+    if (examTimeoutInterval) clearInterval(examTimeoutInterval); 
+    showMainMenu(); 
 }
 
-function endExam() {
-    examSessionStart = null;
-    lastActivityTime = null;
-    if (examTimeoutInterval) clearInterval(examTimeoutInterval);
-    showMainMenu();
-}
-
-// ✅ تم تحديث دالة الدخول للدعم الفني لتكون أكثر تسامحاً مع الأخطاء المطبعية
 function showTeacherLogin() {
     const password = prompt('أدخل كلمة مرور الدعم الفني:');
-    // إزالة المسافات وتحويل الأحرف لصغيرة لتجنب أي خطأ مطبعي
-    if (password && password.trim().toLowerCase() === 'teacher123') {
-        document.getElementById('mainPage').style.display = 'none';
-        document.getElementById('teacherPage').style.display = 'block';
-        loadTeacherData();
+    if (password && password.trim().toLowerCase() === 'teacher123') { 
+        hideMainScreens(); 
+        hideExamScreens();
+        document.getElementById('mainPage').style.display = 'block';
+        document.getElementById('teacherPage').style.display = 'block'; 
+        loadTeacherData(); 
     } else if (password !== null) { 
-        alert('كلمة المرور غير صحيحة.\n\nتأكد من كتابتها هكذا بالضبط:\nteacher123\n(بدون مسافات أو أحرف كبيرة)'); 
+        alert('كلمة المرور غير صحيحة'); 
     }
 }
 
@@ -742,55 +716,247 @@ function login() {
     const code = document.getElementById('loginCode').value.trim();
     const errorMsg = document.getElementById('errorMsg');
     const student = students.find(s => s.code === code);
-    if (!student) { errorMsg.textContent = '❌ الرمز غير صحيح'; errorMsg.classList.remove('hidden'); return; }
+    
+    if (!student) { 
+        errorMsg.textContent = '❌ الرمز غير صحيح'; 
+        errorMsg.classList.remove('hidden'); 
+        return; 
+    }
+    
     localStorage.setItem('currentStudent', JSON.stringify(student));
-    showStudentPage();
+    hideMainScreens();
+    hideExamScreens();
+    document.getElementById('mainPage').style.display = 'block';
+    
+    if (code === "1316") {
+        document.getElementById('newStudentWelcomeScreen').classList.add('active-screen');
+        document.getElementById('newStudentWelcomeScreen').style.display = 'block';
+    } else {
+        document.getElementById('studentPage').style.display = 'block';
+        document.getElementById('welcomeText').textContent = `مرحباً ${student.name} 👋`;
+        loadStudentData(student);
+    }
 }
 
-function showStudentPage() {
-    document.getElementById('mainPage').style.display = 'none';
-    document.getElementById('studentPage').style.display = 'block';
-    const student = JSON.parse(localStorage.getItem('currentStudent'));
-    document.getElementById('welcomeText').textContent = `مرحباً ${student.name} 👋`;
-    loadStudentData(student);
+function showNewStudentContent() {
+    document.getElementById('newStudentWelcomeScreen').style.display = 'none';
+    document.getElementById('newStudentWelcomeScreen').classList.remove('active-screen');
+    document.getElementById('newStudentContentScreen').classList.add('active-screen');
+    document.getElementById('newStudentContentScreen').style.display = 'block';
+}
+function showNewStudentExam() {
+    document.getElementById('newStudentWelcomeScreen').style.display = 'none';
+    document.getElementById('newStudentWelcomeScreen').classList.remove('active-screen');
+    document.getElementById('newStudentExamScreen').classList.add('active-screen');
+    document.getElementById('newStudentExamScreen').style.display = 'block';
+    resetNewStudentExam();
+}
+function backToNewStudentWelcome() {
+    document.getElementById('newStudentContentScreen').style.display = 'none';
+    document.getElementById('newStudentContentScreen').classList.remove('active-screen');
+    document.getElementById('newStudentExamScreen').style.display = 'none';
+    document.getElementById('newStudentExamScreen').classList.remove('active-screen');
+    document.getElementById('newStudentWelcomeScreen').classList.add('active-screen');
+    document.getElementById('newStudentWelcomeScreen').style.display = 'block';
+}
+function exitNewStudentExam() {
+    backToNewStudentWelcome();
 }
 
 function loadStudentData(student) {
     const data = studentsData[student.code];
     const contentList = document.getElementById('contentList');
     let contentHtml = '';
-    data.content.forEach(item => {
-        contentHtml += `<a href="${item.url}" target="_blank" class="content-link">📖 ${item.title}</a>`;
-    });
+    data.content.forEach(item => { contentHtml += `<a href="${item.url}" target="_blank" class="content-link">📖 ${item.title}</a>`; });
     contentList.innerHTML = contentHtml || '<div class="empty-message">لا يوجد محتوى حالياً</div>';
-    
     const perfList = document.getElementById('performanceList');
-    if (data.performance) {
-        perfList.innerHTML = `<a href="${data.performance}" target="_blank" class="performance-link">📈 عرض نموذج تحليل الأداء</a>`;
-    } else {
-        perfList.innerHTML = '<div class="empty-message">غير متاح حالياً</div>';
-    }
+    if (data.performance) { perfList.innerHTML = `<a href="${data.performance}" target="_blank" class="performance-link">📈 عرض نموذج تحليل الأداء</a>`; }
+    else { perfList.innerHTML = '<div class="empty-message">غير متاح حالياً</div>'; }
 }
-
 function loadTeacherData() {
-    const studentsList = document.getElementById('studentsList');
     let html = '';
     students.forEach(s => { html += `<div class="bg-white p-3 rounded-lg mb-2 flex justify-between items-center shadow-sm"><span><strong>${s.name}</strong></span><span class="bg-yellow-200 px-3 py-1 rounded font-mono font-bold">${s.code}</span></div>`; });
-    studentsList.innerHTML = html;
+    document.getElementById('studentsList').innerHTML = html;
 }
-
 function logout() {
     localStorage.removeItem('currentStudent');
-    document.getElementById('mainPage').style.display = 'block';
-    document.getElementById('studentPage').style.display = 'none';
-    document.getElementById('teacherPage').style.display = 'none';
+    document.getElementById('newStudentWelcomeScreen').style.display = 'none';
+    document.getElementById('newStudentWelcomeScreen').classList.remove('active-screen');
+    document.getElementById('newStudentContentScreen').style.display = 'none';
+    document.getElementById('newStudentContentScreen').classList.remove('active-screen');
+    document.getElementById('newStudentExamScreen').style.display = 'none';
+    document.getElementById('newStudentExamScreen').classList.remove('active-screen');
     showMainMenu();
 }
 
 window.onload = function() {
     const saved = localStorage.getItem('currentStudent');
-    if (saved) showStudentPage();
+    if (saved) {
+        try {
+            const student = JSON.parse(saved);
+            hideMainScreens();
+            hideExamScreens();
+            document.getElementById('mainPage').style.display = 'block';
+            if (student.code === "1316") {
+                document.getElementById('newStudentWelcomeScreen').classList.add('active-screen');
+                document.getElementById('newStudentWelcomeScreen').style.display = 'block';
+            } else {
+                document.getElementById('studentPage').style.display = 'block';
+                document.getElementById('welcomeText').textContent = `مرحباً ${student.name} 👋`;
+                loadStudentData(student);
+            }
+        } catch (e) {
+            localStorage.removeItem('currentStudent');
+            showMainMenu();
+        }
+    } else {
+        showMainMenu();
+    }
 };
+
+const NEW_STUDENT_QUESTIONS = [
+    { id: 1, subject: "رياضيات", tagClass: "exam-tag-math", prompt: 'ما قيمة <span class="exam-math-inline-block"><span class="exam-lim-box"><span class="exam-lim-word">lim</span><span class="exam-lim-sub"><i>x</i> &rarr; &infin;</span></span><span class="exam-frac-box"><span class="exam-frac-num">10<i>x</i><sup>3</sup> &minus; 12<i>x</i></span><span class="exam-frac-den">5 + 3<i>x</i><sup>2</sup> &minus; 2<i>x</i><sup>3</sup></span></span></span> ؟', figureSVG: null, options: [{ letter: "A", text: "&minus;5", isLtr: true }, { letter: "B", text: "&minus;2", isLtr: true }, { letter: "C", text: "2", isLtr: true }, { letter: "D", text: "5", isLtr: true }], correctIndex: 0, explanation: "بما أن درجة البسط تساوي درجة المقام (الدرجة الثالثة)، فإن النهاية عند اللانهاية تساوي معامل أكبر أس في البسط مقسوماً على معامل أكبر أس في المقام: 10 ÷ (-2) = -5." },
+    { id: 2, subject: "رياضيات", tagClass: "exam-tag-math", prompt: 'ما قيمة <span class="exam-math-inline-block"><span class="exam-lim-box"><span class="exam-lim-word">lim</span><span class="exam-lim-sub"><i>x</i> &rarr; 2</span></span><span class="exam-frac-box"><span class="exam-frac-num"><i>x</i><sup>2</sup> &minus; 4</span><span class="exam-frac-den"><i>x</i> &minus; 2</span></span></span> ؟', figureSVG: null, options: [{ letter: "A", text: "0", isLtr: true }, { letter: "B", text: "6", isLtr: true }, { letter: "C", text: "4", isLtr: true }, { letter: "D", text: "8", isLtr: true }], correctIndex: 2, explanation: "بالتعويض المباشر نحصل على 0/0 (صيغة غير معينة)، لذا نحلل البسط كفرق بين مربعين: (x - 2)(x + 2) / (x - 2)، نختصر (x - 2) ثم نعوض عن x = 2: 2 + 2 = 4." },
+    { id: 3, subject: "فيزياء", tagClass: "exam-tag-phys", prompt: 'في الشكل التيار الكهربائي الكلي المار في الدائرة الكهربائية بوحدة الأمبير يساوي ..', figureSVG: '<svg width="260" height="175" viewBox="0 0 260 175" xmlns="http://www.w3.org/2000/svg"><style>.cir-lbl { font-family: "Times New Roman", Georgia, serif; font-weight: 700; font-size: 15px; fill: #0f172a; }.cir-sub { font-size: 11px; }</style><line x1="25" y1="75" x2="25" y2="145" stroke="#0f172a" stroke-width="2.2" /><line x1="25" y1="145" x2="112" y2="145" stroke="#0f172a" stroke-width="2.2" /><line x1="144" y1="145" x2="215" y2="145" stroke="#0f172a" stroke-width="2.2" /><line x1="215" y1="75" x2="215" y2="145" stroke="#0f172a" stroke-width="2.2" /><line x1="25" y1="75" x2="62" y2="75" stroke="#0f172a" stroke-width="2.2" /><line x1="178" y1="75" x2="215" y2="75" stroke="#0f172a" stroke-width="2.2" /><line x1="62" y1="35" x2="62" y2="115" stroke="#0f172a" stroke-width="2.2" /><line x1="178" y1="35" x2="178" y2="115" stroke="#0f172a" stroke-width="2.2" /><circle cx="62" cy="75" r="3.5" fill="#0f172a" /><circle cx="178" cy="75" r="3.5" fill="#0f172a" /><line x1="62" y1="35" x2="95" y2="35" stroke="#0f172a" stroke-width="2" /><polyline points="95,35 99,28 106,42 113,28 120,42 127,28 134,42 138,35" fill="none" stroke="#0f172a" stroke-width="2" /><line x1="138" y1="35" x2="178" y2="35" stroke="#0f172a" stroke-width="2" /><text x="116" y="21" text-anchor="middle" class="cir-lbl">R<tspan dy="3" class="cir-sub">1</tspan></text><text x="200" y="39" class="cir-lbl">2 &Omega;</text><line x1="62" y1="75" x2="95" y2="75" stroke="#0f172a" stroke-width="2" /><polyline points="95,75 99,68 106,82 113,68 120,82 127,68 134,82 138,75" fill="none" stroke="#0f172a" stroke-width="2" /><line x1="138" y1="75" x2="178" y2="75" stroke="#0f172a" stroke-width="2" /><text x="116" y="61" text-anchor="middle" class="cir-lbl">R<tspan dy="3" class="cir-sub">2</tspan></text><text x="200" y="69" class="cir-lbl">1 &Omega;</text><line x1="62" y1="115" x2="95" y2="115" stroke="#0f172a" stroke-width="2" /><polyline points="95,115 99,108 106,122 113,108 120,122 127,108 134,122 138,115" fill="none" stroke="#0f172a" stroke-width="2" /><line x1="138" y1="115" x2="178" y2="115" stroke="#0f172a" stroke-width="2" /><text x="116" y="101" text-anchor="middle" class="cir-lbl">R<tspan dy="3" class="cir-sub">3</tspan></text><text x="200" y="109" class="cir-lbl">2 &Omega;</text><line x1="112" y1="134" x2="112" y2="156" stroke="#0f172a" stroke-width="2.2" /><line x1="120" y1="139" x2="120" y2="151" stroke="#0f172a" stroke-width="3.2" /><line x1="128" y1="134" x2="128" y2="156" stroke="#0f172a" stroke-width="2.2" /><line x1="136" y1="139" x2="136" y2="151" stroke="#0f172a" stroke-width="3.2" /><text x="78" y="137" text-anchor="middle" class="cir-lbl">12 V</text></svg>', options: [{ letter: "A", text: "24", isLtr: true }, { letter: "B", text: "12", isLtr: true }, { letter: "C", text: "5", isLtr: true }, { letter: "D", text: "6", isLtr: true }], correctIndex: 0, explanation: "المقاومات متصلة على التوازي: 1/R_eq = 1/2 + 1/1 + 1/2 = 2، إذن المقاومة المكافئة R_eq = 0.5 Ω. ومن قانون أوم: I = V / R_eq = 12 / 0.5 = 24 A." },
+    { id: 4, subject: "فيزياء", tagClass: "exam-tag-phys", prompt: 'إذا كانت شدة التيار الكلي المار في الدائرة <span class="exam-math-expr">10 A</span> ؛ فإن التيار المار في أحد المقاومات يساوي ..', figureSVG: '<svg width="230" height="175" viewBox="0 0 230 175" xmlns="http://www.w3.org/2000/svg"><style>.cir-lbl { font-family: "Times New Roman", Georgia, serif; font-weight: 700; font-size: 14px; fill: #0f172a; }</style><line x1="45" y1="25" x2="45" y2="150" stroke="#0f172a" stroke-width="2.2" /><line x1="185" y1="25" x2="185" y2="150" stroke="#0f172a" stroke-width="2.2" /><line x1="45" y1="25" x2="92" y2="25" stroke="#0f172a" stroke-width="2" /><polyline points="92,25 96,18 103,32 110,18 117,32 124,18 131,32 135,25" fill="none" stroke="#0f172a" stroke-width="2" /><line x1="135" y1="25" x2="185" y2="25" stroke="#0f172a" stroke-width="2" /><text x="114" y="45" text-anchor="middle" class="cir-lbl">2 &Omega;</text><line x1="45" y1="65" x2="92" y2="65" stroke="#0f172a" stroke-width="2" /><polyline points="92,65 96,58 103,72 110,58 117,72 124,58 131,72 135,65" fill="none" stroke="#0f172a" stroke-width="2" /><line x1="135" y1="65" x2="185" y2="65" stroke="#0f172a" stroke-width="2" /><text x="114" y="85" text-anchor="middle" class="cir-lbl">2 &Omega;</text><line x1="45" y1="108" x2="102" y2="108" stroke="#0f172a" stroke-width="2" /><polyline points="102,108 106,101 113,115 120,101 127,115 134,101 141,115 145,108" fill="none" stroke="#0f172a" stroke-width="2" /><line x1="145" y1="108" x2="185" y2="108" stroke="#0f172a" stroke-width="2" /><circle cx="72" cy="108" r="12" fill="#cbd5e1" stroke="#0f172a" stroke-width="2" /><text x="72" y="113" text-anchor="middle" class="cir-lbl">A</text><text x="124" y="128" text-anchor="middle" class="cir-lbl">2 &Omega;</text><line x1="45" y1="150" x2="106" y2="150" stroke="#0f172a" stroke-width="2.2" /><line x1="116" y1="150" x2="185" y2="150" stroke="#0f172a" stroke-width="2.2" /><line x1="106" y1="139" x2="106" y2="161" stroke="#0f172a" stroke-width="2.2" /><line x1="116" y1="144" x2="116" y2="156" stroke="#0f172a" stroke-width="3.2" /><polygon points="56,150 65,145 65,155" fill="#0f172a" /><text x="74" y="142" text-anchor="middle" class="cir-lbl">10 A</text></svg>', options: [{ letter: "A", text: "10 A", isLtr: true }, { letter: "B", text: "2 A", isLtr: true }, { letter: "C", text: '<span class="exam-opt-frac"><span class="exam-frac-box"><span class="exam-frac-num">10</span><span class="exam-frac-den">3</span></span><span>A</span></span>', isLtr: true }, { letter: "D", text: '<span class="exam-opt-frac"><span class="exam-frac-box"><span class="exam-frac-num">3</span><span class="exam-frac-den">10</span></span><span>A</span></span>', isLtr: true }], correctIndex: 2, explanation: "المقاومات الثلاث متساوية القيمة (2 Ω) ومتصلة على التوازي، لذا يتوزع التيار الكلي (10 A) بالتساوي على الفروع الثلاثة، فيكون تيار كل مقاومة = 10/3 A." },
+    { id: 5, subject: "كيمياء", tagClass: "exam-tag-chem", prompt: 'الاسم النظامي حسب قواعد <span class="exam-math-expr">IUPAC</span> للمركب المقابل ..', note: "ملاحظة: الصورة المرفقة لهذا السؤال تضمنت الرسم البنائي للمركب فقط، وقد تم إكمال نص السؤال وخياراته القياسية في اختبارات التحصيلي.", figureSVG: '<svg width="200" height="150" viewBox="0 0 200 150" xmlns="http://www.w3.org/2000/svg"><style>.benz-txt { font-family: "Times New Roman", Georgia, serif; font-weight: 700; font-size: 20px; fill: #0f172a; }</style><polygon points="90,46 123,65 123,103 90,122 57,103 57,65" fill="none" stroke="#0f172a" stroke-width="2.2" /><circle cx="90" cy="84" r="22" fill="none" stroke="#0f172a" stroke-width="1.9" /><line x1="90" y1="46" x2="90" y2="27" stroke="#0f172a" stroke-width="2.2" /><text x="90" y="21" text-anchor="middle" class="benz-txt">Br</text><line x1="123" y1="103" x2="140" y2="114" stroke="#0f172a" stroke-width="2.2" /><text x="155" y="126" text-anchor="middle" class="benz-txt">Br</text></svg>', options: [{ letter: "A", text: "1,3-ثنائي برومو بنزين", isLtr: false }, { letter: "B", text: "1,2-ثنائي برومو بنزين", isLtr: false }, { letter: "C", text: "1,4-ثنائي برومو بنزين", isLtr: false }, { letter: "D", text: "1,5-ثنائي برومو بنزين", isLtr: false }], correctIndex: 0, explanation: "نبدأ الترقيم من إحدى ذرتي البروم ونتجه نحو ذرة البروم الأخرى بحيث تأخذ التفرعات أصغر أرقام ممكنة (1 و 3)، فيكون الاسم النظامي 1,3-ثنائي برومو بنزين." },
+    { id: 6, subject: "كيمياء", tagClass: "exam-tag-chem", prompt: 'الاسم النظامي <span class="exam-math-expr">IUPAC</span> للمركب ..', figureSVG: '<svg width="245" height="92" viewBox="0 0 245 92" xmlns="http://www.w3.org/2000/svg"><style>.chem-txt { font-family: "Times New Roman", Georgia, serif; font-weight: 700; font-size: 20px; fill: #0f172a; }.chem-sub { font-size: 14px; }</style><text x="96" y="24" text-anchor="middle" class="chem-txt">Cl</text><line x1="96" y1="31" x2="96" y2="53" stroke="#0f172a" stroke-width="2.2" /><text x="142" y="24" text-anchor="middle" class="chem-txt">Br</text><line x1="142" y1="31" x2="142" y2="53" stroke="#0f172a" stroke-width="2.2" /><text x="122" y="75" text-anchor="middle" class="chem-txt">CH<tspan dy="5" class="chem-sub">3</tspan><tspan dy="-5"> CH CHCH</tspan><tspan dy="5" class="chem-sub">3</tspan></text></svg>', options: [{ letter: "A", text: "2-برومو-3-كلورو بيوتان", isLtr: false }, { letter: "B", text: "2-كلورو-3-برومو بيوتان", isLtr: false }, { letter: "C", text: "1-كلورو-2-برومو بيوتان", isLtr: false }, { letter: "D", text: "1-برومو-2-كلورو بيوتان", isLtr: false }], correctIndex: 0, explanation: "عند تساوي موقعي التفرعين من كلا طرفي السلسلة (2 و 3)، نبدأ الترقيم من الطرف الأقرب للتفرع ذي الأسبقية الأبجدية الإنجليزية (Bromo يسبق Chloro)، فيأخذ البروم رقم 2 والكلور رقم 3." },
+    { id: 7, subject: "كيمياء", tagClass: "exam-tag-chem", prompt: 'الصيغة العامة لهاليدات الألكيل ..', figureSVG: null, options: [{ letter: "A", text: "R&ndash;X", isLtr: true }, { letter: "B", text: "R&ndash;OH", isLtr: true }, { letter: "C", text: "R&ndash;COOH", isLtr: true }, { letter: "D", text: "R&ndash;O&ndash;R", isLtr: true }], correctIndex: 0, explanation: "هاليدات الألكيل تتكون من مجموعة ألكيل (R) مرتبطة بذرة هالوجين (X: فلور، كلور، بروم، أو يود)، وصيغتها العامة R–X." },
+    { id: 8, subject: "رياضيات", tagClass: "exam-tag-math", prompt: 'ما مشتقة الدالة <span class="exam-math-expr" style="font-size: 1.24rem; margin: 0 4px;"><i>f</i>(<i>x</i>) = 3<i>x</i><sup>2</sup> &minus; 5<i>x</i> + 12</span> ؟', figureSVG: null, options: [{ letter: "A", text: "1", isLtr: true }, { letter: "B", text: "6<i>x</i> &minus; 5", isLtr: true }, { letter: "C", text: "6<i>x</i><sup>2</sup> &minus; 5", isLtr: true }, { letter: "D", text: "6<i>x</i><sup>2</sup> &minus; 5<i>x</i>", isLtr: true }], correctIndex: 1, explanation: "مشتقة 3x² هي 6x، ومشتقة -5x هي -5، ومشتقة الثابت 12 هي 0، فتكون المشتقة 6x - 5." },
+    { id: 9, subject: "كيمياء", tagClass: "exam-tag-chem", prompt: 'الاسم النظامي <span class="exam-math-expr">IUPAC</span> للمركب المقابل ..', note: "ملاحظة: الصورة المرفقة لهذا السؤال تضمنت الرسم البنائي للمركب فقط، وقد تم إكمال نص السؤال وخياراته القياسية في اختبارات التحصيلي.", figureSVG: '<svg width="215" height="145" viewBox="0 0 215 145" xmlns="http://www.w3.org/2000/svg"><style>.benz-txt { font-family: "Times New Roman", Georgia, serif; font-weight: 700; font-size: 19px; fill: #0f172a; }</style><polygon points="105,36 138,55 138,93 105,112 72,93 72,55" fill="none" stroke="#0f172a" stroke-width="2.2" /><line x1="105" y1="43" x2="132" y2="59" stroke="#0f172a" stroke-width="1.9" /><line x1="132" y1="89" x2="105" y2="105" stroke="#0f172a" stroke-width="1.9" /><line x1="78" y1="89" x2="78" y2="59" stroke="#0f172a" stroke-width="1.9" /><line x1="72" y1="55" x2="53" y2="44" stroke="#0f172a" stroke-width="2.2" /><text x="38" y="45" text-anchor="middle" class="benz-txt">Cl</text><line x1="138" y1="55" x2="157" y2="44" stroke="#0f172a" stroke-width="2.2" /><text x="172" y="45" text-anchor="middle" class="benz-txt">Br</text><line x1="138" y1="93" x2="157" y2="104" stroke="#0f172a" stroke-width="2.2" /><text x="170" y="114" text-anchor="middle" class="benz-txt">F</text></svg>', options: [{ letter: "A", text: "2-برومو-4-كلورو-1-فلورو بنزين", isLtr: false }, { letter: "B", text: "1-برومو-5-كلورو-2-فلورو بنزين", isLtr: false }, { letter: "C", text: "4-كلورو-2-برومو-1-فلورو بنزين", isLtr: false }, { letter: "D", text: "1-كلورو-3-برومو-4-فلورو بنزين", isLtr: false }], correctIndex: 0, explanation: "نرقم الحلقة بحيث تأخذ التفرعات أصغر مجموعة أرقام ممكنة (1، 2، 4) بدءاً من ذرة الكربون المرتبطة بالفلور (1) صعوداً نحو البروم (2) ثم الكلور (4)، ثم نرتب التفرعات أبجدياً بالإنجليزية (Bromo ثم Chloro ثم Fluoro): 2-برومو-4-كلورو-1-فلورو بنزين." },
+    { id: 10, subject: "كيمياء", tagClass: "exam-tag-chem", prompt: 'الاسم النظامي <span class="exam-math-expr">IUPAC</span> للمركب ..', figureSVG: '<svg width="200" height="150" viewBox="0 0 200 150" xmlns="http://www.w3.org/2000/svg"><style>.benz-txt { font-family: "Times New Roman", Georgia, serif; font-weight: 700; font-size: 20px; fill: #0f172a; }</style><polygon points="90,46 123,65 123,103 90,122 57,103 57,65" fill="none" stroke="#0f172a" stroke-width="2.2" /><circle cx="90" cy="84" r="22" fill="none" stroke="#0f172a" stroke-width="1.9" /><line x1="90" y1="46" x2="90" y2="27" stroke="#0f172a" stroke-width="2.2" /><text x="90" y="21" text-anchor="middle" class="benz-txt">Br</text><line x1="123" y1="103" x2="140" y2="114" stroke="#0f172a" stroke-width="2.2" /><text x="155" y="126" text-anchor="middle" class="benz-txt">Br</text></svg>', options: [{ letter: "A", text: "1,5-ثنائي برومو هكسان حلقي", isLtr: false }, { letter: "B", text: "برومو بنزين", isLtr: false }, { letter: "C", text: "1,3-ثنائي برومو بنزين", isLtr: false }, { letter: "D", text: "1,3-ثنائي برومو هكسان حلقي", isLtr: false }], correctIndex: 2, explanation: "وجود الدائرة داخل الحلقة السداسية يدل على أنها حلقة بنزين عطرية وليست هكسان حلقي، ونرقم ذرتي البروم بأصغر أرقام (1 و 3)، فيكون الاسم النظامي 1,3-ثنائي برومو بنزين." },
+    { id: 11, subject: "رياضيات", tagClass: "exam-tag-math", prompt: 'ما مشتقة الدالة <span class="exam-math-expr" style="font-size: 1.24rem; margin: 0 4px;"><i>f</i>(<i>x</i>) = 3<i>x</i> + 1</span> ؟', figureSVG: null, options: [{ letter: "A", text: "6", isLtr: true }, { letter: "B", text: "3", isLtr: true }, { letter: "C", text: "2", isLtr: true }, { letter: "D", text: "0", isLtr: true }], correctIndex: 1, explanation: "مشتقة الدالة الخطية 3x + 1 تساوي معامل x وهو 3 (لأن مشتقة 3x هي 3 ومشتقة الثابت 1 هي 0)." },
+    { id: 12, subject: "رياضيات", tagClass: "exam-tag-math", prompt: '<span class="exam-math-inline-block"><span class="exam-lim-box"><span class="exam-lim-word">lim</span><span class="exam-lim-sub"><i>x</i> &rarr; &infin;</span></span><span class="exam-frac-box"><span class="exam-frac-num">10<i>x</i><sup>4</sup> &minus; 2</span><span class="exam-frac-den">5<i>x</i><sup>4</sup> + 3<i>x</i><sup>3</sup> &minus; 2<i>x</i></span></span></span> تساوي ..', figureSVG: null, options: [{ letter: "A", text: "10", isLtr: true }, { letter: "B", text: "5", isLtr: true }, { letter: "C", text: "2", isLtr: true }, { letter: "D", text: "0", isLtr: true }], correctIndex: 2, explanation: "بما أن درجة البسط تساوي درجة المقام (الدرجة الرابعة)، فإن النهاية عند اللانهاية تساوي معامل أكبر أس في البسط مقسوماً على معامل أكبر أس في المقام: 10 ÷ 5 = 2." },
+    { id: 13, subject: "رياضيات", tagClass: "exam-tag-math", prompt: '<span class="exam-math-inline-block"><span class="exam-lim-box"><span class="exam-lim-word">lim</span><span class="exam-lim-sub"><i>x</i> &rarr; 9</span></span><span class="exam-frac-box"><span class="exam-frac-num"><span class="exam-sqrt-box"><span class="exam-sqrt-sym">&radic;</span><span class="exam-sqrt-rad"><i>x</i></span></span> &minus; 3</span><span class="exam-frac-den"><i>x</i> &minus; 9</span></span></span> تساوي ..', figureSVG: null, options: [{ letter: "A", text: '<span class="exam-opt-frac"><span class="exam-frac-box"><span class="exam-frac-num">1</span><span class="exam-frac-den">9</span></span></span>', isLtr: true }, { letter: "B", text: '<span class="exam-opt-frac"><span class="exam-frac-box"><span class="exam-frac-num">1</span><span class="exam-frac-den">6</span></span></span>', isLtr: true }, { letter: "C", text: "0", isLtr: true }, { letter: "D", text: "غير موجودة", isLtr: false }], correctIndex: 1, explanation: "بالتعويض المباشر نحصل على 0/0، لذا نحلل المقام كفرق بين مربعين: x - 9 = (√x - 3)(√x + 3)، نختصر (√x - 3) من البسط والمقام، ثم نعوض عن x = 9: 1 / (√9 + 3) = 1 / (3 + 3) = 1/6." },
+    { id: 14, subject: "كيمياء", tagClass: "exam-tag-chem", prompt: 'اسم المركب في الشكل حسب قواعد <span class="exam-math-expr">IUPAC</span> ..', figureSVG: '<svg width="265" height="92" viewBox="0 0 265 92" xmlns="http://www.w3.org/2000/svg"><style>.chem-txt { font-family: "Times New Roman", Georgia, serif; font-weight: 700; font-size: 19px; fill: #0f172a; }.chem-sub { font-size: 13px; }</style><text x="90" y="24" text-anchor="middle" class="chem-txt">CH<tspan dy="4" class="chem-sub">3</tspan></text><line x1="86" y1="31" x2="86" y2="53" stroke="#0f172a" stroke-width="2.2" /><text x="174" y="24" text-anchor="middle" class="chem-txt">CH<tspan dy="4" class="chem-sub">3</tspan></text><line x1="170" y1="31" x2="170" y2="53" stroke="#0f172a" stroke-width="2.2" /><text x="132" y="75" text-anchor="middle" class="chem-txt">CH<tspan dy="4" class="chem-sub">3</tspan><tspan dy="-4">CHCH</tspan><tspan dy="4" class="chem-sub">2</tspan><tspan dy="-4">CHCH</tspan><tspan dy="4" class="chem-sub">3</tspan></text></svg>', options: [{ letter: "A", text: "2,3-ثنائي ميثيل بنتان", isLtr: false }, { letter: "B", text: "2,4-ثنائي ميثيل بنتان", isLtr: false }, { letter: "C", text: "2,4-ثنائي ميثيل بيوتان", isLtr: false }, { letter: "D", text: "4,4-ثنائي ميثيل بيوتان", isLtr: false }], correctIndex: 1, explanation: "أطول سلسلة كربونية متصلة تتكون من 5 ذرات كربون (بنتان)، وتوجد مجموعتا ميثيل متفرعتان عند ذرتي الكربون رقم 2 ورقم 4 من كلا الطرفين، فيكون الاسم النظامي 2,4-ثنائي ميثيل بنتان." },
+    { id: 15, subject: "فيزياء", tagClass: "exam-tag-phys", prompt: 'في الشكل وصلت خمس مقاومات متساوية قيمة كل منها <span class="exam-math-expr">2 &Omega;</span> ، ما قيمة التيار المار بوحدة الأمبير؟', figureSVG: '<svg width="265" height="165" viewBox="0 0 265 165" xmlns="http://www.w3.org/2000/svg"><style>.cir-lbl { font-family: "Times New Roman", Georgia, serif; font-weight: 700; font-size: 14px; fill: #0f172a; }.cir-sub { font-size: 10px; }</style><line x1="58" y1="45" x2="58" y2="82" stroke="#0f172a" stroke-width="2.2" /><line x1="47" y1="82" x2="69" y2="82" stroke="#0f172a" stroke-width="2.2" /><line x1="52" y1="90" x2="64" y2="90" stroke="#0f172a" stroke-width="3.2" /><line x1="58" y1="90" x2="58" y2="128" stroke="#0f172a" stroke-width="2.2" /><text x="26" y="74" text-anchor="middle" class="cir-lbl">50 V</text><line x1="58" y1="45" x2="72" y2="45" stroke="#0f172a" stroke-width="2" /><polyline points="72,45 76,39 82,51 88,39 94,51 100,39 106,51 110,45" fill="none" stroke="#0f172a" stroke-width="2" /><text x="91" y="31" text-anchor="middle" class="cir-lbl">R<tspan dy="3" class="cir-sub">1</tspan></text><polyline points="110,45 122,45 130,35 142,35" fill="none" stroke="#0f172a" stroke-width="2" /><polyline points="142,35 146,29 152,41 158,29 164,41 170,29 176,41 180,35" fill="none" stroke="#0f172a" stroke-width="2" /><text x="161" y="21" text-anchor="middle" class="cir-lbl">R<tspan dy="3" class="cir-sub">2</tspan></text><polyline points="180,35 192,35 200,45 222,45" fill="none" stroke="#0f172a" stroke-width="2" /><line x1="222" y1="45" x2="222" y2="68" stroke="#0f172a" stroke-width="2" /><polyline points="222,68 228,72 216,78 228,84 216,90 228,96 216,102 222,106" fill="none" stroke="#0f172a" stroke-width="2" /><text x="242" y="90" text-anchor="middle" class="cir-lbl">R<tspan dy="3" class="cir-sub">3</tspan></text><line x1="222" y1="106" x2="222" y2="128" stroke="#0f172a" stroke-width="2" /><polyline points="222,128 200,128 192,138 180,138" fill="none" stroke="#0f172a" stroke-width="2" /><polyline points="180,138 176,144 170,132 164,144 158,132 152,144 146,132 142,138" fill="none" stroke="#0f172a" stroke-width="2" /><text x="161" y="158" text-anchor="middle" class="cir-lbl">R<tspan dy="3" class="cir-sub">4</tspan></text><polyline points="142,138 130,138 122,128 110,128" fill="none" stroke="#0f172a" stroke-width="2" /><polyline points="110,128 106,134 100,122 94,134 88,122 82,134 76,122 72,128" fill="none" stroke="#0f172a" stroke-width="2" /><text x="91" y="148" text-anchor="middle" class="cir-lbl">R<tspan dy="3" class="cir-sub">5</tspan></text><line x1="72" y1="128" x2="58" y2="128" stroke="#0f172a" stroke-width="2" /></svg>', options: [{ letter: "A", text: "25", isLtr: true }, { letter: "B", text: "20", isLtr: true }, { letter: "C", text: "10", isLtr: true }, { letter: "D", text: "5", isLtr: true }], correctIndex: 3, explanation: "المقاومات الخمس موصولة على التوالي في مسار واحد، لذا المقاومة المكافئة R_eq = 5 × 2 = 10 Ω. ومن قانون أوم: I = V / R_eq = 50 / 10 = 5 A." },
+    { id: 16, subject: "رياضيات", tagClass: "exam-tag-math", prompt: 'ما المشتقة الثانية للدالة <span class="exam-math-expr" style="font-size: 1.24rem; margin: 0 4px;"><i>f</i>(<i>x</i>) = 2<i>x</i><sup>5</sup> &minus; <i>x</i><sup>3</sup> + 6</span> ؟', figureSVG: null, options: [{ letter: "A", text: "10<i>x</i><sup>4</sup> &minus; 3<i>x</i><sup>2</sup>", isLtr: true }, { letter: "B", text: "40<i>x</i><sup>4</sup> &minus; 6<i>x</i>", isLtr: true }, { letter: "C", text: "40<i>x</i><sup>3</sup> &minus; 6", isLtr: true }, { letter: "D", text: "40<i>x</i><sup>3</sup> &minus; 6<i>x</i>", isLtr: true }], correctIndex: 3, explanation: "نوجد المشتقة الأولى أولاً: f'(x) = 10x⁴ - 3x²، ثم نشتقها مرة ثانية لإيجاد المشتقة الثانية: f''(x) = 40x³ - 6x." }
+];
+
+const nsState = { answers: new Array(NEW_STUDENT_QUESTIONS.length).fill(null), currentIndex: 0, submitted: false };
+
+function renderNewStudentAll() {
+    renderNewStudentNavDots();
+    renderNewStudentQuestions();
+    updateNewStudentProgress();
+}
+function renderNewStudentNavDots() {
+    const nav = document.getElementById("newStudentQuestionNav");
+    nav.innerHTML = NEW_STUDENT_QUESTIONS.map((q, idx) => {
+        let cls = "exam-nav-dot";
+        if (nsState.answers[idx] !== null) cls += " answered";
+        if (idx === nsState.currentIndex) cls += " current";
+        return `<button type="button" class="${cls}" onclick="jumpToNewStudentQuestion(${idx})">${q.id}</button>`;
+    }).join("");
+}
+function renderNewStudentQuestions() {
+    const container = document.getElementById("newStudentQuestionsContainer");
+    const q = NEW_STUDENT_QUESTIONS[nsState.currentIndex];
+    const idx = nsState.currentIndex;
+    const userAns = nsState.answers[idx];
+    const isCorrect = userAns === q.correctIndex;
+
+    const optionsHTML = q.options.map((opt, optIdx) => {
+        let btnCls = "exam-option-btn";
+        if (userAns === optIdx) btnCls += " selected";
+        if (nsState.submitted) {
+            if (optIdx === q.correctIndex) btnCls += " correct-ans";
+            else if (userAns === optIdx && optIdx !== q.correctIndex) btnCls += " wrong-ans";
+        }
+        return `<button type="button" class="${btnCls}" ${nsState.submitted ? "disabled" : ""} onclick="selectNewStudentOption(${idx}, ${optIdx})"><span class="exam-opt-letter">${opt.letter}</span><span class="exam-opt-text ${opt.isLtr ? 'ltr-opt' : ''}">${opt.text}</span></button>`;
+    }).join("");
+
+    const figureHTML = q.figureSVG ? `<div class="exam-q-figure-box">${q.figureSVG}</div>` : "";
+    const noteHTML = q.note ? `<div class="exam-note-banner"><span>ℹ️</span><span>${q.note}</span></div>` : "";
+    let explanationHTML = "";
+    if (nsState.submitted && userAns !== null) {
+        explanationHTML = `<div class="exam-explanation-box show ${!isCorrect ? 'wrong-exp' : ''}"><div class="exam-explanation-title">${isCorrect ? '✅ إجابة صحيحة!' : '❌ إجابة غير صحيحة — الإجابة الصحيحة هي (' + q.options[q.correctIndex].letter + ')'}</div><div>${q.explanation}</div></div>`;
+    }
+
+    container.innerHTML = `<article class="exam-question-card" id="newStudent-question-card-${idx}">
+        <div class="exam-q-header">
+            <div class="exam-q-number-badge"><span class="exam-q-num-circle">${q.id}</span><span>السؤال ${q.id} من ${NEW_STUDENT_QUESTIONS.length}</span></div>
+            <span class="exam-subject-tag ${q.tagClass}">${q.subject}</span>
+        </div>
+        <div class="exam-q-body-layout ${q.figureSVG ? 'has-figure' : ''}">
+            <div class="exam-q-prompt">${q.prompt}</div>
+            ${figureHTML}
+        </div>
+        <div class="exam-options-grid">${optionsHTML}</div>
+        ${noteHTML}
+        ${explanationHTML}
+    </article>`;
+}
+function updateNewStudentProgress() {
+    const answeredCount = nsState.answers.filter(a => a !== null).length;
+    const pct = Math.round((answeredCount / NEW_STUDENT_QUESTIONS.length) * 100);
+    document.getElementById("newStudentProgressText").textContent = `${answeredCount} من ${NEW_STUDENT_QUESTIONS.length}`;
+    document.getElementById("newStudentProgressFill").style.width = `${pct}%`;
+}
+function selectNewStudentOption(qIdx, optIdx) {
+    if (nsState.submitted) return;
+    nsState.answers[qIdx] = optIdx;
+    renderNewStudentAll();
+}
+function jumpToNewStudentQuestion(idx) {
+    nsState.currentIndex = idx;
+    renderNewStudentAll();
+    window.scrollTo({ top: 0, behavior: "smooth" });
+}
+function navigateNewStudentQuestion(step) {
+    const target = nsState.currentIndex + step;
+    if (target >= 0 && target < NEW_STUDENT_QUESTIONS.length) {
+        nsState.currentIndex = target;
+        renderNewStudentAll();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+}
+function submitNewStudentExam() {
+    const unanswered = nsState.answers.filter(a => a === null).length;
+    if (unanswered > 0 && !confirm(`لم تُجب على ${unanswered} سؤال. هل تريد تسليم الاختبار الآن؟`)) return;
+    
+    nsState.submitted = true;
+    let correctCount = 0;
+    NEW_STUDENT_QUESTIONS.forEach((q, idx) => { if (nsState.answers[idx] === q.correctIndex) correctCount++; });
+    const wrongCount = NEW_STUDENT_QUESTIONS.length - correctCount;
+    const percentage = Math.round((correctCount / NEW_STUDENT_QUESTIONS.length) * 100);
+
+    document.getElementById("newStudentScorePercent").textContent = `${percentage}%`;
+    document.getElementById("newStudentScoreFraction").textContent = `${correctCount} / ${NEW_STUDENT_QUESTIONS.length}`;
+    document.getElementById("newStudentStatCorrect").textContent = correctCount;
+    document.getElementById("newStudentStatWrong").textContent = wrongCount;
+
+    let msg = "أحسنت! نتيجة ممتازة في اختبار الفترة الأولى 🌟";
+    if (percentage < 50) msg = "تحتاج إلى مزيد من المراجعة، راجع الشروحات أدناه 💪";
+    else if (percentage < 80) msg = "جيد جداً! يمكنك تحسين درجتك بمراجعة الأخطاء 👏";
+    document.getElementById("newStudentScoreMessage").textContent = msg;
+    document.getElementById("newStudentResultsPanel").classList.add("show");
+    document.getElementById("newStudentSubmitExamBtn").style.display = "none";
+    renderNewStudentAll();
+    window.scrollTo({ top: 0, behavior: "smooth" });
+}
+function reviewAllNewStudentQuestions() {
+    renderNewStudentAll();
+    document.getElementById("newStudentQuestionsContainer").scrollIntoView({ behavior: "smooth" });
+}
+function resetNewStudentExam() {
+    nsState.answers = new Array(NEW_STUDENT_QUESTIONS.length).fill(null);
+    nsState.currentIndex = 0;
+    nsState.submitted = false;
+    document.getElementById("newStudentResultsPanel").classList.remove("show");
+    document.getElementById("newStudentSubmitExamBtn").style.display = "inline-flex";
+    renderNewStudentAll();
+    showNewStudentToast("تم إعادة ضبط الاختبار بنجاح");
+    window.scrollTo({ top: 0, behavior: "smooth" });
+}
+let nsToastTimeout = null;
+function showNewStudentToast(message) {
+    const toast = document.getElementById("newStudentToast");
+    toast.textContent = message;
+    toast.classList.add("show");
+    if (nsToastTimeout) clearTimeout(nsToastTimeout);
+    nsToastTimeout = setTimeout(() => { toast.classList.remove("show"); }, 2800);
+}
 </script>
 </body>
 </html>
